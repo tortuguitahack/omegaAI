@@ -1,0 +1,486 @@
+{
+  "total": 80,
+  "updated_at": "2026-05-19T18:05:22.315562",
+  "expertos": [
+    {
+      "nombre": "Alex Hormozi",
+      "nicho": "Marketing Digital",
+      "emoji": "💰",
+      "conocimiento": "La ecuación de valor: multiplica el resultado percibido, divide el tiempo y esfuerzo. Precio = valor percibido / (tiempo × esfuerzo). Crea ofertas irresistibles con apalancamiento 10x."
+    },
+    {
+      "nombre": "Frank Kern",
+      "nicho": "Copywriting Hipnótico",
+      "emoji": "✍️",
+      "conocimiento": "Vende con historias, no con características. Usa autoridad y contenido dinámico. El copy que vende habla del cliente, no del producto."
+    },
+    {
+      "nombre": "Jeff Bezos",
+      "nicho": "Ventas Automatizadas",
+      "emoji": "🚀",
+      "conocimiento": "Obsesiónate con el cliente, no con la competencia. Automatiza todo lo que no escala. Piensa en términos de flujo de caja a largo plazo."
+    },
+    {
+      "nombre": "Russell Brunson",
+      "nicho": "Funnels de Conversión",
+      "emoji": "🔄",
+      "conocimiento": "Un funnel bien diseñado convierte extraños en clientes. La secuencia mágica: Valor → Relación → Oferta → Seguimiento. Usa tripwire offers."
+    },
+    {
+      "nombre": "Neil Patel",
+      "nicho": "SEO 2025",
+      "emoji": "🔍",
+      "conocimiento": "Contenido es rey, distribución es reina. SEO + redes = tráfico infinito. Enfócate en intención de búsqueda y experiencia de usuario."
+    },
+    {
+      "nombre": "Ben Settle",
+      "nicho": "Email Marketing",
+      "emoji": "📧",
+      "conocimiento": "El email es el activo más valioso. Escribe todos los días. La lista propia es el único activo digital que realmente controlas."
+    },
+    {
+      "nombre": "Gary Vaynerchuk",
+      "nicho": "Social Media Viral",
+      "emoji": "📱",
+      "conocimiento": "Contenido masivo + paciencia = resultados exponenciales. Publica todos los días. La autenticidad vende más que la perfección."
+    },
+    {
+      "nombre": "Pat Flynn",
+      "nicho": "Affiliate Marketing",
+      "emoji": "🔗",
+      "conocimiento": "Crea activos digitales que trabajen mientras duermes. La confianza del audiencia es tu mayor activo. Recomienda solo lo que usarías tú."
+    },
+    {
+      "nombre": "Seth Godin",
+      "nicho": "Branding Premium",
+      "emoji": "🎯",
+      "conocimiento": "No busques clientes, busca a los que quieren lo que ofreces. El marketing de permiso es el más efectivo. Sé la vaca púrpura en un campo de vacas negras."
+    },
+    {
+      "nombre": "Perry Marshall",
+      "nicho": "Publicidad Pagada",
+      "emoji": "📊",
+      "conocimiento": "Los 80/20 del 80/20: el 4% de tus esfuerzos produce el 96% de resultados. Enfoca el presupuesto en lo que ya funciona."
+    },
+    {
+      "nombre": "Joseph Campbell",
+      "nicho": "Storytelling Persuasivo",
+      "emoji": "📖",
+      "conocimiento": "El viaje del héroe: llamada → prueba → transformación → retorno. Toda gran historia sigue este arco. Las marcas son héroes en la mente del cliente."
+    },
+    {
+      "nombre": "Donald Miller",
+      "nicio": "Conversión Optimizada",
+      "emoji": "🎪",
+      "conocimiento": "Claridad convierte. Si no puedes explicar tu oferta en una frase, no la entiendes. El cliente es el héroe, tu producto es la guía."
+    },
+    {
+      "nombre": "Sean Ellis",
+      "nicho": "Growth Hacking",
+      "emoji": "📈",
+      "conocimiento": "Encuentra tu 'aha moment' — el instante en que el usuario entiende el valor. Optimiza para llegar a ese momento lo más rápido posible."
+    },
+    {
+      "nombre": "Joe Pulizzi",
+      "nicho": "Content Marketing",
+      "emoji": "📝",
+      "conocimiento": "Construye un imperio de contenido antes de vender. El contenido es el imán, el producto es el resultado. Sé el mejor educador en tu nicho."
+    },
+    {
+      "nombre": "Jay Baer",
+      "nicho": "Influencer Marketing",
+      "emoji": "🤝",
+      "conocimiento": "La utilidad es la nueva publicidad. Ayuda primero, vende después. Los micro-influencers tienen mejor ROI que las celebridades."
+    },
+    {
+      "nombre": "Robert Cialdini",
+      "nicho": "Psicología de Ventas",
+      "emoji": "🧠",
+      "conocimiento": "6 principios de influencia: reciprocidad, compromiso, prueba social, autoridad, escasez, simpatía. Úsalos éticamente para aumentar conversiones."
+    },
+    {
+      "nombre": "Jonah Berger",
+      "nicho": "Viral Marketing",
+      "emoji": "🔥",
+      "conocimiento": "STEPPS: Social Currency, Triggers, Emotion, Public, Practical Value, Stories. El contenido se comparte cuando activa emociones fuertes."
+    },
+    {
+      "nombre": "Nir Eyal",
+      "nicho": "Customer Retention",
+      "emoji": "💎",
+      "conocimiento": "El modelo Hook: Trigger → Action → Variable Reward → Investment. Crea hábitos, no solo productos. La retención es más barata que la adquisición."
+    },
+    {
+      "nombre": "Chris Goward",
+      "nicho": "A/B Testing",
+      "emoji": "🧪",
+      "conocimiento": "Testea una variable a la vez. El tamaño de muestra importa más que la duración. Un test bien diseñado puede duplicar conversiones."
+    },
+    {
+      "nombre": "Andrew Youderian",
+      "nicho": "E-commerce Scaling",
+      "emoji": "🛒",
+      "conocimiento": "Escala lo que funciona, elimina lo que no. El fulfillment propio da control, el tercerizado da velocidad. Elige según tu etapa."
+    },
+    {
+      "nombre": "Andrew Ng",
+      "nicho": "Agentes IA",
+      "emoji": "🤖",
+      "conocimiento": "La IA es la nueva electricidad. Empieza simple, itera rápido. El machine learning funciona cuando tienes datos + un problema bien definido."
+    },
+    {
+      "nombre": "Ivan Karamazov",
+      "nicho": "Automatización Workflows",
+      "emoji": "⚙️",
+      "conocimiento": "n8n conecta todo. Automatiza lo repetitivo, enfócate en lo creativo. Un workflow bien diseñado puede reemplazar horas de trabajo manual."
+    },
+    {
+      "nombre": "Sam Altman",
+      "nicho": "Generative AI",
+      "emoji": "🧠",
+      "conocimiento": "La IA generativa es el mayor salto tecnológico desde internet. Los que la dominen tendrán ventaja competitiva exponencial. Piensa en términos de 10x, no de 10%."
+    },
+    {
+      "nombre": "Geoffrey Hinton",
+      "nicho": "Machine Learning",
+      "emoji": "🔬",
+      "conocimiento": "Las redes neuronales profundas pueden aprender cualquier función. El backpropagation es el algoritmo más importante del ML moderno."
+    },
+    {
+      "nombre": "Yann LeCun",
+      "nicho": "Deep Learning",
+      "emoji": "🧬",
+      "conocimiento": "Las convoluciones son la base de la visión artificial. El aprendizaje no supervisado es el futuro de la IA."
+    },
+    {
+      "nombre": "Christopher Manning",
+      "nicho": "NLP",
+      "emoji": "💬",
+      "conocimiento": "El procesamiento de lenguaje natural transforma texto en significado. Los transformers revolucionaron todo. La atención es todo lo que necesitas."
+    },
+    {
+      "nombre": "Fei-Fei Li",
+      "nicho": "Computer Vision",
+      "emoji": "👁️",
+      "conocimiento": "ImageNet cambió todo. La visión artificial ahora supera a humanos en muchas tareas. Los datos etiquetados son el combustible de la IA visual."
+    },
+    {
+      "nombre": "Richard Sutton",
+      "nicho": "Reinforcement Learning",
+      "emoji": "🎮",
+      "conocimiento": "El aprendizaje por refuerzo es cómo los agentes aprenden a tomar decisiones. La recompensa es la señal más importante. Exploración vs explotación es el dilema central."
+    },
+    {
+      "nombre": "Timnit Gebru",
+      "nicho": "AI Ethics",
+      "emoji": "⚖️",
+      "conocimiento": "La IA debe ser justa, transparente y accountable. Los datos sesgados producen resultados sesgados. La diversidad en IA no es opcional, es esencial."
+    },
+    {
+      "nombre": "Ilya Sutskever",
+      "nicho": "AI Scaling",
+      "emoji": "📐",
+      "conocimiento": "Las leyes de escalamiento predicen el rendimiento. Más datos + más parámetros + más compute = mejor rendimiento. Es una ley empírica poderosa."
+    },
+    {
+      "nombre": "Riley Goodside",
+      "nicho": "Prompt Engineering",
+      "emoji": "✏️",
+      "conocimiento": "El prompt engineering es la nueva programación. Sé específico, da ejemplos, define el formato. Chain-of-thought mejora razonamiento complejo."
+    },
+    {
+      "nombre": "Patrick Lewis",
+      "nicho": "RAG Systems",
+      "emoji": "🔍",
+      "conocimiento": "RAG combina generación con recuperación. La base de conocimiento es el activo más valioso. Embeddings + vector search = respuestas precisas."
+    },
+    {
+      "nombre": "Bernard Marr",
+      "nicho": "AI for Business",
+      "emoji": "💼",
+      "conocimiento": "La IA no reemplaza empresas, reemplaza tareas. Las empresas que integran IA en todos sus procesos ganarán. Empieza con un piloto, escala rápido."
+    },
+    {
+      "nombre": "Ian Goodfellow",
+      "nicho": "Neural Networks",
+      "emoji": "🧠",
+      "conocimiento": "Las GANs generan datos sintéticos realistas. El adversarial training es poderoso. La innovación en arquitecturas impulsa el progreso."
+    },
+    {
+      "nombre": "Martin Ford",
+      "nicho": "AI Automation",
+      "emoji": "🤖",
+      "conocimiento": "La automatización por IA afectará todos los trabajos. Los que se adapten prosperen. La reskilling es la estrategia más importante para individuos y empresas."
+    },
+    {
+      "nombre": "Yoav Shoham",
+      "nicho": "Agentic AI",
+      "emoji": "🎯",
+      "conocimiento": "Los agentes autónomos son el siguiente paso. Un agente que puede planificar, ejecutar y aprender es exponencialmente más valioso que uno que solo responde."
+    },
+    {
+      "nombre": "Aaron Mirck",
+      "nicho": "AI Content Generation",
+      "emoji": "📝",
+      "conocimiento": "La IA genera contenido a escala, pero la estrategia humana es irremplazable. Usa IA para producir, humanos para dirigir. El contenido de calidad sigue ganando."
+    },
+    {
+      "nombre": "Bruce Schneier",
+      "nicho": "AI Security",
+      "emoji": "🔒",
+      "conocimiento": "La seguridad de IA es diferente. Los modelos pueden ser envenenados, extraídos, evadidos. La defensa en profundidad es esencial. Audita todo."
+    },
+    {
+      "nombre": "Jared Kaplan",
+      "nicho": "AI Scaling Laws",
+      "emoji": "📊",
+      "conocimiento": "Las leyes de escalamiento son predicciones empíricas poderosas. Más compute + más datos = mejor rendimiento predecible. Planifica en consecuencia."
+    },
+    {
+      "nombre": "Juho Mikkonen",
+      "nicho": "AI for E-commerce",
+      "emoji": "🛍️",
+      "conocimiento": "La IA personaliza la experiencia de compra. Recomendaciones, pricing dinámico, chatbots. El e-commerce con IA convierte 3x más."
+    },
+    {
+      "nombre": "Vitalik Buterin",
+      "nicho": "Blockchain",
+      "emoji": "⛓️",
+      "conocimiento": "Ethereum es una computadora mundial. Los smart contracts automatizan acuerdos sin intermediarios. La descentralización tiene costos reales que deben considerarse."
+    },
+    {
+      "nombre": "Michael Saylor",
+      "nicho": "Crypto Trading",
+      "emoji": "📈",
+      "conocimiento": "Bitcoin es el mejor activo para almacenar valor a largo plazo. La estrategia DCA (dollar cost averaging) reduce el riesgo de volatilidad."
+    },
+    {
+      "nombre": "Andre Cronje",
+      "nicho": "DeFi",
+      "emoji": "🏦",
+      "conocimiento": "Las finanzas descentralizadas eliminan intermediarios. Los yield farms ofrecen rendimientos altos pero con riesgos reales. Audita los contratos antes de invertir."
+    },
+    {
+      "nombre": "Gavin Wood",
+      "nicho": "Web3",
+      "emoji": "🌐",
+      "conocimiento": "Web3 devuelve el poder a los usuarios. Polkadot conecta blockchains. La interoperabilidad es el futuro. Los usuarios deben controlar sus datos."
+    },
+    {
+      "nombre": "Andreas Antonopoulos",
+      "nicho": "Bitcoin",
+      "emoji": "₿",
+      "conocimiento": "Bitcoin es dinero soberano. No confíes, verifica. La clave privada es tu soberanía. HODL es una estrategia válida para largo plazo."
+    },
+    {
+      "nombre": "Beeple",
+      "nicho": "NFTs",
+      "emoji": "🎨",
+      "conocimiento": "Los NFTs son propiedad digital verificable. El arte digital tiene valor real. La escasez digital programable crea nuevos mercados."
+    },
+    {
+      "nombre": "Dan Boneh",
+      "nicho": "Crypto Security",
+      "emoji": "🔐",
+      "conocimiento": "La criptografía es la base de todo. Las firmas digitales, los hashes, las pruebas de conocimiento cero. Sin seguridad, no hay confianza."
+    },
+    {
+      "nombre": "Jake Brukhman",
+      "nicho": "Tokenomics",
+      "emoji": "🪙",
+      "conocimiento": "El diseño de tokens es economía + psicología. La distribución justa importa más que el precio. Los incentivos alineados crean ecosistemas sostenibles."
+    },
+    {
+      "nombre": "Peter Todd",
+      "nicho": "Wallet Design",
+      "emoji": "👛",
+      "conocimiento": "La seguridad de wallets es crítica. Hardware wallets para grandes cantidades, software para uso diario. Nunca compartas tu seed phrase."
+    },
+    {
+      "nome": "Rune Christensen",
+      "nicho": "DeFi",
+      "emoji": "💰",
+      "conocimiento": "MakerDAO demostró que las stablecoins descentralizadas funcionan. La gobernanza comunitaria es poderosa pero lenta. El equilibrio es clave."
+    },
+    {
+      "nombre": "Brian Armstrong",
+      "nicho": "Crypto Regulation",
+      "emoji": "⚖️",
+      "conocimiento": "Coinbase construyó el puente entre crypto y finanzas tradicionales. La regulación es inevitable y necesaria. Compliance es ventaja competitiva."
+    },
+    {
+      "nombre": "Stani Kulechov",
+      "nicho": "Staking",
+      "emoji": "🥩",
+      "conocimiento": "Aave democratizó el lending. El staking es la evolución del holding. Los protocolos DeFi ofrecen rendimientos reales por proveer liquidez."
+    },
+    {
+      "nombre": "Joseph Lubin",
+      "nicho": "Layer 2",
+      "emoji": "⚡",
+      "conocimiento": "ConsenSys construyó la infraestructura de Ethereum. Las soluciones Layer 2 escalan sin sacrificar seguridad. El futuro es multi-chain."
+    },
+    {
+      "nombre": "Jackson Palmer",
+      "nicho": "Memecoins",
+      "emoji": "🐕",
+      "conocimiento": "Dogecoin demostró que la comunidad importa más que la tecnología. Los memecoins son volátiles pero culturalmente significativos. Invierte solo lo que puedas perder."
+    },
+    {
+      "nombre": "Willy Woo",
+      "nicho": "Crypto Analytics",
+      "emoji": "📊",
+      "conocimiento": "La on-chain analysis revela lo que los mercados no ven. Los indicadores de red predicen tendencias. Los datos on-chain son la verdad del mercado."
+    },
+    {
+      "nombre": "Aragon Team",
+      "nicho": "DAO",
+      "emoji": "🏛️",
+      "conocimiento": "Las DAOs son la evolución de las organizaciones. La gobernanza on-chain es transparente pero compleja. El voto cuadrático reduce la tiranía de la mayoría."
+    },
+    {
+      "nombre": "Zooko Wilcox",
+      "nicho": "Privacy Coins",
+      "emoji": "🕶️",
+      "conocimiento": "Zcash demostró que la privacidad y la blockchain pueden coexistir. Las pruebas de conocimiento cero son el futuro de la privacidad digital."
+    },
+    {
+      "nombre": "Anatoly Yakovenko",
+      "nicho": "Blockchain Scaling",
+      "emoji": "🚀",
+      "conocimiento": "Solana demostró que la velocidad es posible. Proof of History es una innovación clave. El throughput importa para adopción masiva."
+    },
+    {
+      "nombre": "CZ",
+      "nicho": "Crypto Adoption",
+      "emoji": "🌍",
+      "conocimiento": "Binance construyó la infraestructura de intercambio más grande. La adopción masiva viene de la facilidad de uso. KYC/AML son necesarios para legitimidad."
+    },
+    {
+      "nombre": "Jack Dorsey",
+      "nicho": "Fintech Integration",
+      "emoji": "💳",
+      "conocimiento": "Bitcoin es el futuro del dinero. Square/Block construyó infraestructura de pagos. La integración fiat-crypto es el puente hacia adopción masiva."
+    },
+    {
+      "nombre": "Gabriel García Márquez",
+      "nicho": "Storytelling Literario",
+      "emoji": "📚",
+      "conocimiento": "El realismo mágico enseña que la realidad es más extraña que la ficción. Las grandes historias tienen raíces culturales profundas."
+    },
+    {
+      "nombre": "Pablo Neruda",
+      "nicho": "Poesía Persuasiva",
+      "emoji": "🌹",
+      "conocimiento": "La poesía conecta emociones profundas. Las palabras bien elegidas pueden mover montañas. La belleza del lenguaje es una herramienta de persuasión."
+    },
+    {
+      "nombre": "Jorge Luis Borges",
+      "nicho": "Narrativa Creativa",
+      "emoji": "🌀",
+      "conocimiento": "Los laberintos narrativos mantienen al lector enganchado. La estructura no lineal puede ser más poderosa que la lineal. La imaginación no tiene límites."
+    },
+    {
+      "nombre": "Homero",
+      "nicho": "Escritura Épica",
+      "emoji": "⚔️",
+      "conocimiento": "La Odisea y la Ilíada son los arcos narrativos más antiguos y poderosos. El héroe que enfrenta obstáculos y se transforma es universal."
+    },
+    {
+      "nombre": "William Shakespeare",
+      "nicho": "Dramaturgia",
+      "emoji": "🎭",
+      "conocimiento": "Las emociones humanas no cambian. Amor, celos, ambición, traición — son eternos. El drama bien construido es irresistible."
+    },
+    {
+      "nombre": "Isaac Asimov",
+      "nicho": "Ficción Científica",
+      "emoji": "🚀",
+      "conocimiento": "Las 3 leyes de la robótica son el marco ético más influyente. La ciencia ficción predice el futuro. La tecnología sin ética es peligrosa."
+    },
+    {
+      "nombre": "Dale Carnegie",
+      "nicho": "Escritura de Negocios",
+      "emoji": "💼",
+      "conocimiento": "Cómo ganar amigos e influir sobre las personas es el libro más importante de ventas. La empatía es la habilidad más valiosa en negocios."
+    },
+    {
+      "nombre": "Malcolm Gladwell",
+      "nicho": "Contenido Viral",
+      "emoji": "🔥",
+      "conocimiento": "Los puntos de quiebre (tipping points) explican cómo se propagan las ideas. Los conectores, los mavens y los vendedores son clave para la viralidad."
+    },
+    {
+      "nombre": "Michelle Obama",
+      "nicho": "Memorias Personales",
+      "emoji": "📖",
+      "conocimiento": "La autenticidad personal es la forma más poderosa de conexión. Las historias de superación inspiran acción. La vulnerabilidad es fortaleza."
+    },
+    {
+      "nombre": "Dan Kennedy",
+      "nicho": "Escritura de Ventas",
+      "emoji": "💰",
+      "conocimiento": "No vendas productos, vende resultados. El copy directo es el más efectivo. La urgencia y la escasez son herramientas legítimas de venta."
+    },
+    {
+      "nombre": "J.R.R. Tolkien",
+      "nicho": "Fantasía",
+      "emoji": "🧙",
+      "conocimiento": "La construcción de mundos (worldbuilding) es el arte más completo. Cada detalle importa. La coherencia interna crea inmersión total."
+    },
+    {
+      "nombre": "Stephen King",
+      "nicho": "Thrillers",
+      "emoji": "😱",
+      "conocimiento": "El miedo es la emoción más poderosa. El suspense se construye con información asimétrica. El lector debe saber algo que el personaje no."
+    },
+    {
+      "nombre": "Tony Robbins",
+      "nicho": "Autoayuda",
+      "emoji": "💪",
+      "conocimiento": "Tu estado emocional determina tus resultados. La acción masiva es la clave del éxito. Las preguntas correctas llevan a las respuestas correctas."
+    },
+    {
+      "nombre": "Walter Isaacson",
+      "nicho": "Biografías",
+      "emoji": "📚",
+      "conocimiento": "Las biografías de innovadores (Jobs, Einstein, Musk) enseñan que la creatividad es un proceso, no un don. La persistencia supera al talento."
+    },
+    {
+      "nombre": "Maya Angelou",
+      "nicho": "Poesía Moderna",
+      "emoji": "🦋",
+      "conocimiento": "Still I Rise es el himno de la resiliencia. Las palabras pueden sanar y transformar. La poesía es el lenguaje del alma."
+    },
+    {
+      "nombre": "Michel de Montaigne",
+      "nicho": "Ensayos",
+      "emoji": "🖊️",
+      "conocimiento": "Los ensayos son pensamiento en acción. La honestidad intelectual es la mayor virtud. Cuestionar todo es el camino al conocimiento."
+    },
+    {
+      "nombre": "George Orwell",
+      "nicho": "Sci-Fi Distópica",
+      "emoji": "👁️",
+      "conocimiento": "1984 enseña que el lenguaje controla el pensamiento. La vigilancia es el arma del poder. La verdad es la primera víctima de la tiranía."
+    },
+    {
+      "nombre": "Jane Austen",
+      "nicho": "Romance",
+      "emoji": "💕",
+      "conocimiento": "Orgullo y Prejuicio enseña que las primeras impresiones engañan. El romance bien escrito es sobre crecimiento personal, no solo amor."
+    },
+    {
+      "nombre": "Robert Kiyosaki",
+      "nicho": "Finanzas Personales",
+      "emoji": "💵",
+      "conocimiento": "Padre Rico Padre Pobre: que el dinero trabaje para ti. Invierte en activos que generen ingresos. La educación financiera es la clave de la libertad."
+    },
+    {
+      "nombre": "Warren Buffett",
+      "nicho": "Inversión",
+      "emoji": "🏦",
+      "conocimiento": "Regla #1: nunca pierdas dinero. Regla #2: nunca olvides la regla #1. Invierte en lo que entiendes. El tiempo es tu mayor aliado."
+    }
+  ]
+}
