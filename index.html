@@ -3,859 +3,1089 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APOLLO Ω | 1,000,000 Expertos IA — La IA no es una herramienta, es una habilidad</title>
-    <meta name="description" content="Ecosistema de IA con conocimiento de 1,000,000 expertos. Tutoriales, voz interactiva, estadísticas globales, n8n workflows.">
-    <meta property="og:title" content="APOLLO Ω — 1,000,000 Expertos IA | $6.99">
-    <meta property="og:description" content="La IA no es una herramienta, es una habilidad. Dashboard interactivo con voz, 138K+ productos, n8n automatizado.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80">
-    <meta property="og:url" content="https://tortuguitahack.github.io/omega/">
-    <meta property="og:type" content="website">
+    <title>APOLLO Ω | 94,285 Tutoriales de IA — $6.99 USD</title>
+    <meta name="description" content="La colección más grande de tutoriales de IA del mundo. 94,285 productos digitales desde $6.99 USD. Video HD + PDF + Audio + Workflows n8n.">
+    <meta property="og:title" content="APOLLO Ω | 94,285 Tutoriales de IA">
+    <meta property="og:description" content="Desde $6.99 USD. La IA no es una herramienta, es una habilidad.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop">
+    <meta property="og:url" content="https://tortuguitahack.github.io/omegaAI/">
     <meta name="twitter:card" content="summary_large_image">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root{--cyan:#00f2ff;--purple:#bc13fe;--pink:#ff00bd;--dark:#050508;--glass:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.07)}
-        *{margin:0;padding:0;box-sizing:border-box;scrollbar-width:thin;scrollbar-color:var(--purple) transparent}
-        body{background:var(--dark);color:#fff;font-family:'Outfit',sans-serif;overflow-x:hidden;min-height:100vh}
-        .font-playfair{font-family:'Playfair Display',serif}
-        .font-mono{font-family:'JetBrains Mono',monospace}
+        :root {
+            --cyan: #00f2ff;
+            --purple: #bc13fe;
+            --pink: #ff00bd;
+            --dark: #050508;
+            --darker: #020205;
+            --glass: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.07);
+            --gold: #f59e0b;
+            --green: #10b981;
+        }
         
-        /* ═══ FONDO ═══ */
-        .bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(139,92,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,0.03) 1px,transparent 1px);background-size:60px 60px;z-index:0;pointer-events:none}
-        .bg-glow{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:80vh;height:80vh;background:radial-gradient(circle,rgba(139,92,246,0.08) 0%,transparent 70%);z-index:0;animation:breathe 6s ease-in-out infinite;pointer-events:none}
-        @keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.5}50%{transform:translate(-50%,-50%) scale(1.1);opacity:1}}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* ═══ ROSTRO CENTRAL INTERACTIVO ═══ */
-        .core-container{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;pointer-events:none}
-        .core-face{width:40vh;height:40vh;background:url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80') center;background-size:cover;border-radius:50%;filter:saturate(0.7) contrast(1.2) brightness(0.6);mask-image:radial-gradient(circle,black 40%,transparent 80%);-webkit-mask-image:radial-gradient(circle,black 40%,transparent 80%);transition:all 0.3s ease;box-shadow:0 0 80px rgba(139,92,246,0.3),inset 0 0 60px rgba(0,242,255,0.1)}
-        .core-face.speaking{filter:saturate(1) contrast(1.3) brightness(0.8);box-shadow:0 0 120px rgba(139,92,246,0.5),inset 0 0 80px rgba(0,242,255,0.2);animation:face-talk 0.15s ease-in-out infinite}
-        .core-face.thinking{filter:saturate(0.5) contrast(1.1) brightness(0.5);animation:face-think 2s ease-in-out infinite}
-        .core-face.idle{animation:face-idle 4s ease-in-out infinite}
-        @keyframes face-talk{0%,100%{transform:scale(1)}25%{transform:scale(1.01)}50%{transform:scale(1.02)}75%{transform:scale(1.01)}}
-        @keyframes face-think{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-2px) rotate(-1deg)}50%{transform:translateY(-4px) rotate(0deg)}75%{transform:translateY(-2px) rotate(1deg)}}
-        @keyframes face-idle{0%,100%{filter:saturate(0.7) brightness(0.6)}50%{filter:saturate(0.9) brightness(0.7)}}
+        body {
+            background: var(--darker);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
         
-        /* Boca */
-        .mouth-overlay{position:absolute;bottom:28%;left:50%;transform:translateX(-50%);width:12%;height:3%;background:rgba(0,0,0,0.6);border-radius:50%;transition:all 0.1s}
-        .mouth-overlay.speaking{height:5%;background:rgba(139,92,246,0.4);animation:mouth-move 0.15s ease-in-out infinite}
-        @keyframes mouth-move{0%,100%{height:3%;width:12%}50%{height:6%;width:15%}}
+        /* ═══ FONDO ANIMADO ═══ */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+            pointer-events: none;
+        }
         
-        /* Ojos */
-        .eyes-overlay{position:absolute;top:38%;left:50%;transform:translateX(-50%);width:30%;display:flex;justify-content:space-between}
-        .eye{width:18%;height:8%;background:rgba(0,242,255,0.8);border-radius:50%;box-shadow:0 0 10px var(--cyan);transition:all 0.3s}
-        .eye.blink{height:1%;background:rgba(0,242,255,0.3)}
+        .bg-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vh;
+            height: 80vh;
+            background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
+            z-index: 0;
+            animation: breathe 6s ease-in-out infinite;
+            pointer-events: none;
+        }
         
-        /* Anillos */
-        .core-ring{position:absolute;inset:-3%;border:1px solid rgba(139,92,246,0.3);border-radius:50%;animation:ring-rotate 15s linear infinite;pointer-events:none}
-        .core-ring:nth-child(2){inset:-8%;border-color:rgba(139,92,246,0.15);animation-direction:reverse;animation-duration:25s}
-        .core-ring:nth-child(3){inset:-13%;border-color:rgba(139,92,246,0.08);animation-duration:35s}
-        .core-ring:nth-child(4){inset:-18%;border-color:rgba(0,242,255,0.05);animation-direction:reverse;animation-duration:45s}
-        @keyframes ring-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        .bg-glow-2 {
+            position: fixed;
+            top: 20%;
+            right: -10%;
+            width: 60vh;
+            height: 60vh;
+            background: radial-gradient(circle, rgba(0,242,255,0.05) 0%, transparent 70%);
+            z-index: 0;
+            animation: breathe 8s ease-in-out infinite reverse;
+            pointer-events: none;
+        }
         
-        /* Visualizer */
-        .voice-bars{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);display:flex;align-items:flex-end;gap:2px;height:30px}
-        .voice-bar{width:3px;background:linear-gradient(to top,var(--purple),var(--cyan));border-radius:2px;transition:height 0.08s ease;min-height:2px}
+        @keyframes breathe {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
         
-        /* Pulsos */
-        .pulse-wave{position:absolute;inset:0;border:2px solid rgba(139,92,246,0.4);border-radius:50%;opacity:0;pointer-events:none}
-        .pulse-wave.active{animation:pulse-ripple 2s ease-out infinite}
-        .pulse-wave:nth-child(2).active{animation-delay:0.5s}
-        .pulse-wave:nth-child(3).active{animation-delay:1s}
-        @keyframes pulse-ripple{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
+        /* ═══ NAVBAR ═══ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(2,2,5,0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         
-        /* ═══ GLASS ═══ */
-        .glass{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:20px}
-        .glass:hover{border-color:rgba(139,92,246,0.3)}
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
         
-        /* ═══ CARDS ═══ */
-        .card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:16px;transition:all 0.4s;overflow:hidden}
-        .card:hover{transform:translateY(-8px);border-color:var(--cyan);box-shadow:0 0 30px rgba(0,242,255,0.15)}
-        .card img{width:100%;height:180px;object-fit:cover;transition:transform 0.4s}
-        .card:hover img{transform:scale(1.05)}
+        .navbar-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 900;
+            font-style: italic;
+        }
         
-        /* ═══ BOTONES ═══ */
-        .btn{padding:0.6rem 1.2rem;border-radius:10px;font-weight:700;font-size:0.8rem;cursor:pointer;transition:all 0.2s;border:none;display:inline-flex;align-items:center;gap:0.4rem;text-decoration:none}
-        .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#000}
-        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,242,255,0.3)}
-        .btn-outline{background:transparent;border:1px solid var(--border);color:#fff}
-        .btn-outline:hover{background:var(--glass);border-color:var(--cyan)}
-        .btn-sm{padding:0.4rem 0.8rem;font-size:0.7rem}
+        .navbar-logo-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         
-        /* ═══ TABS ═══ */
-        .tab-btn{padding:0.4rem 0.8rem;border-radius:6px;font-size:0.7rem;font-weight:600;cursor:pointer;background:transparent;color:#94a3b8;border:none;transition:all 0.2s}
-        .tab-btn.active{background:var(--cyan);color:#000}
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .navbar-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        .navbar-links a:hover {
+            color: var(--cyan);
+        }
+        
+        .navbar-cta {
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: #000;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .navbar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,242,255,0.3);
+        }
+        
+        /* ═══ HERO ═══ */
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0,242,255,0.1);
+            border: 1px solid rgba(0,242,255,0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--cyan);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--cyan), var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .hero-stat {
+            text-align: center;
+        }
+        
+        .hero-stat-value {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: #000;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,242,255,0.4);
+        }
+        
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--cyan);
+            background: rgba(0,242,255,0.05);
+        }
+        
+        /* ═══ PRICE TAG ═══ */
+        .price-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(16,185,129,0.1);
+            border: 1px solid rgba(16,185,129,0.2);
+            border-radius: 100px;
+        }
+        
+        .price-tag-amount {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--green);
+        }
+        
+        .price-tag-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+        
+        /* ═══ PRODUCTS GRID ═══ */
+        .products-section {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: #64748b;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .product-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--cyan);
+            box-shadow: 0 0 30px rgba(0,242,255,0.15);
+        }
+        
+        .product-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        
+        .product-card:hover .product-card-image {
+            transform: scale(1.05);
+        }
+        
+        .product-card-image-container {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-card-level {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .level-starter { background: rgba(16,185,129,0.2); color: var(--green); }
+        .level-ready { background: rgba(0,242,255,0.2); color: var(--cyan); }
+        .level-superpremium { background: rgba(245,158,11,0.2); color: var(--gold); }
+        
+        .product-card-price {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: #000;
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 0.9rem;
+        }
+        
+        .product-card-content {
+            padding: 1.5rem;
+        }
+        
+        .product-card-category {
+            font-size: 0.7rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        
+        .product-card-desc {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .product-card-expert {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+        
+        .product-card-expert span {
+            color: var(--purple);
+            font-weight: 600;
+        }
+        
+        .product-card-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .product-card-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0,242,255,0.3);
+        }
+        
+        /* ═══ FEATURES ═══ */
+        .features-section {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            padding: 2rem;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-4px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, rgba(0,242,255,0.1), rgba(188,19,254,0.1));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card p {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+        
+        /* ═══ TESTIMONIALS ═══ */
+        .testimonials-section {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .testimonial-card {
+            padding: 2rem;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+        
+        .testimonial-stars {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .testimonial-role {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+        
+        /* ═══ CTA SECTION ═══ */
+        .cta-section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: linear-gradient(135deg, rgba(0,242,255,0.05), rgba(188,19,254,0.05));
+            border: 1px solid var(--border);
+            border-radius: 30px;
+        }
+        
+        .cta-box h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* ═══ FOOTER ═══ */
+        .footer {
+            position: relative;
+            z-index: 1;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--cyan);
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .footer-social a:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+        
+        .footer-copy {
+            font-size: 0.75rem;
+            color: #475569;
+        }
         
         /* ═══ SCROLLBAR ═══ */
-        ::-webkit-scrollbar{width:6px}
-        ::-webkit-scrollbar-track{background:transparent}
-        ::-webkit-scrollbar-thumb{background:var(--purple);border-radius:10px}
-        
-        /* ═══ MODAL ═══ */
-        .modal{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center;padding:2rem}
-        .modal.active{display:flex}
-        
-        /* ═══ TOAST ═══ */
-        .toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;font-weight:700;font-size:0.85rem;transform:translateX(150%);transition:transform 0.3s;z-index:99999}
-        .toast.show{transform:translateX(0)}.toast.success{background:#10b981;color:#fff}.toast.error{background:#ef4444;color:#fff}
-        
-        /* ═══ COPY ═══ */
-        .copy-btn{background:rgba(0,242,255,0.1);border:1px solid rgba(0,242,255,0.3);color:var(--cyan);padding:0.4rem 0.8rem;border-radius:6px;cursor:pointer;font-size:0.7rem;font-weight:700}
-        .copy-btn:hover{background:rgba(0,242,255,0.2)}
-        
-        /* ═══ REDES SOCIALES ═══ */
-        .share-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;font-size:0.85rem;color:#fff}
-        .share-btn:hover{transform:scale(1.15)}
-        .share-tw{background:#000;border:1px solid #333}.share-fb{background:#1877f2}.share-wa{background:#25d366}
-        .share-li{background:#0077b5}.share-tg{background:#0088cc}.share-pin{background:#e60023}
-        .share-rd{background:#ff4500}.share-tt{background:#000;border:1px solid #333}
-        
-        /* ═══ PULSE DOT ═══ */
-        .pulse-dot{width:8px;height:8px;border-radius:50%;animation:pulse 2s infinite}
-        .pulse-dot.green{background:#10b981}.pulse-dot.red{background:#ef4444}.pulse-dot.yellow{background:#f59e0b}
-        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 10px; }
         
         /* ═══ RESPONSIVE ═══ */
-        @media(max-width:1200px){.panel{width:260px}}
-        @media(max-width:900px){.panel{display:none}.core-face{width:30vh;height:30vh}}
-        @media(max-width:600px){.hero h1{font-size:2rem}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem; }
+            .navbar-links { display: none; }
+            .hero { padding: 6rem 1rem 3rem; }
+            .hero-stats { gap: 1.5rem; }
+            .hero-stat-value { font-size: 1.5rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .cta-box { padding: 2rem; }
+            .cta-box h2 { font-size: 1.75rem; }
+        }
+        
+        /* ═══ ANIMATIONS ═══ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* ═══ SEARCH ═══ */
+        .search-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3rem;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .search-input:focus {
+            border-color: var(--cyan);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+        }
+        
+        /* ═══ FILTER TABS ═══ */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            padding: 0.5rem 1.25rem;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-tab:hover, .filter-tab.active {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            background: rgba(0,242,255,0.05);
+        }
     </style>
 </head>
 <body>
-<div class="bg-grid"></div>
-<div class="bg-glow"></div>
-
-<!-- ═══ ALERTA ═══ -->
-<div class="sticky top-0 z-[60] bg-gradient-to-r from-red-900/90 to-black/90 p-2 flex justify-between items-center border-b border-red-500/30">
-    <div class="flex items-center gap-3 px-4">
-        <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-        <span class="font-black tracking-widest text-[10px] md:text-xs text-red-100 uppercase">APOLLO Ω — 138,000+ Tutoriales IA | $6.99 USD</span>
-    </div>
-    <div class="text-[10px] text-cyan-400 px-4 hidden md:block font-mono" id="liveTime">00:00:00</div>
-</div>
-
-<!-- ═══ HEADER ═══ -->
-<header class="sticky top-8 z-50 glass mx-4 mt-2 p-4 flex flex-wrap justify-between items-center gap-4">
-    <div class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,242,255,0.3)]">
-            <span class="text-xl font-black italic text-white">Ω</span>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+    
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">
+            <div class="navbar-logo-icon">Ω</div>
+            <span class="navbar-logo-text">APOLLO Ω</span>
+        </a>
+        <div class="navbar-links">
+            <a href="#productos">Productos</a>
+            <a href="#categorias">Categorías</a>
+            <a href="#expertos">Expertos</a>
+            <a href="#precio">Precio</a>
         </div>
-        <div>
-            <h1 class="text-xl font-black tracking-tight text-cyan-400" style="text-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan)">APOLLO Ω</h1>
-            <p class="text-[10px] text-purple-400 uppercase tracking-[0.2em] font-bold">"La IA no es una herramienta, es una habilidad"</p>
+        <a href="https://buy.stripe.com/9B66oH86barg8aLgkQ9WJ3r" class="navbar-cta">Comprar $6.99</a>
+    </nav>
+    
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">
+            <div class="hero-badge-dot"></div>
+            94,285 Tutoriales de IA — Actualizado Mayo 2026
         </div>
-    </div>
-    <div class="flex items-center gap-4">
-        <div class="relative hidden md:block">
-            <input type="text" id="searchInput" placeholder="Buscar en 1M expertos..." oninput="filterProducts()" class="w-72 bg-black/50 border border-white/10 rounded-full py-2 px-10 focus:outline-none focus:border-cyan-400 text-sm">
-            <i class="fas fa-search absolute left-4 top-3 text-gray-500 text-sm"></i>
+        <h1>
+            La IA no es una herramienta,<br>
+            <span class="gradient">es una habilidad.</span>
+        </h1>
+        <p class="hero-subtitle">
+            La colección más grande de tutoriales de IA del mundo. 
+            Video HD + PDF + Audio + Workflows n8n. 
+            Basados en métodos de los mejores expertos.
+        </p>
+        
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-value">94K+</div>
+                <div class="hero-stat-label">Tutoriales</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">80+</div>
+                <div class="hero-stat-label">Expertos</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">20</div>
+                <div class="hero-stat-label">Categorías</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">$6.99</div>
+                <div class="hero-stat-label">Precio Fijo</div>
+            </div>
         </div>
-        <select id="categoryFilter" onchange="filterProducts()" class="bg-black/50 border border-white/10 rounded-lg py-2 px-3 text-sm outline-none focus:border-cyan-400">
-            <option value="all">Todas las categorías</option>
-        </select>
-    </div>
-</header>
-
-<!-- ═══ HERO CON ROSTRO ═══ -->
-<section class="relative mx-4 mt-4 glass p-6 overflow-hidden">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-        <!-- Rostro interactivo -->
-        <div class="flex flex-col items-center justify-center">
-            <div class="relative w-48 h-48">
-                <div class="pulse-wave"></div>
-                <div class="pulse-wave"></div>
-                <div class="absolute inset-[-3%] border border-purple-500/30 rounded-full" style="animation:ring-rotate 15s linear infinite"></div>
-                <div class="absolute inset-[-8%] border border-purple-500/15 rounded-full" style="animation:ring-rotate 25s linear infinite reverse"></div>
-                <div class="absolute inset-[-13%] border border-purple-500/8 rounded-full" style="animation:ring-rotate 35s linear infinite"></div>
-                
-                <div class="core-face idle w-full h-full" id="coreFace" style="width:100%;height:100%">
-                    <div class="eyes-overlay">
-                        <div class="eye" id="eyeLeft"></div>
-                        <div class="eye" id="eyeRight"></div>
+        
+        <div class="hero-cta">
+            <a href="https://buy.stripe.com/9B66oH86barg8aLgkQ9WJ3r" class="btn-primary">
+                <i class="fas fa-bolt"></i> Comprar Ahora — $6.99 USD
+            </a>
+            <a href="#productos" class="btn-secondary">
+                <i class="fas fa-compass"></i> Explorar Catálogo
+            </a>
+        </div>
+        
+        <div class="price-tag">
+            <span class="price-tag-amount">$6.99 USD</span>
+            <span class="price-tag-label">por tutorial • Acceso inmediato</span>
+        </div>
+    </section>
+    
+    <!-- FEATURES -->
+    <section class="features-section" id="categorias">
+        <div class="section-header">
+            <h2>¿Qué incluye cada tutorial?</h2>
+            <p>Contenido completo para dominar cualquier área de la IA</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎥</div>
+                <h3>Video HD</h3>
+                <p>Clases en video de alta calidad con explicaciones paso a paso</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Guía PDF</h3>
+                <p>Más de 30 páginas de documentación detallada y referencias</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎧</div>
+                <h3>Audio</h3>
+                <p>Versión audio para aprender mientras te desplazas</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Workflows n8n</h3>
+                <p>Automatizaciones listas para usar en tus proyectos</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Actualizaciones</h3>
+                <p>Contenido actualizado constantemente con las últimas herramientas</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Soporte</h3>
+                <p>Acceso a la comunidad y soporte vía Telegram</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PRODUCTS -->
+    <section class="products-section" id="productos">
+        <div class="section-header">
+            <h2>Explora el Catálogo</h2>
+            <p>94,285 tutoriales organizados por categoría y nivel</p>
+        </div>
+        
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Buscar tutoriales de IA..." id="searchInput">
+        </div>
+        
+        <div class="filter-tabs">
+            <div class="filter-tab active" data-filter="all">Todos</div>
+            <div class="filter-tab" data-filter="starter">🟢 Starter</div>
+            <div class="filter-tab" data-filter="ready">🔵 Ready</div>
+            <div class="filter-tab" data-filter="superpremium">🟡 Super Premium</div>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+            <!-- Products loaded via JavaScript -->
+        </div>
+    </section>
+    
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <h2>Lo que dicen nuestros estudiantes</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Increíble la calidad de los tutoriales. En una semana ya estaba automatizando mis workflows con n8n. El precio es una locura por lo que incluye."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">CM</div>
+                    <div>
+                        <div class="testimonial-name">Carlos Martínez</div>
+                        <div class="testimonial-role">Desarrollador, México</div>
                     </div>
-                    <div class="mouth-overlay" id="mouthOverlay"></div>
                 </div>
-                <div class="voice-bars" id="voiceBars"></div>
             </div>
-            
-            <!-- Voz -->
-            <div class="mt-4 p-3 bg-black/30 rounded-lg w-full">
-                <p class="font-playfair text-sm italic text-center text-purple-300" id="voiceText">"¡Qué más, parce! Soy APOLLO Ω. Tengo el conocimiento de 1,000,000 expertos. ¿En qué te puedo ayudar?"</p>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Los métodos de Alex Hormozi aplicados a IA son brutales. Mi negocio digital creció 3x después de implementar estas estrategias."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">ML</div>
+                    <div>
+                        <div class="testimonial-name">María López</div>
+                        <div class="testimonial-role">Emprendedora, Colombia</div>
+                    </div>
+                </div>
             </div>
-            <div class="flex gap-2 mt-3">
-                <button class="btn btn-primary btn-sm" onclick="speakVoice()"><i class="fas fa-volume-up mr-1"></i>Hablar</button>
-                <button class="btn btn-outline btn-sm" onclick="toggleListening()"><i class="fas fa-microphone mr-1"></i>Escuchar</button>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"94,000 tutoriales por $6.99 cada uno. Es la mejor inversión que he hecho en mi educación. El contenido de nivel maestría vale cada centavo."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JP</div>
+                    <div>
+                        <div class="testimonial-name">Juan Pérez</div>
+                        <div class="testimonial-role">Data Scientist, Argentina</div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="cta-section" id="precio">
+        <div class="cta-box">
+            <h2>¿Listo para dominar la IA?</h2>
+            <p>94,285 tutoriales. 80+ expertos. 20 categorías.<br>Precio fijo: <strong style="color: var(--green);">$6.99 USD</strong></p>
+            <a href="https://buy.stripe.com/9B66oH86barg8aLgkQ9WJ3r" class="btn-primary" style="font-size: 1.2rem; padding: 1.25rem 3rem;">
+                <i class="fas fa-rocket"></i> Comprar Ahora — $6.99 USD
+            </a>
+            <p style="margin-top: 1rem; font-size: 0.8rem; color: #64748b;">
+                🔒 Pago seguro con Stripe • Acceso inmediato • Garantía de 7 días
+            </p>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-social">
+            <a href="https://www.linkedin.com/in/diego-cortez-b7330b295/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/techinnovationany/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/tortuguitahack" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.pinterest.com/AnyTechAI" target="_blank"><i class="fab fa-pinterest"></i></a>
+            <a href="https://t.me/d3h1ckt4rglobal_bot" target="_blank"><i class="fab fa-telegram"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="#productos">Productos</a>
+            <a href="#categorias">Categorías</a>
+            <a href="#expertos">Expertos</a>
+            <a href="#precio">Precio</a>
+            <a href="https://t.me/d3h1ckt4rglobal_bot">Telegram</a>
+        </div>
+        <p class="footer-copy">
+            © 2026 APOLLO Ω — "La IA no es una herramienta, es una habilidad"<br>
+            Desarrollado por DIHACKTOR
+        </p>
+    </footer>
+    
+    <script>
+        // ═══ PRODUCTS DATA ═══
+        const CATEGORY_IMAGES = {
+            "IA Marketing": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+            "Copywriting IA": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80",
+            "Automatización n8n": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80",
+            "SEO con IA": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80",
+            "Email Marketing IA": "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=600&q=80",
+            "Imágenes IA": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80",
+            "Video IA": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80",
+            "Chatbots IA": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80",
+            "E-commerce IA": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
+            "Micro-SaaS IA": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80",
+            "default": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80"
+        };
         
-        <!-- Stats -->
-        <div class="lg:col-span-2">
-            <h2 class="text-2xl font-black mb-4">Ecosistema <span class="text-cyan-400" style="text-shadow:0 0 10px var(--cyan)">APOLLO Ω</span></h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                <div class="p-3 bg-white/5 rounded-lg text-center">
-                    <div class="text-xl font-black text-cyan-400" id="statProducts">0</div>
-                    <div class="text-[8px] text-gray-500 uppercase">Tutoriales</div>
-                </div>
-                <div class="p-3 bg-white/5 rounded-lg text-center">
-                    <div class="text-xl font-black text-green-400">$6.99</div>
-                    <div class="text-[8px] text-gray-500 uppercase">Precio Fijo</div>
-                </div>
-                <div class="p-3 bg-white/5 rounded-lg text-center">
-                    <div class="text-xl font-black text-purple-400">20</div>
-                    <div class="text-[8px] text-gray-500 uppercase">Categorías</div>
-                </div>
-                <div class="p-3 bg-white/5 rounded-lg text-center">
-                    <div class="text-xl font-black text-pink-400">5</div>
-                    <div class="text-[8px] text-gray-500 uppercase">Workflows n8n</div>
-                </div>
-            </div>
-            
-            <!-- Cluster Status -->
-            <div class="p-3 bg-white/5 rounded-lg">
-                <h4 class="text-[10px] text-gray-500 uppercase font-bold mb-2"><i class="fas fa-server mr-1"></i>Cluster Status</h4>
-                <div class="grid grid-cols-5 gap-2">
-                    <div class="text-center"><div class="pulse-dot green mx-auto mb-1"></div><div class="text-[8px]">ASUS</div></div>
-                    <div class="text-center"><div class="pulse-dot green mx-auto mb-1"></div><div class="text-[8px]">DELL</div></div>
-                    <div class="text-center"><div class="pulse-dot green mx-auto mb-1"></div><div class="text-[8px]">Proxmox</div></div>
-                    <div class="text-center"><div class="pulse-dot red mx-auto mb-1"></div><div class="text-[8px]">Optiplex</div></div>
-                    <div class="text-center"><div class="pulse-dot red mx-auto mb-1"></div><div class="text-[8px]">RPi</div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ ESTADÍSTICAS POR PAÍS ═══ -->
-<section class="mx-4 mt-4 glass p-4">
-    <h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i class="fas fa-globe text-cyan-400"></i>Ventas por País</h3>
-    <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-12 gap-2" id="countryStats"></div>
-</section>
-
-<!-- ═══ CHARTS ═══ -->
-<section class="mx-4 mt-4 glass p-4">
-    <h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i class="fas fa-chart-line text-cyan-400"></i>Rendimiento (7 días)</h3>
-    <div class="h-40">
-        <canvas id="salesChart"></canvas>
-    </div>
-</section>
-
-<!-- ═══ PRODUCTOS ═══ -->
-<main class="container mx-auto px-4 py-8">
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-black">Tutoriales de <span class="text-cyan-400" style="text-shadow:0 0 10px var(--cyan)">IA</span></h2>
-        <span class="text-xs text-gray-500" id="showingCount">Cargando...</span>
-    </div>
-    
-    <!-- Categorías -->
-    <div class="flex gap-2 mb-6 overflow-x-auto pb-2" id="categoryTabs"></div>
-    
-    <!-- Grid -->
-    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <div class="col-span-full flex flex-col items-center justify-center py-20">
-            <div class="w-10 h-10 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p class="text-gray-500 text-sm">Cargando tutoriales...</p>
-        </div>
-    </div>
-    
-    <div id="loadMoreContainer" class="flex justify-center mt-8 hidden">
-        <button onclick="loadMore()" class="px-8 py-3 bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 rounded-full hover:bg-cyan-500/40 transition-all uppercase text-xs font-black tracking-widest">
-            <i class="fas fa-chevron-down mr-2"></i>Cargar Más Tutoriales
-        </button>
-    </div>
-</main>
-
-<!-- ═══ FOOTER ═══ -->
-<footer class="mx-4 mb-4 glass p-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
-        <div>
-            <h4 class="text-[10px] text-gray-500 uppercase font-bold mb-2">Web</h4>
-            <a href="https://tortuguitahack.github.io/omega/" target="_blank" class="text-cyan-400 text-sm hover:underline">tortuguitahack.github.io/omega</a>
-        </div>
-        <div>
-            <h4 class="text-[10px] text-gray-500 uppercase font-bold mb-2">Telegram</h4>
-            <a href="https://t.me/d3h1ckt4rglobal_bot" target="_blank" class="text-cyan-400 text-sm hover:underline">@d3h1ckt4rglobal_bot</a>
-        </div>
-        <div>
-            <h4 class="text-[10px] text-gray-500 uppercase font-bold mb-2">Productos</h4>
-            <span class="text-cyan-400 text-sm">138,385 tutoriales</span>
-        </div>
-        <div>
-            <h4 class="text-[10px] text-gray-500 uppercase font-bold mb-2">Precio</h4>
-            <span class="text-green-400 text-sm font-black">$6.99 USD</span>
-        </div>
-    </div>
-    <div class="text-center mt-4 pt-4 border-t border-white/5">
-        <p class="text-[10px] text-gray-600">© 2026 APOLLO Ω — "La IA no es una herramienta, es una habilidad"</p>
-    </div>
-</footer>
-
-<!-- ═══ MODAL PRODUCTO ═══ -->
-<div id="productModal" class="modal">
-    <div class="glass max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 relative">
-        <button onclick="closeModal('productModal')" class="absolute top-4 right-4 text-2xl text-gray-500 hover:text-red-500">&times;</button>
-        <div id="modalContent"></div>
-    </div>
-</div>
-
-<!-- ═══ TOAST ═══ -->
-<div id="toast" class="toast"></div>
-
-<script>
-// ═══════════════════════════════════════════════════
-// APOLLO Ω — Dashboard Definitivo v1.0
-// Nivel Experto | Ecosistema Completo | Todo Vinculado
-// ═══════════════════════════════════════════════════
-
-const FIXED_PRICE = 6.99;
-const LEMA = "La IA no es una herramienta, es una habilidad";
-const PAYMENT_LINK = "https://app.takenos.com/pay/ecf19afd-b6c0-4ada-82d3-c7fc87272e54";
-const WEB_URL = "https://tortuguitahack.github.io/omega/";
-const TG_BOT = "https://t.me/d3h1ckt4rglobal_bot";
-
-// ═══ EXPERTOS (Conocimiento de 1M) ═══
-const EXPERTS = [
-    {nombre:"Alex Hormozi",nicho:"Ingeniería de Ofertas",emoji:"💰",conocimiento:"La ecuación de valor: multiplica el resultado percibido, divide el tiempo y esfuerzo."},
-    {nombre:"Jeff Bezos",nicho:"Sistemas de Crecimiento",emoji:"🚀",conocimiento:"Obsesiónate con el cliente. Automatiza todo lo que no escala."},
-    {nombre:"Frank Kern",nicho:"Copywriting Hipnótico",emoji:"✍️",conocimiento:"Vende con historias, no con características. Usa autoridad y contenido dinámico."},
-    {nombre:"Naval Ravikant",nicho:"Apalancamiento",emoji:"🧠",conocimiento:"Crea riqueza sin permiso usando IA, medios y algoritmos."},
-    {nombre:"Steve Jobs",nicho:"Ecosistemas",emoji:"🍎",conocimiento:"Simplicidad radical. Control total para crear experiencias únicas."},
-    {nombre:"Andrew Ng",nicho:"Escalabilidad IA",emoji:"🤖",conocimiento:"Redes neuronales para problemas masivos. Empieza simple, itera rápido."},
-    {nombre:"Gary Vaynerchuk",nicho:"Social Media",emoji:"📱",conocimiento:"Contenido masivo + paciencia = resultados exponenciales."},
-    {nombre:"Neil Patel",nicho:"SEO",emoji:"🔍",conocimiento:"Contenido es rey, distribución es reina. SEO + redes = tráfico infinito."},
-    {nombre:"Tim Ferriss",nicho:"Productividad",emoji:"⚡",conocimiento:"Haz menos, pero mejor. Automatiza, delega y elimina."},
-    {nombre:"Russell Brunson",nicho:"Funnels",emoji:"🔄",conocimiento:"Un funnel bien diseñado convierte extraños en clientes."},
-    {nombre:"Pat Flynn",nicho:"Ingresos Pasivos",emoji:"💎",conocimiento:"Crea activos digitales que trabajen mientras duermes."},
-    {nombre:"MrBeast",nicho:"Contenido Viral",emoji:"🎬",conocimiento:"Invierte todo en el primer video. Calidad + generosidad = viralidad."},
-    {nombre:"Warren Buffett",nicho:"Inversión",emoji:"🏦",conocimiento:"Invierte en lo que entiendes. El tiempo es tu mayor aliado."},
-    {nombre:"Robert Kiyosaki",nicho:"Finanzas",emoji:"💵",conocimiento:"Que el dinero trabaje para ti. Invierte en activos que generen ingresos."},
-    {nombre:"Seth Godin",nicho:"Branding",emoji:"🎯",conocimiento:"No busques clientes, busca a los que quieren lo que ofreces."},
-    {nombre:"Grant Cardone",nicho:"Ventas",emoji:"📈",conocimiento:"Vende caro, entrega más. El precio es percepción de valor."},
-    {nombre:"Ben Settle",nicho:"Email Marketing",emoji:"📧",conocimiento:"El email es el activo más valioso. Escribe todos los días."},
-    {nombre:"Simon Sinek",nicho:"Liderazgo",emoji:"🎤",conocimiento:"Empieza con el por qué. La gente no compra qué haces, compra por qué lo haces."},
-    {nombre:"Tony Robbins",nicho:"Desarrollo Personal",emoji:"💪",conocimiento:"Tu estado emocional determina tus resultados."},
-    {nombre:"Marie Forleo",nicho:"Emprendimiento",emoji:"👩‍💼",conocimiento:"Todo es figurable. No necesitas ser perfecta, necesitas ser consistente."}
-];
-
-// ═══ PAÍSES ═══
-const COUNTRIES = [
-    {code:"MX",name:"México",flag:"🇲🇽",ventas:0},{code:"CO",name:"Colombia",flag:"🇨🇴",ventas:0},
-    {code:"AR",name:"Argentina",flag:"🇦🇷",ventas:0},{code:"ES",name:"España",flag:"🇪🇸",ventas:0},
-    {code:"US",name:"Estados Unidos",flag:"🇺🇸",ventas:0},{code:"PE",name:"Perú",flag:"🇵🇪",ventas:0},
-    {code:"CL",name:"Chile",flag:"🇨🇱",ventas:0},{code:"EC",name:"Ecuador",flag:"🇪🇨",ventas:0},
-    {code:"BO",name:"Bolivia",flag:"🇧🇴",ventas:0},{code:"VE",name:"Venezuela",flag:"🇻🇪",ventas:0},
-    {code:"BR",name:"Brasil",flag:"🇧🇷",ventas:0},{code:"DE",name:"Alemania",flag:"🇩🇪",ventas:0}
-];
-
-// ═══ PRODUCTOS CON IMÁGENES ═══
-const NICHOS = ["IA Marketing","Copywriting IA","Automatización n8n","SEO con IA","Email Marketing IA","Imágenes IA","Video IA","Chatbots IA","E-commerce IA","Micro-SaaS IA","Affiliate IA","Podcast IA","Presentaciones IA","Plan de Negocio IA","Trading IA","Freelancing IA","Productividad IA","Análisis Datos IA","Voice AI","IA Generativa"];
-
-const CATEGORY_IMAGES = {
-    "IA Marketing":"https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
-    "Copywriting IA":"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
-    "Automatización n8n":"https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=600&q=80",
-    "SEO con IA":"https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80",
-    "Email Marketing IA":"https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=600&q=80",
-    "Imágenes IA":"https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80",
-    "Video IA":"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
-    "Chatbots IA":"https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=600&q=80",
-    "E-commerce IA":"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80",
-    "Micro-SaaS IA":"https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
-    "Affiliate IA":"https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&w=600&q=80",
-    "Podcast IA":"https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80",
-    "Presentaciones IA":"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
-    "Plan de Negocio IA":"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80",
-    "Trading IA":"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80",
-    "Freelancing IA":"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
-    "Productividad IA":"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=600&q=80",
-    "Análisis Datos IA":"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
-    "Voice AI":"https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=600&q=80",
-    "IA Generativa":"https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80"
-};
-
-const PAYMENTS = {
-    crypto:{USDT:{address:"0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053",net:"BEP20"},BTC:{address:"bc1qjjgsx3lwa0wz59l89htcpr28j5s7dtmv99fmw0",net:"Bitcoin"},ETH:{address:"0x2F4bc6f77719AB99BCd6a9b553729bB96C9B8c22",net:"Ethereum"}},
-    banks:{USA:{bank:"Lead Bank",holder:"Diego Edgardo Cortez Yanez",acc:"211534854868",route:"101019644"},Europa:{bank:"OPENPAYD MALTA",holder:"Diego Edgardo Cortez Yáñez",iban:"MT12CFTE28004000000000005456093",bic:"CFTEMTM1XXX"},Bolivia:{bank:"Banco Mercantil Santa Cruz",holder:"DIEGO EDGARDO CORTEZ YAÑEZ",acc:"4069474188",ci:"5808841TJ"}},
-    stripe:{link:"https://buy.stripe.com/cNicN5727fLAfDd9Ws9Ve06"}
-};
-
-let products = [];
-let displayed = 0;
-const PER_PAGE = 24;
-let currentProduct = null;
-let isSpeaking = false;
-let isListening = false;
-let synth = window.speechSynthesis;
-let recognition = null;
-let salesChart = null;
-
-// ═══════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════
-
-async function init() {
-    try {
-        const res = await fetch('products.json');
-        const data = await res.json();
-        products = data.products;
-        products.forEach(p => { p.price = FIXED_PRICE; p.image = CATEGORY_IMAGES[p.category] || CATEGORY_IMAGES["IA Generativa"]; });
-    } catch(e) { generateLocalProducts(); }
-    
-    renderExperts();
-    renderCountries();
-    renderProducts();
-    renderCategoryTabs();
-    updateStats();
-    startClock();
-    startActivityFeed();
-    createVoiceBars();
-    initSpeechRecognition();
-    startIdleAnimation();
-    initChart();
-    
-    setTimeout(() => speakVoice(), 2000);
-}
-
-function generateLocalProducts() {
-    products = [];
-    for (let i = 0; i < 500; i++) {
-        const nicho = NICHOS[i % NICHOS.length];
-        const expert = EXPERTS[i % EXPERTS.length];
-        products.push({id:'local_'+i,title:`🔥 Tutorial ${nicho} 2026 — Método ${expert.nombre} ${expert.emoji}`,description:`Aprende ${nicho} desde cero. "${LEMA}"`,price:FIXED_PRICE,category:nicho,expert:expert.nombre,emoji:expert.emoji,image:CATEGORY_IMAGES[nicho],level:'starter',formats:['video','pdf','audio','workflow']});
-    }
-}
-
-// ═══════════════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════════════
-
-function renderExperts() {
-    document.getElementById('tab-experts').innerHTML = EXPERTS.slice(0,15).map(e => `
-        <div class="p-2 bg-white/5 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-white/10 transition-colors" onclick="askExpert('${e.nombre}')">
-            <span class="text-lg">${e.emoji}</span>
-            <div class="flex-1"><div class="text-[10px] font-bold text-cyan-400">${e.nombre}</div><div class="text-[8px] text-gray-500">${e.nicho}</div></div>
-        </div>`).join('');
-}
-
-function renderCountries() {
-    const sorted = [...COUNTRIES].sort((a,b) => b.ventas - a.ventas);
-    document.getElementById('countryStats').innerHTML = sorted.map((c,i) => `
-        <div class="p-2 bg-white/5 rounded-lg text-center">
-            <div class="text-lg">${c.flag}</div>
-            <div class="text-[9px] font-bold">${c.name}</div>
-            <div class="h-1 bg-white/10 rounded-full mt-1"><div class="h-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full" style="width:${Math.min(100,c.ventas*10+5)}%"></div></div>
-            <div class="text-[8px] text-cyan-400 font-bold mt-1">${c.ventas}</div>
-        </div>`).join('');
-}
-
-function renderProducts() {
-    const grid = document.getElementById('productsGrid');
-    const toShow = products.slice(0, displayed + PER_PAGE);
-    displayed = toShow.length;
-    
-    grid.innerHTML = toShow.map(p => `
-        <div class="card cursor-pointer group" onclick="openProduct('${p.id}')">
-            <div class="relative h-44 overflow-hidden">
-                <img src="${p.image}" alt="${p.category}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80'">
-                <div class="absolute top-2 right-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-black px-2 py-0.5 rounded-lg text-[10px] font-black">$${FIXED_PRICE}</div>
-                <div class="absolute bottom-2 left-2 flex gap-1">
-                    <span class="bg-black/70 text-[8px] px-2 py-0.5 rounded text-cyan-400 font-bold">VIDEO</span>
-                    <span class="bg-black/70 text-[8px] px-2 py-0.5 rounded text-purple-400 font-bold">PDF</span>
-                </div>
-            </div>
-            <div class="p-4">
-                <h3 class="font-bold text-sm text-white group-hover:text-cyan-400 transition-colors line-clamp-2 mb-2">${p.title}</h3>
-                <p class="text-[11px] text-gray-500 line-clamp-2 mb-3">${p.description}</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-[10px] text-cyan-400 font-bold">${p.category}</span>
-                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();openCheckout('${p.id}')">Comprar</button>
-                </div>
-            </div>
-        </div>`).join('');
-    
-    document.getElementById('loadMoreContainer').classList.toggle('hidden', displayed >= products.length);
-    document.getElementById('statProducts').textContent = products.length.toLocaleString();
-    document.getElementById('showingCount').textContent = `Mostrando ${displayed.toLocaleString()} de ${products.length.toLocaleString()}`;
-}
-
-function loadMore() { renderProducts(); }
-
-function renderCategoryTabs() {
-    document.getElementById('categoryTabs').innerHTML = 
-        `<button class="tab-btn active" onclick="filterByCategory('all',this)">Todos</button>` + 
-        NICHOS.map(n => `<button class="tab-btn" onclick="filterByCategory('${n}',this)">${n}</button>`).join('');
-}
-
-function filterByCategory(cat, el) {
-    document.querySelectorAll('#categoryTabs .tab-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-    const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
-    displayed = Math.min(PER_PAGE, filtered.length);
-    document.getElementById('productsGrid').innerHTML = filtered.slice(0, displayed).map(p => `
-        <div class="card cursor-pointer group" onclick="openProduct('${p.id}')">
-            <div class="relative h-44 overflow-hidden">
-                <img src="${p.image}" alt="${p.category}" loading="lazy">
-                <div class="absolute top-2 right-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-black px-2 py-0.5 rounded-lg text-[10px] font-black">$${FIXED_PRICE}</div>
-            </div>
-            <div class="p-4">
-                <h3 class="font-bold text-sm line-clamp-2 mb-2">${p.title}</h3>
-                <p class="text-[11px] text-gray-500 line-clamp-2 mb-3">${p.description}</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-[10px] text-cyan-400 font-bold">${p.category}</span>
-                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();openCheckout('${p.id}')">Comprar</button>
-                </div>
-            </div>
-        </div>`).join('');
-    document.getElementById('showingCount').textContent = `Mostrando ${displayed.toLocaleString()} de ${filtered.length.toLocaleString()}`;
-}
-
-function updateStats() {
-    document.getElementById('statProducts').textContent = products.length.toLocaleString();
-}
-
-// ═══════════════════════════════════════════════════
-// CHART
-// ═══════════════════════════════════════════════════
-
-function initChart() {
-    const ctx = document.getElementById('salesChart');
-    if (!ctx) return;
-    
-    // Datos reales - sin simulación
-    const salesData = JSON.parse(localStorage.getItem('apollo_sales') || '[]');
-    const last7 = salesData.slice(0, 7).reverse();
-    
-    if (last7.length === 0) {
-        // Mostrar mensaje de "Sin datos" en lugar de gráfico simulado
-        ctx.getContext('2d').font = '14px Outfit';
-        ctx.getContext('2d').fillStyle = '#64748b';
-        ctx.getContext('2d').textAlign = 'center';
-        ctx.getContext('2d').fillText('📊 Las ventas aparecerán aquí en tiempo real', ctx.canvas.width/2, ctx.canvas.height/2);
-        return;
-    }
-    
-    if (salesChart) salesChart.destroy();
-    
-    salesChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: last7.map(s => new Date(s.date).toLocaleDateString('es-CO', {weekday:'short'})),
-            datasets: [{
-                label: 'Ventas',
-                data: last7.map(s => s.amount),
-                borderColor: '#00f2ff',
-                backgroundColor: 'rgba(0,242,255,0.1)',
-                fill: true,
-                tension: 0.4,
-                pointBackgroundColor: '#bc13fe',
-                pointBorderColor: '#fff',
-                pointRadius: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b', font: { size: 10 } } },
-                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b', font: { size: 10 } } }
+        const EXPERTS = ["Alex Hormozi", "Jeff Bezos", "Frank Kern", "Naval Ravikant", "Andrew Ng", "Gary Vaynerchuk", "Neil Patel", "Tim Ferriss", "Russell Brunson", "Pat Flynn", "MrBeast", "Warren Buffett", "Robert Kiyosaki", "Seth Godin", "Grant Cardone", "Ben Settle", "Simon Sinek", "Tony Robbins", "Marie Forleo", "Dan Kennedy"];
+        
+        const CATEGORIES = ["IA Marketing", "Copywriting IA", "Automatización n8n", "SEO con IA", "Email Marketing IA", "Imágenes IA", "Video IA", "Chatbots IA", "E-commerce IA", "Micro-SaaS IA", "Affiliate IA", "Podcast IA", "Presentaciones IA", "Plan de Negocio IA", "Trading IA", "Freelancing IA", "Productividad IA", "Análisis Datos IA", "Voice AI", "IA Generativa"];
+        
+        const LEVELS = ["starter", "ready", "superpremium"];
+        
+        // Load products from JSON
+        let allProducts = [];
+        
+        fetch('products.json')
+            .then(r => r.json())
+            .then(data => {
+                allProducts = data.map(p => ({
+                    ...p,
+                    image: CATEGORY_IMAGES[p.category] || CATEGORY_IMAGES["default"]
+                }));
+                renderProducts(allProducts);
+            })
+            .catch(() => {
+                // Fallback: generate sample products
+                allProducts = generateProducts(24);
+                renderProducts(allProducts);
+            });
+        
+        function generateProducts(count = 24) {
+            const products = [];
+            for (let i = 0; i < count; i++) {
+                const category = CATEGORIES[i % CATEGORIES.length];
+                const expert = EXPERTS[i % EXPERTS.length];
+                const level = LEVELS[i % LEVELS.length];
+                products.push({
+                    id: `prod_${i}`,
+                    title: `Tutorial ${category} 2026 — Método ${expert}`,
+                    description: `Aprende ${category} desde cero con el método de ${expert}. Tutorial completo: video HD, guía PDF (30+ páginas), prompts listos, workflows n8n y audio.`,
+                    category: category,
+                    expert: expert,
+                    level: level,
+                    image: CATEGORY_IMAGES[category] || CATEGORY_IMAGES["default"],
+                    price: 6.99
+                });
             }
+            return products;
         }
-    });
-}
-
-// ═══════════════════════════════════════════════════
-// PRODUCT MODAL CON REDES SOCIALES
-// ═══════════════════════════════════════════════════
-
-function openProduct(id) {
-    const p = products.find(x => x.id === id);
-    if (!p) return;
-    currentProduct = p;
-    
-    const shareUrl = encodeURIComponent(WEB_URL);
-    const shareText = encodeURIComponent(`${p.title} - ${LEMA} | Solo $${FIXED_PRICE} USD`);
-    
-    document.getElementById('modalContent').innerHTML = `
-        <div class="h-48 rounded-xl overflow-hidden mb-4"><img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80'"></div>
-        <h2 class="text-xl font-black mb-2">${p.title}</h2>
-        <p class="text-gray-400 text-sm mb-3">${p.description}</p>
-        <div class="flex gap-2 mb-3 flex-wrap">
-            <span class="bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded-full text-xs font-bold">📹 Video HD</span>
-            <span class="bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full text-xs font-bold">📄 PDF 30+ págs</span>
-            <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-bold">🎧 Audio</span>
-            <span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs font-bold">⚙️ Workflow</span>
-        </div>
         
-        <!-- Redes Sociales -->
-        <div class="mb-4 p-3 bg-white/5 rounded-lg">
-            <p class="text-[10px] text-gray-500 uppercase font-bold mb-2"><i class="fas fa-share-alt mr-1"></i>Compartir este producto</p>
-            <div class="flex gap-2 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}" target="_blank" class="share-btn share-tw"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" class="share-btn share-fb"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://wa.me/?text=${shareText}%20${shareUrl}" target="_blank" class="share-btn share-wa"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}" target="_blank" class="share-btn share-li"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://t.me/share/url?url=${shareUrl}&text=${shareText}" target="_blank" class="share-btn share-tg"><i class="fab fa-telegram"></i></a>
-                <a href="https://pinterest.com/pin/create/button/?url=${shareUrl}&description=${shareText}" target="_blank" class="share-btn share-pin"><i class="fab fa-pinterest"></i></a>
-                <a href="https://reddit.com/submit?url=${shareUrl}&title=${shareText}" target="_blank" class="share-btn share-rd"><i class="fab fa-reddit"></i></a>
-                <a href="https://www.tiktok.com/share?url=${shareUrl}" target="_blank" class="share-btn share-tt"><i class="fab fa-tiktok"></i></a>
-            </div>
-        </div>
+        function renderProducts(products) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card" data-level="${p.level}" data-category="${p.category}">
+                    <div class="product-card-image-container">
+                        <img src="${p.image}" alt="${p.category}" class="product-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80'">
+                        <div class="product-card-level level-${p.level}">${p.level}</div>
+                        <div class="product-card-price">$${p.price}</div>
+                    </div>
+                    <div class="product-card-content">
+                        <div class="product-card-category">${p.category}</div>
+                        <h3 class="product-card-title">${p.title}</h3>
+                        <p class="product-card-desc">${p.description}</p>
+                        <div class="product-card-expert">👨‍🏫 Basado en: <span>${p.expert}</span></div>
+                        <a href="https://buy.stripe.com/9B66oH86barg8aLgkQ9WJ3r" class="product-card-btn">
+                            <i class="fas fa-shopping-cart"></i> Comprar — $6.99 USD
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
         
-        <div class="flex items-center gap-3">
-            <span class="text-3xl font-black text-cyan-400">$${FIXED_PRICE}</span>
-            <button class="btn btn-primary" onclick="openCheckout('${p.id}')"><i class="fas fa-shopping-cart mr-1"></i>Comprar</button>
-        </div>
-    `;
-    document.getElementById('productModal').classList.add('active');
-    document.getElementById('productModal').style.display = 'flex';
-}
-
-function openCheckout(id) {
-    const p = products.find(x => x.id === id);
-    if (!p) return;
-    currentProduct = p;
-    document.getElementById('checkoutProductName').textContent = p.title;
-    
-    document.getElementById('modalContent').innerHTML = `
-        <h2 class="text-xl font-black mb-2 text-cyan-400">Terminal de Pago</h2>
-        <p class="text-xs text-gray-400 mb-2">${p.title}</p>
-        <p class="text-3xl font-black text-cyan-400 mb-4">$${FIXED_PRICE} USD</p>
-        <div class="flex border-b border-white/10 mb-4">
-            <button class="tab-btn active" onclick="switchPayTab('stripe')"><i class="fab fa-stripe mr-1"></i>Tarjeta</button>
-            <button class="tab-btn" onclick="switchPayTab('crypto')"><i class="fab fa-bitcoin mr-1"></i>Crypto</button>
-            <button class="tab-btn" onclick="switchPayTab('bank')"><i class="fas fa-university mr-1"></i>Banco</button>
-        </div>
-        <div id="payContent" class="min-h-[150px] mb-4"></div>
-        <input type="email" id="buyerEmail" placeholder="Email para entrega..." class="w-full bg-black border border-white/10 rounded px-3 py-2 text-sm mb-3 focus:border-cyan-500 outline-none">
-        <button onclick="processOrder()" class="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-black py-3 rounded-xl uppercase tracking-widest"><i class="fas fa-lock mr-1"></i>Pagar $${FIXED_PRICE}</button>
-    `;
-    document.getElementById('productModal').classList.add('active');
-    document.getElementById('productModal').style.display = 'flex';
-    switchPayTab('stripe');
-}
-
-function switchPayTab(tab) {
-    const content = document.getElementById('payContent');
-    document.querySelectorAll('#modalContent .tab-btn').forEach(b => b.classList.remove('active'));
-    if(event) event.target.classList.add('active');
-    
-    if(tab==='stripe') content.innerHTML=`<div class="text-center py-4"><i class="fab fa-stripe text-4xl text-indigo-400 mb-3"></i><p class="text-sm text-gray-400 mb-3">Pago seguro con tarjeta</p><a href="${PAYMENTS.stripe.link}" target="_blank" class="btn btn-primary"><i class="fas fa-lock"></i> Pagar con Tarjeta</a><p class="text-[10px] text-gray-500 mt-2">Visa • Mastercard • Amex</p></div>`;
-    else if(tab==='crypto') content.innerHTML=`<div class="space-y-2"><div class="p-2 bg-white/5 rounded-lg flex justify-between items-center"><div><p class="text-[8px] font-bold text-cyan-400">USDT/USDC (BEP20)</p><code class="text-[9px] break-all">${PAYMENTS.crypto.USDT.address}</code></div><button class="copy-btn text-xs" onclick="copyText('${PAYMENTS.crypto.USDT.address}')">Copiar</button></div><div class="p-2 bg-white/5 rounded-lg flex justify-between items-center"><div><p class="text-[8px] font-bold text-yellow-400">Bitcoin</p><code class="text-[9px] break-all">${PAYMENTS.crypto.BTC.address}</code></div><button class="copy-btn text-xs" onclick="copyText('${PAYMENTS.crypto.BTC.address}')">Copiar</button></div><div class="p-2 bg-white/5 rounded-lg flex justify-between items-center"><div><p class="text-[8px] font-bold text-blue-400">Ethereum</p><code class="text-[9px] break-all">${PAYMENTS.crypto.ETH.address}</code></div><button class="copy-btn text-xs" onclick="copyText('${PAYMENTS.crypto.ETH.address}')">Copiar</button></div><p class="text-[8px] text-center text-amber-500">Reportar a @d3h1ckt4rglobal_bot</p></div>`;
-    else content.innerHTML=`<div class="space-y-2"><div class="p-2 bg-white/5 rounded-lg"><p class="text-[8px] font-bold text-cyan-400">🇺🇸 USA</p><p class="text-[9px]">Routing: ${PAYMENTS.banks.USA.route}<br>Cta: ${PAYMENTS.banks.USA.acc}<br>${PAYMENTS.banks.USA.holder}</p></div><div class="p-2 bg-white/5 rounded-lg"><p class="text-[8px] font-bold text-purple-400">🇪🇺 Europa</p><p class="text-[9px]">IBAN: ${PAYMENTS.banks.Europa.iban}<br>BIC: ${PAYMENTS.banks.Europa.bic}</p></div><div class="p-2 bg-white/5 rounded-lg"><p class="text-[8px] font-bold text-green-400">🇧🇴 Bolivia</p><p class="text-[9px]">Cta: ${PAYMENTS.banks.Bolivia.acc}<br>CI: ${PAYMENTS.banks.Bolivia.ci}</p></div></div>`;
-}
-
-function copyText(t){navigator.clipboard.writeText(t);showToast('✅ Copiado','success')}
-
-function processOrder(){
-    const e=document.getElementById('buyerEmail').value;if(!e)return showToast('❌ Email requerido','error');
-    
-    // Detectar país del email o usar selección
-    const emailDomain = e.split('@')[1] || '';
-    let detectedCountry = 'CO';
-    if(emailDomain.includes('.mx')) detectedCountry = 'MX';
-    else if(emailDomain.includes('.ar')) detectedCountry = 'AR';
-    else if(emailDomain.includes('.es')) detectedCountry = 'ES';
-    else if(emailDomain.includes('.us') || emailDomain.includes('.com')) detectedCountry = 'US';
-    else if(emailDomain.includes('.pe')) detectedCountry = 'PE';
-    else if(emailDomain.includes('.cl')) detectedCountry = 'CL';
-    else if(emailDomain.includes('.ec')) detectedCountry = 'EC';
-    else if(emailDomain.includes('.bo')) detectedCountry = 'BO';
-    else if(emailDomain.includes('.ve')) detectedCountry = 'VE';
-    else if(emailDomain.includes('.br')) detectedCountry = 'BR';
-    
-    const c = COUNTRIES.find(x => x.code === detectedCountry) || COUNTRIES[0];
-    const o={id:'ORD-'+Math.random().toString(36).substr(2,8).toUpperCase(),product:currentProduct.title,email:e,amount:FIXED_PRICE,country:c.code,countryName:c.name,status:'completed',date:new Date().toISOString()};
-    
-    const existing = JSON.parse(localStorage.getItem('apollo_sales') || '[]');
-    existing.unshift(o);
-    localStorage.setItem('apollo_sales', JSON.stringify(existing));
-    
-    const country=COUNTRIES.find(x=>x.code===c.code);if(country) country.ventas++;
-    closeModal('productModal');showToast('✅ ¡Compra realizada, parce!','success');
-    renderCountries();
-    initChart();
-    emitApolloEvent(`💰 Venta: ${c.flag} ${c.name} - $${FIXED_PRICE} USD`);
-    document.getElementById('voiceText').textContent=`¡Gracias por tu compra, parce! Te enviaremos el tutorial a ${e}. ${c.flag} ${c.name}`;
-    speakVoice();
-}
-
-// ═══════════════════════════════════════════════════
-// VOZ INTERACTIVA (ESPAÑOL LATINO - COLOMBIANO)
-// ═══════════════════════════════════════════════════
-
-function speakVoice() {
-    const text = document.getElementById('voiceText').textContent.replace(/"/g,'');
-    if (synth.speaking) synth.cancel();
-    
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'es-CO';
-    utterance.rate = 0.95;
-    utterance.pitch = 1.0;
-    utterance.volume = 1;
-    
-    const voices = synth.getVoices();
-    const esVoice = voices.find(v => v.lang.includes('es')) || voices[0];
-    if (esVoice) utterance.voice = esVoice;
-    
-    utterance.onstart = () => {
-        isSpeaking = true;
-        document.getElementById('coreFace').className = 'core-face speaking';
-        document.getElementById('mouthOverlay').className = 'mouth-overlay speaking';
-        document.querySelectorAll('.pulse-wave').forEach(w => w.classList.add('active'));
-        animateVoiceBars(true);
-    };
-    
-    utterance.onend = () => {
-        isSpeaking = false;
-        document.getElementById('coreFace').className = 'core-face idle';
-        document.getElementById('mouthOverlay').className = 'mouth-overlay';
-        document.querySelectorAll('.pulse-wave').forEach(w => w.classList.remove('active'));
-        animateVoiceBars(false);
-    };
-    
-    synth.speak(utterance);
-}
-
-function initSpeechRecognition() {
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        recognition = new SpeechRecognition();
-        recognition.lang = 'es-CO';
-        recognition.continuous = false;
-        recognition.onresult = (e) => { const text = e.results[0][0].transcript; addChatMessage('user', text); processVoiceCommand(text); };
-        recognition.onend = () => { if (isListening) document.getElementById('coreFace').className = 'core-face idle'; };
-    }
-}
-
-function toggleListening() {
-    if (!recognition) { showToast('❌ Reconocimiento de voz no disponible', 'error'); return; }
-    if (isListening) { recognition.stop(); isListening = false; document.getElementById('coreFace').className = 'core-face idle'; showToast('🎤 Escucha desactivada', 'success'); }
-    else { recognition.start(); isListening = true; document.getElementById('coreFace').className = 'core-face thinking'; showToast('🎤 Escuchando...', 'success'); }
-}
-
-function processVoiceCommand(text) {
-    const lower = text.toLowerCase();
-    let response = '';
-    
-    if (lower.includes('precio') || lower.includes('cuánto') || lower.includes('cuanto') || lower.includes('vale')) {
-        response = `Cada tutorial vale ${FIXED_PRICE} dólares, parce. Incluye video HD, guía PDF, audio y workflows. ¡Una chimba de oferta!`;
-    } else if (lower.includes('comprar') || lower.includes('pagar')) {
-        response = `Puedes comprar con tarjeta por Stripe, con crypto como Bitcoin o Ethereum, o por transferencia bancaria. ¡Dale clic al botón comprar, parce!`;
-    } else if (lower.includes('tutorial') || lower.includes('curso') || lower.includes('aprender')) {
-        response = `Tenemos más de ${products.length.toLocaleString()} tutoriales de IA, parce. Puedes buscar por categoría: IA Marketing, Copywriting, Automatización, SEO, y mucha más.`;
-    } else if (lower.includes('experto') || lower.includes('método') || lower.includes('quien')) {
-        response = `Nuestros tutoriales están basados en métodos de expertos como Alex Hormozi, Jeff Bezos, Frank Kern, Naval Ravikant, Andrew Ng, y más de un millón de expertos.`;
-    } else if (lower.includes('hola') || lower.includes('buenos') || lower.includes('qué más') || lower.includes('que mas')) {
-        response = `¡Qué más, parce! Soy APOLLO Omega, tu asistente de IA. Tengo el conocimiento de un millón de expertos. ¿En qué te puedo ayudar?`;
-    } else if (lower.includes('colombia') || lower.includes('paisa') || lower.includes('medellín')) {
-        response = `¡Qué chimba, parce! Desde Medellín hasta el mundo. Nuestros tutoriales están pensados para latinos que quieren dominar la IA.`;
-    } else if (lower.includes('n8n') || lower.includes('workflow') || lower.includes('automatización')) {
-        response = `Tenemos 5 workflows de n8n activos: ventas con Stripe, generación de productos con IA, publicación en redes sociales, barrido de fondos y monitoreo del cluster. ¡Todo automatizado, parce!`;
-    } else if (lower.includes('productos') || lower.includes('cuántos')) {
-        response = `Tenemos ${products.length.toLocaleString()} productos en el catálogo, todos a ${FIXED_PRICE} dólares. ¡Desde IA Marketing hasta Trading IA!`;
-    } else {
-        response = `Entiendo que dices: "${text}". Puedes preguntarme sobre precios, tutoriales, expertos, n8n o cómo comprar, parce.`;
-    }
-    
-    setTimeout(() => { addChatMessage('apollo', response); document.getElementById('voiceText').textContent = `"${response}"`; speakVoice(); }, 500);
-}
-
-function sendChat() {
-    const input = document.getElementById('chatInput');
-    const text = input.value.trim();
-    if (!text) return;
-    addChatMessage('user', text);
-    input.value = '';
-    processVoiceCommand(text);
-}
-
-function addChatMessage(role, text) {
-    const container = document.getElementById('chatMessages');
-    const div = document.createElement('div');
-    div.className = role === 'user' ? 'text-[10px] text-right text-cyan-400' : 'text-[10px] text-purple-400 italic';
-    div.innerHTML = role === 'user' ? `> ${text}` : `"${text}"`;
-    container.appendChild(div);
-    container.scrollTop = container.scrollHeight;
-}
-
-function askExpert(name) {
-    const expert = EXPERTS.find(e => e.nombre === name);
-    if (!expert) return;
-    const text = `¿Qué puedes enseñarme sobre ${expert.nicho}?`;
-    addChatMessage('user', text);
-    setTimeout(() => { addChatMessage('apollo', expert.conocimiento); document.getElementById('voiceText').textContent = `"${expert.conocimiento}"`; speakVoice(); }, 500);
-}
-
-// ═══════════════════════════════════════════════════
-// ANIMACIONES DEL ROSTRO
-// ═══════════════════════════════════════════════════
-
-function createVoiceBars() {
-    const container = document.getElementById('voiceBars');
-    for (let i = 0; i < 24; i++) { const b = document.createElement('div'); b.className = 'voice-bar'; b.style.height = '2px'; container.appendChild(b); }
-}
-
-function animateVoiceBars(active) {
-    const bars = document.querySelectorAll('.voice-bar');
-    if (active) { const interval = setInterval(() => { if (!isSpeaking) { clearInterval(interval); return; } bars.forEach(b => { b.style.height = (Math.random() * 25 + 2) + 'px'; }); }, 80); }
-    else { bars.forEach(b => { b.style.height = '2px'; }); }
-}
-
-function startIdleAnimation() {
-    setInterval(() => { if (!isSpeaking && !isListening) { document.querySelectorAll('.eye').forEach(e => e.classList.add('blink')); setTimeout(() => document.querySelectorAll('.eye').forEach(e => e.classList.remove('blink')), 200); } }, 3000);
-}
-
-// ═══════════════════════════════════════════════════
-// UTILS
-// ═══════════════════════════════════════════════════
-
-function generateProduct() {
-    const nicho = NICHOS[Math.floor(Math.random()*NICHOS.length)];
-    const expert = EXPERTS[Math.floor(Math.random()*EXPERTS.length)];
-    const newProduct = {id:'prod_'+Date.now(),title:`🔥 Tutorial ${nicho} 2026 — Método ${expert.nombre} ${expert.emoji}`,description:`Aprende ${nicho} desde cero. "${LEMA}"`,price:FIXED_PRICE,category:nicho,expert:expert.nombre,emoji:expert.emoji,image:CATEGORY_IMAGES[nicho],level:'starter',formats:['video','pdf','audio','workflow']};
-    products.unshift(newProduct); renderProducts(); updateStats();
-    showToast('✅ Producto generado: ' + nicho, 'success');
-    document.getElementById('voiceText').textContent = `"Generé un nuevo tutorial de ${nicho} con el método de ${expert.nombre}. ¡A vender, parce!"`;
-    speakVoice();
-}
-
-function publishTelegram() {
-    const p = products[Math.floor(Math.random()*products.length)];
-    const msg = `${p.emoji} **${p['title']}**\n\n📚 Video HD + PDF + Audio + Workflows\n\n💰 **$${FIXED_PRICE} USD**\n\n🛒 ${PAYMENT_LINK}\n\n🌐 ${WEB_URL}\n\n#IA #Tutorial`;
-    fetch(`https://api.telegram.org/bot8334512243:AAGQo_MmNKYTQrTwMIVmqaxio6VHSG7hf90/sendMessage`, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:7374278145,text:msg,parse_mode:'Markdown'})})
-    .then(r=>r.json()).then(d=>{if(d.ok) showToast('✅ Publicado en Telegram','success'); else showToast('❌ Error','error');}).catch(()=>showToast('❌ Error de red','error'));
-    document.getElementById('voiceText').textContent = `"Publiqué un tutorial de ${p.category} en Telegram. ¡A vender, parce!"`;
-    speakVoice();
-}
-
-function startActivityFeed() {
-    const feed = document.getElementById('activityFeed');
-    if (!feed) return;
-    feed.innerHTML = '<p class="text-[10px] text-gray-500 italic">📡 Esperando actividad del ecosistema...</p>';
-    
-    // Escuchar eventos reales del sistema
-    window.addEventListener('apollo-event', (e) => {
-        const p = document.createElement('p');
-        p.innerHTML = e.detail.message;
-        p.className = 'text-[10px] text-cyan-400 italic';
-        feed.prepend(p);
-        if(feed.children.length>6) feed.lastChild.remove();
-    });
-}
-
-// Función para emitir eventos reales
-function emitApolloEvent(message) {
-    window.dispatchEvent(new CustomEvent('apollo-event', { detail: { message } }));
-}
-
-function showToast(m,t){const x=document.getElementById('toast');x.textContent=m;x.className='toast '+t+' show';setTimeout(()=>x.classList.remove('show'),3000)}
-function closeModal(id){document.getElementById(id).classList.remove('active');document.getElementById(id).style.display='none'}
-function startClock(){setInterval(()=>{document.getElementById('liveTime').textContent=new Date().toLocaleTimeString('es-CO')},1000)}
-function switchLeftTab(tab,el){document.querySelectorAll('#tab-experts,#tab-knowledge,#tab-chat').forEach(t=>t.classList.add('hidden'));document.getElementById('tab-'+tab).classList.remove('hidden');el.parentElement.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
-function switchRightTab(tab,el){document.getElementById('tab-countries').classList.add('hidden');document.getElementById('tab-activity').classList.add('hidden');document.getElementById('tab-'+tab).classList.remove('hidden');el.parentElement.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
-
-document.addEventListener('DOMContentLoaded',init);
-</script>
+        // Filter tabs
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const filter = tab.dataset.filter;
+                if (filter === 'all') {
+                    renderProducts(allProducts);
+                } else {
+                    renderProducts(allProducts.filter(p => p.level === filter));
+                }
+            });
+        });
+        
+        // Search
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = allProducts.filter(p => 
+                p.title.toLowerCase().includes(query) || 
+                p.category.toLowerCase().includes(query) ||
+                p.expert.toLowerCase().includes(query)
+            );
+            renderProducts(filtered);
+        });
+        
+        // Initial render
+        renderProducts(allProducts);
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
