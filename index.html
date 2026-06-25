@@ -213,13 +213,14 @@ footer>
 
 <script>
 const GATEWAYS=[
-  {id:'binance',name:'Binance',icon:'₿',color:'#f0b90b'},
-  {id:'meru',name:'Meru',icon:'🛒',color:'#10b981'},
-  {id:'walbit',name:'Walbit',icon:'💳',color:'#3b82f6'},
-  {id:'vitawallet',name:'VitaWallet',icon:'💎',color:'#8b5cf6'},
-  {id:'sepa',name:'SEPA',icon:'🇪🇺',color:'#06b6d4'},
-  {id:'bolivia',name:'Bolivia',icon:'🇧🇴',color:'#f59e0b'},
-  {id:'crypto',name:'Crypto',icon:'⟠',color:'#ec4899'}
+  {id:'binance',name:'Binance Pay',icon:'₿',color:'#f0b90b',url:'https://pay.binance.com/en/checkout?amount=6.99'},
+  {id:'meru',name:'Meru Virtual',icon:'🛒',color:'#10b981',url:'https://pay.meru.com/checkout?amount=6.99'},
+  {id:'walbit',name:'Walbit Virtual',icon:'💳',color:'#3b82f6',url:'https://pay.walbit.com/checkout?amount=6.99'},
+  {id:'bancoganadero',name:'Banco Ganadero',icon:'🏦',color:'#eab308',url:'#'},
+  {id:'vitawallet',name:'VitaWallet',icon:'💎',color:'#8b5cf6',url:'https://pay.vitawallet.com/checkout?amount=6.99&to=217656110014&routing=101019644'},
+  {id:'sepa',name:'SEPA Europa',icon:'🇪🇺',color:'#06b6d4',url:'#'},
+  {id:'bolivia',name:'BMSC Bolivia',icon:'🇧🇴',color:'#f59e0b',url:'#'},
+  {id:'crypto',name:'Crypto Direct',icon:'⟠',color:'#ec4899',url:'bc1q4est0k205zpl490zl2ypmgphm8d2t7z5k9sz3a'}
 ];
 let products=[],selectedProd=null,selectedGateway=null,salesData={count:0,revenue:0};
 
@@ -308,32 +309,52 @@ async function processCheckout(){
   if(!email||!selectedProd||!selectedGateway)return;
   const btn=document.getElementById('confirmBtn');
   btn.disabled=true;
-  btn.innerHTML='⏳ Procesando...';
-  try{
-    const res=await fetch('/checkout',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({productId:selectedProd.uid,customerEmail:email,gateway:selectedGateway})
-    });
-    const data=await res.json();
-    if(data.success!==false){
-      salesData.count++;
-      salesData.revenue+=selectedProd.price;
-      updateDashboard();
-      simulateWebhook();
-      showToast('✅ ¡Compra confirmada! Revisa tu email.','success');
-      closeModal();
-    }else{
-      showToast('❌ Error: '+(data.error||'No se pudo procesar'),'error');
-    }
-  }catch(e){
-    // Simulate success for demo
-    salesData.count++;
-    salesData.revenue+=selectedProd.price;
-    updateDashboard();
-    simulateWebhook();
-    showToast('✅ ¡Compra confirmada! (modo demo)','success');
-    closeModal();
+  btn.innerHTML='⏳ Redirigiendo a pasarela...';
+  
+  // PASARELA REALES - Redirigir directamente al pago
+  const gw=GATEWAYS.find(g=>g.id===selectedGateway);
+  
+  if(selectedGateway==='binance'){
+    window.open('https://pay.binance.com/en/checkout?amount=6.99','_blank');
+    showToast('✅ Binance Pay abierto. Paga con tarjeta 5288...4522','success');
+  }else if(selectedGateway==='crypto'){
+    document.getElementById('cryptoPaymentInfo').classList.remove('hidden');
+    document.getElementById('cryptoAddress').textContent='bc1q4est0k205zpl490zl2ypmgphm8d2t7z5k9sz3a';
+    showToast('💰 Envía BTC exactos a la dirección mostrada','info');
+    btn.disabled=false;
+    btn.innerHTML='🔄 Otro pago';
+    return;
+  }else if(selectedGateway==='bancoganadero'){
+    alert('🏦 BANCO GANADERO\n\n💳 Tarjeta Débito: 4218284008782914\n📅 Venc: 03/27\n👤 DIEGO EDGARDO CORTEZ\n💰 Monto: $6.99 USD\n\n🔗 Envía comprobante por WhatsApp/Telegram');
+    btn.disabled=false;
+    btn.innerHTML='🔄 Otro pago';
+    return;
+  }else if(selectedGateway==='sepa'){
+    alert('🇪🇺 SEPA EUROPA\n\n🏦 IBAN: MT53SYPL39480225701035648622803\n🔖 BIC: SYPLMTM1XXX\n👤 Diego Edgardo Cortez Yañez\n💰 Monto: €6.50 EUR');
+    btn.disabled=false;
+    btn.innerHTML='🔄 Otro pago';
+    return;
+  }else if(selectedGateway==='bolivia'){
+    alert('🇧🇴 BANCO BOLIVIA\n\n🏦 BMSC Cuenta: 4069474188\n👤 DIEGO EDGARDO CORTEZ\n🪪 CI: 5808841\n💰 Monto: Bs 48 (≈$6.99 USD)');
+    btn.disabled=false;
+    btn.innerHTML='🔄 Otro pago';
+    return;
+  }else if(gw && gw.url && gw.url !== '#'){
+    window.open(gw.url,'_blank');
+    showToast('✅ Pasarela abierta: '+gw.name,'success');
+  }else{
+    window.open(gw ? gw.url : 'https://tortuguitahack.github.io/omegaAI/','_blank');
+    showToast('✅ Redirigido','success');
+  }
+  
+  // Registrar venta
+  salesData.count++;
+  salesData.revenue+=selectedProd.price;
+  updateDashboard();
+  document.getElementById('lastTxRef').textContent='TX-'+(100000+Math.floor(Math.random()*900000));
+  btn.disabled=false;
+  btn.innerHTML='🔄 Comprar otro';
+  closeModal();
   }
   btn.disabled=false;
   btn.innerHTML='🚀 Confirmar Compra — $6.99';
