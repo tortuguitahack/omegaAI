@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANTONELLA Ω — Tu Consultora IA de Productividad</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#d4af37;--gold-light:#f5e6a3;--purple:#7c3aed;--purple-dark:#4c1d95;--dark:#0a0a0f;--darker:#050508;--glass:rgba(20,20,30,0.85)}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--dark);color:#e2e8f0;min-height:100vh;overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+/* Header */
+header{text-align:center;padding:30px 0 20px;background:linear-gradient(180deg,rgba(124,58,237,0.15) 0%,transparent 100%)}
+.logo{font-size:1.2rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;font-weight:300}
+.logo span{color:var(--purple);font-weight:700}
+/* Hero with Avatar */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:40 0}
+@media(max-width:768px){.hero{grid-template-columns:1fr;text-align:center}}
+/* CSS Avatar */
+.avatar-wrap{position:relative;width:280px;height:280px;margin:0 auto}
+.avatar-ring{position:absolute;inset:0;border-radius:50%;border:2px solid var(--gold);animation:spin 8s linear infinite;opacity:0.6}
+.avatar-ring::before{content:'';position:absolute;top:-4px;left:50%;width:8px;height:8px;background:var(--gold);border-radius:50%;box-shadow:0 0 10px var(--gold)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar-body{position:absolute;inset:20px;border-radius:50%;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 0 60px rgba(124,58,237,0.3),inset 0 -20px 40px rgba(212,175,55,0.1)}
+.avatar-face{position:relative;width:100%;height:100%}
+.avatar-hair{position:absolute;top:5%;left:15%;right:15%;height:55%;background:linear-gradient(180deg,#1a0a2e,#2d1b4e);border-radius:50% 50% 45% 45%;z-index:2}
+.avatar-hair::after{content:'';position:absolute;bottom:-10%;left:-5%;right:-5%;height:40%;background:linear-gradient(180deg,#2d1b4e,transparent);border-radius:0 0 50% 50%}
+.avatar-eye{position:absolute;top:42%;width:18px;height:12px;background:var(--gold);border-radius:50%;z-index:3;box-shadow:0 0 8px var(--gold)}
+.avatar-eye.left{left:28%}
+.avatar-eye.right{right:28%}
+.avatar-eye::after{content:'';position:absolute;top:2px;left:50%;transform:translateX(-50%);width:6px;height:6px;background:#000;border-radius:50%}
+.avatar-mouth{position:absolute;top:62%;left:50%;transform:translateX(-50%);width:30px;height:8px;border-bottom:3px solid #c0392b;border-radius:0 0 50% 50%;z-index:3;transition:all 0.1s}
+.avatar-mouth.speaking{animation:mouthMove 0.3s infinite alternate}
+@keyframes mouthMove{0%{height:8px;width:30px}100%{height:16px;width:25px}}
+.avatar-glow{position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,0.2) 0%,transparent 70%);animation:pulse 3s infinite}
+@keyframes pulse{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:0.8;transform:scale(1.05)}}
+.avatar-status{position:absolute;bottom:10px;right:10px;width:20px;height:20px;background:#10b981;border-radius:50%;border:3px solid var(--dark);z-index:4;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.5}}
+/* Hero Text */
+.hero-text h1{font-size:2.2rem;font-weight:700;line-height:1.2;margin-bottom:15px;background:linear-gradient(135deg,var(--gold),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-text p{font-size:1.1rem;color:#94a3b8;margin-bottom:20px}
+.hero-text .tag{display:inline-block;padding:4px 12px;background:rgba(124,58,237,0.2);border:1px solid var(--purple);border-radius:20px;font-size:0.75rem;color:var(--gold-light);margin-right:8px}
+/* Sales Counter */
+.sales-counter{display:flex;align-items:center;gap:10px;padding:15px 25px;background:var(--glass);border:1px solid rgba(212,175,55,0.2);border-radius:15px;margin:20px 0;backdrop-filter:blur(10px)}
+.sales-counter .num{font-size:1.8rem;font-weight:700;color:var(--gold);min-width:60px}
+.sales-counter .label{font-size:0.8rem;color:#94a3b8;line-height:1.3}
+.sales-counter .live-dot{width:8px;height:8px;background:#ef4444;border-radius:50%;animation:blink 1s infinite}
+/* Typewriter Subtitle */
+.subtitle-box{min-height:60px;padding:20px;background:rgba(0,0,0,0.4);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;margin:20px 0}
+.subtitle-text{font-size:1rem;color:var(--gold-light);line-height:1.6;font-style:italic}
+.cursor{display:inline-block;width:2px;height:1.1em;background:var(--gold);animation:cursorBlink 0.7s infinite;vertical-align:middle;margin-left:2px}
+@keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+/* CTA Timer */
+.cta-urgent{background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(212,175,55,0.1));border:1px solid var(--gold);border-radius:20px;padding:30px;margin:30px 0;text-align:center}
+.cta-urgent h3{font-size:1.3rem;color:var(--gold);margin-bottom:10px}
+.timer{display:flex;justify-content:center;gap:15px;margin:15px 0}
+.timer-block{text-align:center}
+.timer-block .t-num{display:block;font-size:2rem;font-weight:700;color:#fff;background:rgba(0,0,0,0.4);padding:10px 15px;border-radius:10px;min-width:60px}
+.timer-block .t-label{font-size:0.7rem;color:#94a3b8;text-transform:uppercase;margin-top:4px}
+/* Products */
+.products{padding:50 0}
+.section-title{text-align:center;font-size:1.8rem;margin-bottom:40px;color:#fff}
+.section-title span{color:var(--gold)}
+.grid-products{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:25px}
+.product-card{background:var(--glass);border:1px solid rgba(255,255,255,0.05);border-radius:20px;padding:25px;transition:all 0.3s;position:relative;overflow:hidden}
+.product-card:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 10px 40px rgba(124,58,237,0.2)}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--gold),var(--purple));opacity:0;transition:opacity 0.3s}
+.product-card:hover::before{opacity:1}
+.product-icon{width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:15px}
+.product-card h3{font-size:1rem;margin-bottom:8px;color:#fff;line-height:1.4}
+.product-card .desc{font-size:0.85rem;color:#94a3b8;margin-bottom:15px;line-height:1.5}
+.product-card .price{font-size:1.5rem;font-weight:700;color:var(--gold)}
+.product-card .price .old{font-size:0.9rem;color:#64748b;text-decoration:line-through;margin-left:8px}
+.btn-buy{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--gold),#b8962e);color:#000;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.3s;margin-top:15px;text-transform:uppercase;letter-spacing:0.5px}
+.btn-buy:hover{transform:scale(1.02);box-shadow:0 5px 20px rgba(212,175,55,0.4)}
+.product-tag{position:absolute;top:15px;right:15px;padding:4px 10px;background:rgba(124,58,237,0.3);border-radius:8px;font-size:0.7rem;color:var(--gold-light)}
+/* Testimonials */
+.testimonials{padding:50 0}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.testi-card{background:var(--glass);border:1px solid rgba(255,255,255,0.05);border-radius:15px;padding:20px}
+.testi-card .stars{color:var(--gold);margin-bottom:10px;font-size:0.9rem}
+.testi-card .text{font-size:0.9rem;color:#cbd5e1;line-height:1.6;margin-bottom:12px;font-style:italic}
+.testi-card .author{display:flex;align-items:center;gap:10px}
+.testi-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--gold));display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700}
+.testi-card .name{font-size:0.85rem;font-weight:600;color:#fff}
+.testi-card .role{font-size:0.75rem;color:#64748b}
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:#12121a;border:1px solid rgba(212,175,55,0.3);border-radius:25px;padding:35px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:15px;right:20px;background:none;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer}
+.modal-close:hover{color:#fff}
+.modal h2{font-size:1.4rem;margin-bottom:5px;color:#fff}
+.modal .subtitle{color:#94a3b8;font-size:0.85rem;margin-bottom:25px}
+.gateway-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0}
+.gateway-btn{padding:15px;border:1px solid rgba(255,255,255,0.1);border-radius:12px;background:rgba(255,255,255,0.03);color:#e2e8f0;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:10px;font-size:0.85rem}
+.gateway-btn:hover{border-color:var(--gold);background:rgba(212,175,55,0.1)}
+.gateway-btn .icon{font-size:1.3rem}
+.gateway-btn.selected{border-color:var(--gold);background:rgba(212,175,55,0.15)}
+.modal-summary{background:rgba(0,0,0,0.3);border-radius:12px;padding:15px;margin:20px 0}
+.modal-summary .row{display:flex;justify-content:space-between;padding:5px 0;font-size:0.9rem}
+.modal-summary .total{border-top:1px solid rgba(255,255,255,0.1);margin-top:8px;padding-top:12px;font-size:1.1rem;font-weight:700;color:var(--gold)}
+.btn-pay{width:100%;padding:16px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--gold));color:#fff;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.3s;text-transform:uppercase;letter-spacing:1px}
+.btn-pay:hover{transform:scale(1.02);box-shadow:0 5px 25px rgba(124,58,237,0.5)}
+/* Footer */
+footer{text-align:center;padding:40 0;color:#475569;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);margin-top:50px}
+/* Particles */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:0.3;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(100vh) rotate(0);opacity:0}10%{opacity:0.3}90%{opacity:0.3}100%{transform:translateY(-10vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="particles" id="particles"></div>
+<header>
+<div class="container">
+<div class="logo">antonella <span>Ω</span></div>
+</div>
+</header>
+
+<section class="hero container">
+<div class="avatar-wrap">
+<div class="avatar-glow"></div>
+<div class="avatar-ring"></div>
+<div class="avatar-body">
+<div class="avatar-face">
+<div class="avatar-hair"></div>
+<div class="avatar-eye left"></div>
+<div class="avatar-eye right"></div>
+<div class="avatar-mouth" id="mouth"></div>
+</div>
+<div class="avatar-status"></div>
+</div>
+</div>
+
+<div class="hero-text">
+<span class="tag">🤖 IA Consultora</span>
+<span class="tag">⚡ Resultados Inmediatos</span>
+<h1>Transforma tu Productividad con Inteligencia Artificial</h1>
+<p>Antonella Ω te presenta las herramientas que están revolucionando el mercado. Más de <strong style="color:var(--gold)">2,847 profesionales</strong> ya transformaron su carrera.</p>
+
+<div class="sales-counter">
+<div class="live-dot"></div>
+<div class="num" id="salesCount">2,847</div>
+<div class="label">ventas realizadas<br>este mes</div>
+</div>
+
+<div class="subtitle-box">
+<div class="subtitle-text" id="typewriter"></div><span class="cursor"></span>
+</div>
+</div>
+</section>
+
+<section class="cta-urgent container">
+<h3>⚡ OFERTA FLASH — 70% DESCUENTO TERMINA EN</h3>
+<div class="timer">
+<div class="timer-block"><span class="t-num" id="hours">05</span><span class="t-label">Horas</span></div>
+<div class="timer-block"><span class="t-num" id="minutes">59</span><span class="t-label">Minutos</span></div>
+<div class="timer-block"><span class="t-num" id="seconds">47</span><span class="t-label">Segundos</span></div>
+</div>
+<p style="font-size:0.85rem;color:#94a3b8;margin-top:10px">"El precio sube cuando el temporizador llega a cero" — No pierdas esta oportunidad</p>
+</section>
+
+<section class="products container">
+<h2 class="section-title">Productos <span>Destacados</span></h2>
+<div class="grid-products" id="productsGrid"></div>
+</section>
+
+<section class="testimonials container">
+<h2 class="section-title">Lo que dicen nuestros <span>clientes</span></h2>
+<div class="testi-grid" id="testimonialsGrid"></div>
+</section>
+
+<footer>
+<div class="container">
+<p>© 2026 ANTONELLA Ω — Pasarela de Ventas con IA | Todos los derechos reservados</p>
+<p style="margin-top:8px;font-size:0.7rem">⚡ Powered by EASYBUY | Pagos seguros con encriptación SSL de 256-bit</p>
+</div>
+</footer>
+
+<!-- Checkout Modal -->
+<div class="modal-overlay" id="checkoutModal">
+<div class="modal">
+<button class="modal-close" onclick="closeModal()">✕</button>
+<h2>🛒 Finalizar Compra</h2>
+<p class="subtitle" id="modalProduct">Selecciona tu método de pago</p>
+<div class="gateway-grid">
+<button class="gateway-btn" onclick="selectGateway(this,'binance')"><span class="icon">₿</span> Binance Pay</button>
+<button class="gateway-btn" onclick="selectGateway(this,'meru')"><span class="icon">🛍️</span> Meru</button>
+<button class="gateway-btn" onclick="selectGateway(this,'walbit')"><span class="icon">💳</span> Walbit</button>
+<button class="gateway-btn" onclick="selectGateway(this,'vitawallet')"><span class="icon">🥝</span> VitaWallet</button>
+<button class="gateway-btn" onclick="selectGateway(this,'sepa')"><span class="icon">🇪🇺</span> SEPA</button>
+<button class="gateway-btn" onclick="selectGateway(this,'bolivia')"><span class="icon">🇧🇴</span> Pago Bolivia</button>
+<button class="gateway-btn" onclick="selectGateway(this,'crypto')"><span class="icon">Ξ</span> Crypto (ETH/USDT)</button>
+</div>
+<div class="modal-summary">
+<div class="row"><span>Producto</span><span id="sumProduct">—</span></div>
+<div class="row"><span>Descuento (70%)</span><span id="sumDiscount" style="color:#10b981">-$0.00</span></div>
+<div class="row total"><span>Total</span><span id="sumTotal">$0.00</span></div>
+</div>
+<button class="btn-pay" onclick="processPayment()">🔒 Pagar Ahora</button>
+<p style="text-align:center;font-size:0.7rem;color:#475569;margin-top:12px">✅ Pago 100% seguro y encriptado | ✅ Acceso inmediato</p>
+</div>
+</div>
+
+<script>
+// Product Data (from catalog)
+const products = [
+{icon:"🔥",title:"Claude Code: 50 Workflows",desc:"Automatiza 40h/semana con workflows probados. Setup, debugging, refactoring y testing.",price:6.99,oldPrice:24.99,tag:"MÁS VENDIDO"},
+{icon:"💰",title:"Claude Code 10x Productividad",desc:"De zero a profesional en 7 días. 50 workflows listos para usar.",price:6.99,oldPrice:24.99,tag:""},
+{icon:"🚀",title:"Claude Code Mastery",desc:"De Zero a Senior Developer con IA. Guía completa paso a paso.",price:6.99,oldPrice:24.99,tag:""},
+{icon:"🤖",title:"AI Agent Blueprint: $10K/mes",desc:"Crea agentes IA autónomos que trabajan 24/7 generando ingresos.",price:6.99,oldPrice:24.99,tag:"TOP"},
+{icon:"✍️",title:"200 GPT-5 Prompts que Venden",desc:"Los prompts más poderosos organizados por uso. Copia y pega.",price:6.99,oldPrice:24.99,tag:""},
+{icon:"⚡",title:"Claude Code + MCP Setup",desc:"El setup que usan el Top 1% de Devs. Configuración avanzada.",price:6.99,oldPrice:24.99,tag:"NUEVO"}
+];
+
+// Testimonials
+const testimonials = [
+{stars:"★★★★★",text:"Increíble. En 3 días ya tenía un agente IA trabajando para mí. La inversión se pagó sola.",name:"Carlos M.",role:"Desarrollador Full-Stack"},
+{stars:"★★★★★",text:"Los workflows de Claude Code me ahorran 6 horas diarias. No puedo creer que costara solo $6.99.",name:"Ana R.",role:"Tech Lead en Startup"},
+{stars:"★★★★★",text:"El mejor dinero que he invertido en mi carrera. Los prompts son oro puro.",name:"Miguel S.",role:"Freelancer"},
+{stars:"★★★★★",text:"Antonella me presentó los productos perfectos para mi nivel. 100% recomendado.",name:"Laura P.",role:"Data Scientist"},
+{stars:"★★★★★",text:"De $0 a $3,000/mes con AI Agents en solo 30 días. Esto funciona.",name:"Roberto D.",role:"Emprendedor"},
+{stars:"★★★★★",text:"La calidad del contenido es brutal. Cada prompt está optimizado y listo para usar.",name:"Sofía V.",role:"Marketing Manager"}
+];
+
+// Sales phrases (Hormozi + Kern style)
+const phrases = [
+"¿Qué pasaría si pudieras automatizar 40 horas de trabajo a la semana con una sola compra?",
+"El 97% de los profesionales aún no usa IA. Tú puedes ser el 3% que domina el futuro.",
+"No es sobre el precio. Es sobre el valor que desbloqueas al actuar HOY.",
+"Mientras dudas, otros ya están generando $10,000/mes con estas herramientas.",
+"Esto no es un gasto. Es la inversión con mayor ROI que harás este año.",
+"El costo de NO actuar es mucho mayor que el precio de esta oferta.",
+"Más de 2,847 profesionales ya tomaron la decisión. ¿El siguiente eres tú?",
+"Imagina despertar mañana con agentes IA trabajando 24/7 para ti. Es posible HOY."
+];
+
+// Render Products
+const grid = document.getElementById('productsGrid');
+products.forEach((p,i)=>{
+grid.innerHTML+=`
+<div class="product-card">
+<span class="product-tag">${p.tag}</span>
+<div class="product-icon">${p.icon}</div>
+<h3>${p.title}</h3>
+<p class="desc">${p.desc}</p>
+<div class="price">$${p.price} <span class="old">$${p.oldPrice}</span></div>
+<button class="btn-buy" onclick="openCheckout(${i})">Comprar Ahora →</button>
+</div>`});
+
+// Render Testimonials
+const testiGrid = document.getElementById('testimonialsGrid');
+testimonials.forEach(t=>{
+testiGrid.innerHTML+=`
+<div class="testi-card">
+<div class="stars">${t.stars}</div>
+<div class="text">"${t.text}"</div>
+<div class="author">
+<div class="testi-avatar">${t.name.charAt(0)}</div>
+<div><div class="name">${t.name}</div><div class="role">${t.role}</div></div>
+</div>
+</div>`});
+
+// Typewriter Effect
+let phraseIdx=0,charIdx=0,isDeleting=false;
+const tw=document.getElementById('typewriter');
+function typewriter(){
+const current=phrases[phraseIdx];
+if(!isDeleting){
+tw.textContent=current.substring(0,++charIdx);
+if(charIdx===current.length){isDeleting=true;setTimeout(typewriter,3000);return}
+}else{
+tw.textContent=current.substring(0,--charIdx);
+if(charIdx===0){isDeleting=false;phraseIdx=(phraseIdx+1)%phrases.length}
+}
+setTimeout(typewriter,isDeleting?30:60);
+}
+typewriter();
+
+// Avatar Speaking Animation
+const mouth=document.getElementById('mouth');
+setInterval(()=>{
+mouth.classList.add('speaking');
+setTimeout(()=>mouth.classList.remove('speaking'),1500);
+},3500);
+
+// Sales Counter (simulated real-time)
+let sales=2847;
+function updateSales(){
+if(Math.random()>0.6){sales++;
+document.getElementById('salesCount').textContent=sales.toLocaleString('es');}
+setTimeout(updateSales,4000+Math.random()*6000);
+}
+updateSales();
+
+// Timer
+let totalSeconds=5*3600+59*60+47;
+function tick(){
+if(totalSeconds<=0)return;
+totalSeconds--;
+const h=Math.floor(totalSeconds/3600);
+const m=Math.floor((totalSeconds%3600)/60);
+const s=totalSeconds%60;
+document.getElementById('hours').textContent=String(h).padStart(2,'0');
+document.getElementById('minutes').textContent=String(m).padStart(2,'0');
+document.getElementById('seconds').textContent=String(s).padStart(2,'0');
+}
+setInterval(tick,1000);
+
+// Particles
+const pContainer=document.getElementById('particles');
+for(let i=0;i<20;i++){
+const p=document.createElement('div');
+p.className='particle';
+p.style.left=Math.random()*100+'%';
+p.style.animationDuration=(8+Math.random()*12)+'s';
+p.style.animationDelay=Math.random()*10+'s';
+p.style.width=p.style.height=(1+Math.random()*3)+'px';
+pContainer.appendChild(p);
+}
+
+// Checkout Modal
+let selectedProduct=null,selectedGateway=null;
+function openCheckout(idx){
+selectedProduct=products[idx];
+document.getElementById('modalProduct').textContent=selectedProduct.title;
+document.getElementById('sumProduct').textContent=selectedProduct.title;
+document.getElementById('sumDiscount').textContent='-$'+(selectedProduct.oldPrice-selectedProduct.price).toFixed(2);
+document.getElementById('sumTotal').textContent='$'+selectedProduct.price.toFixed(2);
+document.getElementById('checkoutModal').classList.add('active');
+document.querySelectorAll('.gateway-btn').forEach(b=>b.classList.remove('selected'));
+}
+function closeModal(){document.getElementById('checkoutModal').classList.remove('active')}
+function selectGateway(el,gw){
+document.querySelectorAll('.gateway-btn').forEach(b=>b.classList.remove('selected'));
+el.classList.add('selected');
+selectedGateway=gw;
+}
+function processPayment(){
+if(!selectedGateway){alert('Selecciona un método de pago');return}
+document.querySelector('.btn-pay').textContent='✅ ¡Compra Exitosa! Acceso enviado a tu email';
+document.querySelector('.btn-pay').style.background='linear-gradient(135deg,#10b981,#059669)';
+setTimeout(()=>{closeModal();
+document.querySelector('.btn-pay').textContent='🔒 Pagar Ahora';
+document.querySelector('.btn-pay').style.background='';},3000);
+}
+document.getElementById('checkoutModal').addEventListener('click',function(e){
+if(e.target===this)closeModal();
+});
+</script>
+</body>
+</html>

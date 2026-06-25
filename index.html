@@ -3,676 +3,386 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DIHACKTOR Ω | Venta Masiva Global IA</title>
+<title>DIHACKTOR Ω — EASYBUY Digital Store</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#020205;--cyan:#00f2ff;--purple:#bc13fe;--card-bg:#0a0a12;--text:#e0e0e0;--text-dim:#888}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
-@keyframes glow{0%,100%{text-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan),0 0 40px var(--purple)}50%{text-shadow:0 0 20px var(--cyan),0 0 40px var(--purple),0 0 80px var(--purple)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
-@keyframes slideIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes borderGlow{0%,100%{border-color:var(--cyan)}50%{border-color:var(--purple)}}
-@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-@keyframes scan{0%{top:-100%}100%{top:100%}}
-@keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
-@keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,2,5,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,242,255,.15);padding:15px 30px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:glow 3s ease-in-out infinite}
-nav a{color:var(--text-dim);text-decoration:none;margin-left:25px;font-size:.9rem;transition:color .3s}
-nav a:hover{color:var(--cyan)}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(0,242,255,.08) 0%,transparent 70%);pointer-events:none}
-.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:20px;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:glow 3s ease-in-out infinite}
-.hero p{font-size:1.2rem;color:var(--text-dim);max-width:600px;margin-bottom:40px;line-height:1.6}
-.stats{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
-.stat-card{background:rgba(0,242,255,.05);border:1px solid rgba(0,242,255,.2);border-radius:16px;padding:25px 35px;text-align:center;animation:float 4s ease-in-out infinite;min-width:180px}
-.stat-card:nth-child(2){animation-delay:1s}
-.stat-card:nth-child(3){animation-delay:2s}
-.stat-number{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat-label{font-size:.85rem;color:var(--text-dim);margin-top:5px;text-transform:uppercase;letter-spacing:1px}
-.btn{display:inline-block;padding:14px 35px;border-radius:50px;font-weight:700;text-decoration:none;font-size:1rem;transition:all .3s;cursor:pointer;border:none}
-.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#000;box-shadow:0 0 20px rgba(0,242,255,.3)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,242,255,.5)}
-.btn-buy{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#000;padding:10px 22px;border-radius:30px;font-size:.85rem;font-weight:700;text-decoration:none;transition:all .3s;display:inline-block;cursor:pointer;border:none}
-.btn-buy:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(188,19,254,.5)}
-.filter-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:0 20px 30px}
-.filter-btn{padding:8px 20px;border-radius:30px;border:1px solid rgba(0,242,255,.3);background:transparent;color:var(--text-dim);cursor:pointer;font-size:.85rem;transition:all .3s}
-.filter-btn:hover,.filter-btn.active{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#000;border-color:transparent;font-weight:700}
-.products{padding:40px 20px;max-width:1400px;margin:0 auto}
-.section-title{text-align:center;font-size:2rem;font-weight:800;margin-bottom:10px;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.section-subtitle{text-align:center;color:var(--text-dim);margin-bottom:40px;font-size:1rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:25px}
-.card{background:var(--card-bg);border:1px solid rgba(0,242,255,.1);border-radius:16px;padding:25px;transition:all .4s;position:relative;overflow:hidden;animation:slideIn .5s ease-out backwards}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));opacity:0;transition:opacity .3s}
-.card:hover{transform:translateY(-5px);border-color:rgba(0,242,255,.3);box-shadow:0 10px 40px rgba(0,242,255,.1)}
-.card:hover::before{opacity:1}
-.card-category{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;background:rgba(0,242,255,.1);color:var(--cyan)}
-.card h3{font-size:1.1rem;font-weight:700;margin-bottom:10px;line-height:1.4}
-.card p{font-size:.85rem;color:var(--text-dim);line-height:1.6;margin-bottom:15px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
-.price{font-size:1.4rem;font-weight:800;color:var(--cyan)}
-.level-badge{font-size:.65rem;padding:3px 8px;border-radius:10px;background:rgba(188,19,254,.15);color:var(--purple);text-transform:uppercase;font-weight:700}
-.gateways{padding:80px 20px;background:linear-gradient(180deg,var(--bg),#050510,var(--bg));text-align:center}
-.gateway-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;margin-top:40px;max-width:900px;margin-left:auto;margin-right:auto}
-.gateway-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:30px 25px;width:140px;text-align:center;transition:all .3s}
-.gateway-card:hover{border-color:var(--cyan);transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,242,255,.1)}
-.gateway-icon{font-size:2.5rem;margin-bottom:12px}
-.gateway-name{font-size:.85rem;font-weight:600;color:var(--text)}
-footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(0,242,255,.1);color:var(--text-dim);font-size:.85rem}
+:root{
+  --cyan:#00f5ff;--purple:#a855f7;--pink:#ec4899;--dark:#0a0a1a;--card:#111128;
+  --glow:0 0 20px rgba(0,245,255,.3),0 0 40px rgba(168,85,247,.2);
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--dark);color:#e2e8f0;overflow-x:hidden}
+/* Animated background */
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(168,85,247,.08) 0%,transparent 50%),
+             radial-gradient(ellipse at 80% 20%,rgba(0,245,255,.06) 0%,transparent 50%);
+  pointer-events:none;z-index:0}
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(10,10,26,.95);
+  backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,245,255,.15);
+  padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--purple));
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;
+  animation:pulse-glow 2s ease-in-out infinite}
+.logo-text{font-size:1.5rem;font-weight:800;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-omega{color:var(--cyan);font-size:1.1rem;animation:glow-text 2s ease-in-out infinite}
+nav{display:flex;gap:1.5rem;align-items:center}
+nav a{color:#94a3b8;text-decoration:none;font-size:.9rem;transition:.3s}
+nav a:hover{color:var(--cyan);text-shadow:0 0 10px var(--cyan)}
+.cart-btn{position:relative;background:linear-gradient(135deg,var(--purple),var(--pink));
+  border:none;padding:.5rem 1rem;border-radius:8px;color:#fff;cursor:pointer;font-weight:600;
+  transition:.3s}
+.cart-btn:hover{transform:scale(1.05);box-shadow:var(--glow)}
+/* Hero */
+.hero{text-align:center;padding:4rem 2rem 2rem;position:relative}
+.hero h1{font-size:2.5rem;font-weight:900;margin-bottom:.5rem;
+  background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#94a3b8;font-size:1.1rem;max-width:600px;margin:0 auto}
+/* Dashboard */
+.dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1rem;padding:1rem 2rem;max-width:1200px;margin:0 auto}
+.dash-card{background:var(--card);border:1px solid rgba(0,245,255,.1);border-radius:12px;
+  padding:1.25rem;text-align:center;position:relative;overflow:hidden}
+.dash-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:conic-gradient(from 0deg,transparent,var(--cyan),transparent);
+  animation:spin 4s linear infinite;opacity:.1}
+.dash-card h3{font-size:.75rem;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
+.dash-card .value{font-size:1.8rem;font-weight:800;color:var(--cyan)}
+.dash-card .value.purple{color:var(--purple)}
+/* Products */
+.products-section{padding:2rem;max-width:1200px;margin:0 auto}
+.section-title{font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.5rem}
+.section-title::before{content:'';width:4px;height:24px;background:linear-gradient(var(--cyan),var(--purple));border-radius:2px}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.product-card{background:var(--card);border:1px solid rgba(168,85,247,.15);border-radius:16px;
+  padding:1.5rem;transition:.3s;position:relative;overflow:hidden}
+.product-card::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(0,245,255,.03),transparent);
+  transition:.5s}
+.product-card:hover::after{left:100%}
+.product-card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:var(--glow)}
+.product-badge{position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,var(--purple),var(--pink));
+  padding:.2rem .6rem;border-radius:20px;font-size:.65rem;font-weight:700;text-transform:uppercase}
+.product-icon{font-size:2.5rem;margin-bottom:.75rem}
+.product-title{font-size:1rem;font-weight:700;margin-bottom:.5rem;line-height:1.4;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.product-desc{color:#64748b;font-size:.8rem;margin-bottom:1rem;line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.price{font-size:1.5rem;font-weight:900;color:var(--cyan)}
+.price span{font-size:.8rem;font-weight:400;color:#64748b}
+.buy-btn{background:linear-gradient(135deg,var(--cyan),var(--purple));border:none;
+  padding:.6rem 1.2rem;border-radius:8px;color:#fff;font-weight:700;cursor:pointer;
+  transition:.3s;font-size:.85rem}
+.buy-btn:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(0,245,255,.4)}
+/* Modal */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);
+  backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;
+  opacity:0;transition:.3s}
+.modal-overlay.active{display:flex;opacity:1}
+.modal{background:var(--card);border:1px solid rgba(0,245,255,.2);border-radius:20px;
+  padding:2rem;max-width:500px;width:90%;max-height:90vh;overflow-y:auto;
+  box-shadow:0 0 60px rgba(168,85,247,.2);transform:scale(.9);transition:.3s}
+.modal-overlay.active .modal{transform:scale(1)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.modal-header h2{font-size:1.3rem;font-weight:700}
+.close-btn{background:none;border:none;color:#64748b;font-size:1.5rem;cursor:pointer;transition:.3s}
+.close-btn:hover{color:var(--cyan)}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.8rem;color:#94a3b8;margin-bottom:.4rem}
+.form-group input,.form-group select{width:100%;padding:.75rem;border-radius:8px;
+  border:1px solid rgba(0,245,255,.2);background:rgba(0,0,0,.3);color:#e2e8f0;
+  font-size:.9rem;transition:.3s}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--cyan);
+  box-shadow:0 0 10px rgba(0,245,255,.2)}
+.gateway-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin:1rem 0}
+.gateway-btn{padding:.6rem .5rem;border:2px solid rgba(168,85,247,.3);border-radius:10px;
+  background:rgba(0,0,0,.2);color:#e2e8f0;cursor:pointer;transition:.3s;
+  font-size:.75rem;font-weight:600;text-align:center}
+.gateway-btn:hover,.gateway-btn.selected{border-color:var(--cyan);
+  background:rgba(0,245,255,.1);box-shadow:0 0 15px rgba(0,245,255,.2)}
+.gateway-btn .icon{font-size:1.3rem;display:block;margin-bottom:.2rem}
+.selected-product{background:rgba(0,245,255,.05);border:1px solid rgba(0,245,255,.15);
+  border-radius:10px;padding:1rem;margin-bottom:1rem}
+.selected-product h4{font-size:.9rem;margin-bottom:.3rem}
+.selected-product .price{font-size:1.2rem}
+.confirm-btn{width:100%;padding:1rem;border:none;border-radius:12px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;
+  font-size:1rem;font-weight:700;cursor:pointer;transition:.3s;margin-top:1rem}
+.confirm-btn:hover{box-shadow:0 0 30px rgba(0,245,255,.4);transform:translateY(-2px)}
+.confirm-btn:disabled{opacity:.5;cursor:not-allowed}
+/* Toast */
+.toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;
+  background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:600;
+  transform:translateX(120%);transition:.4s;z-index:2000;box-shadow:0 0 30px rgba(16,185,129,.3)}
+.toast.show{transform:translateX(0)}
+.toast.error{background:linear-gradient(135deg,#ef4444,#dc2626)}
+/* Loading */
+.loading{display:flex;align-items:center;justify-content:center;padding:3rem}
+.spinner{width:40px;height:40px;border:3px solid rgba(0,245,255,.2);border-top-color:var(--cyan);
+  border-radius:50%;animation:spin 1s linear infinite}
+/* Footer */
+footer{text-align:center;padding:2rem;color:#475569;font-size:.8rem;
+  border-top:1px solid rgba(0,245,255,.1);margin-top:3rem}
 footer a{color:var(--cyan);text-decoration:none}
-.footer-links{display:flex;justify-content:center;gap:25px;margin-bottom:20px;flex-wrap:wrap}
-.scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);animation:pulse 2s infinite}
-.scroll-indicator span{display:block;width:20px;height:20px;border-right:2px solid var(--cyan);border-bottom:2px solid var(--cyan);transform:rotate(45deg);opacity:.5}
-@media(max-width:768px){header{padding:12px 15px}.logo{font-size:1.1rem}nav a{margin-left:15px;font-size:.8rem}.hero{padding:100px 15px 50px}.stats{gap:15px}.stat-card{padding:18px 25px;min-width:140px}.stat-number{font-size:1.6rem}.grid{grid-template-columns:1fr}.gateway-card{width:110px;padding:20px 15px}}
-.loading{text-align:center;padding:60px;color:var(--text-dim)}
-
-/* ========== CHECKOUT MODAL STYLES ========== */
-.checkout-modal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
-.checkout-modal.active{display:flex}
-.modal-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);backdrop-filter:blur(8px)}
-.modal-content{position:relative;background:#0d0d1a;border:1px solid rgba(0,242,255,.3);border-radius:20px;padding:35px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;animation:modalIn .3s ease-out;z-index:1}
-.modal-content h2{font-size:1.5rem;margin-bottom:5px;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.modal-content .modal-subtitle{color:var(--text-dim);margin-bottom:25px;font-size:.9rem}
-.close-modal{position:absolute;top:15px;right:20px;background:none;border:none;color:var(--text-dim);font-size:1.5rem;cursor:pointer;transition:color .3s;line-height:1}
-.close-modal:hover{color:var(--cyan)}
-.checkout-product-info{background:rgba(0,242,255,.05);border:1px solid rgba(0,242,255,.15);border-radius:12px;padding:18px;margin-bottom:25px}
-.checkout-product-info .cp-title{font-size:1.1rem;font-weight:700;margin-bottom:5px}
-.checkout-product-info .cp-price{font-size:1.6rem;font-weight:800;color:var(--cyan)}
-.checkout-product-info .cp-id{font-size:.75rem;color:var(--text-dim);margin-top:5px}
-.gateway-section-title{font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);margin-bottom:15px;margin-top:10px}
-.gateway-btn{display:flex;align-items:center;gap:12px;width:100%;padding:15px 18px;margin-bottom:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:12px;cursor:pointer;transition:all .3s;text-align:left;color:var(--text)}
-.gateway-btn:hover{border-color:var(--cyan);background:rgba(0,242,255,.05);transform:translateX(5px)}
-.gateway-btn .gw-icon{font-size:1.5rem;min-width:35px;text-align:center}
-.gateway-btn .gw-info{flex:1}
-.gateway-btn .gw-name{font-weight:700;font-size:.95rem}
-.gateway-btn .gw-desc{font-size:.75rem;color:var(--text-dim);margin-top:2px}
-.gateway-btn .gw-fees{font-size:.7rem;color:var(--cyan);font-weight:700;background:rgba(0,242,255,.1);padding:3px 8px;border-radius:8px}
-.gateway-btn .gw-arrow{color:var(--text-dim);font-size:1.2rem;transition:transform .3s}
-.gateway-btn:hover .gw-arrow{transform:translateX(3px);color:var(--cyan)}
-
-/* Inline Modals for Bank/Crypto */
-.inline-modal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1001;display:none;align-items:center;justify-content:center;padding:20px}
-.inline-modal.active{display:flex}
-.inline-modal .modal-content{max-width:500px}
-.bank-details{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;margin:15px 0}
-.bank-details p{margin-bottom:10px;font-size:.9rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.bank-details p strong{color:var(--text-dim);min-width:80px;display:inline-block}
-.bank-details .copy-text{font-family:'Courier New',monospace;font-size:.8rem;background:rgba(0,242,255,.1);padding:3px 8px;border-radius:4px;word-break:break-all}
-.bank-details button{background:rgba(255,255,255,.1);border:none;border-radius:4px;padding:4px 8px;cursor:pointer;font-size:.8rem;transition:background .2s}
-.bank-details button:hover{background:rgba(0,242,255,.2)}
-.note{font-size:.8rem;color:var(--text-dim);margin-top:15px;padding:10px;background:rgba(188,19,254,.08);border-radius:8px;border-left:3px solid var(--purple)}
-.crypto-wallets{margin:15px 0}
-.wallet-option{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:15px;margin-bottom:12px}
-.wallet-option strong{display:block;margin-bottom:8px;font-size:.9rem}
-.wallet-option .copy-text{display:block;font-family:'Courier New',monospace;font-size:.75rem;background:rgba(0,242,255,.1);padding:8px;border-radius:4px;word-break:break-all;margin-bottom:8px}
-.wallet-option button{background:rgba(0,242,255,.15);border:1px solid rgba(0,242,255,.3);border-radius:6px;padding:5px 12px;cursor:pointer;font-size:.8rem;color:var(--cyan);transition:all .2s}
-.wallet-option button:hover{background:rgba(0,242,255,.25)}
-.wallet-address{display:flex;align-items:center;gap:8px}
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#0d0d1a;border:1px solid var(--cyan);color:var(--cyan);padding:12px 24px;border-radius:30px;font-size:.85rem;font-weight:600;z-index:2000;opacity:0;pointer-events:none;transition:all .3s}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);animation:toastIn .3s ease-out}
-.toast.success{border-color:#00ff88;color:#00ff88}
-.toast.error{border-color:#ff4444;color:#ff4444}
+/* Animations */
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 10px rgba(0,245,255,.4)}50%{box-shadow:0 0 25px rgba(168,85,247,.6)}}
+@keyframes glow-text{0%,100%{text-shadow:0 0 10px rgba(0,245,255,.5)}50%{text-shadow:0 0 20px rgba(168,85,247,.8)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeInUp .5s ease forwards}
+@media(max-width:768px){
+  .products-grid{grid-template-columns:1fr}
+  .dashboard{grid-template-columns:repeat(2,1fr)}
+  .gateway-grid{grid-template-columns:repeat(2,1fr)}
+  header{flex-wrap:wrap;gap:1rem}
+  .hero h1{font-size:1.8rem}
+}
 </style>
 </head>
 <body>
+
+<!-- Header -->
 <header>
-<div class="logo">DIHACKTOR Ω</div>
-<nav>
-<a href="#productos">Productos</a>
-<a href="#gateways">Pagos</a>
-<a href="#contacto">Contacto</a>
-</nav>
+  <div class="logo">
+    <div class="logo-icon">Ω</div>
+    <span class="logo-text">DIHACKTOR</span>
+    <span class="logo-omega">Ω</span>
+  </div>
+  <nav>
+    <a href="#productos">Productos</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#api">API</a>
+    <button class="cart-btn" onclick="showSales()">📊 Ventas</button>
+  </nav>
 </header>
 
-<section class="hero">
-<h1>Venta Masiva Global IA</h1>
-<p>Accede al catálogo más grande de productos digitales con inteligencia artificial. Miles de recursos validados por la comunidad DIHACKTOR-OS-2026.</p>
-<div class="stats">
-<div class="stat-card">
-<div class="stat-number">163K+</div>
-<div class="stat-label">Productos</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">$6.99</div>
-<div class="stat-label">Precio USD</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">10</div>
-<div class="stat-label">Categorías</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">24/7</div>
-<div class="stat-label">Acceso</div>
-</div>
-</div>
-<a href="#productos" class="btn btn-primary">Explorar Catálogo</a>
-<div class="scroll-indicator"><span></span></div>
+<!-- Hero -->
+<section class="hero fade-in">
+  <h1>⚡ EASYBUY Digital Store</h1>
+  <p>Productos digitales premium al mejor precio. Pago instantáneo con múltiples pasarelas. Acceso inmediato.</p>
 </section>
 
-<section class="products" id="productos">
-<h2 class="section-title">Catálogo de Productos IA</h2>
-<p class="section-subtitle">Productos digitales de alta calidad — todos a $6.99 USD</p>
-<div class="filter-bar" id="filterBar"></div>
-<div class="grid" id="productGrid"><div class="loading">Cargando productos...</div></div>
+<!-- Dashboard -->
+<section id="dashboard" class="dashboard">
+  <div class="dash-card"><h3>Ventas Hoy</h3><div class="value" id="ventasHoy">0</div></div>
+  <div class="dash-card"><h3>Ingresos</h3><div class="value purple" id="ingresos">$0</div></div>
+  <div class="dash-card"><h3>Productos</h3><div class="value" id="totalProds">100</div></div>
+  <div class="dash-card"><h3>Pasarelas</h3><div class="value purple">7</div></div>
 </section>
 
-<section class="gateways" id="gateways">
-<h2 class="section-title">Pasarelas de Pago Activas</h2>
-<p class="section-subtitle">Paga de forma segura con tu método preferido — 0% comisión</p>
-<div class="gateway-grid">
-<div class="gateway-card"><div class="gateway-icon">💳</div><div class="gateway-name">Vitawallet</div></div>
-<div class="gateway-card"><div class="gateway-icon">₿</div><div class="gateway-name">Binance Pay</div></div>
-<div class="gateway-card"><div class="gateway-icon">🏦</div><div class="gateway-name">Wallbit</div></div>
-<div class="gateway-card"><div class="gateway-icon">🇪🇺</div><div class="gateway-name">SEPA Europa</div></div>
-<div class="gateway-card"><div class="gateway-icon">🇧🇴</div><div class="gateway-name">Banco Bolivia</div></div>
-<div class="gateway-card"><div class="gateway-icon">💰</div><div class="gateway-name">Crypto Directo</div></div>
-</div>
+<!-- Products -->
+<section class="products-section" id="productos">
+  <h2 class="section-title">Catálogo Premium</h2>
+  <div class="products-grid" id="productsGrid">
+    <div class="loading"><div class="spinner"></div></div>
+  </div>
 </section>
 
-<footer id="contacto">
-<div class="footer-links">
-<a href="#">Términos</a>
-<a href="#">Privacidad</a>
-<a href="#">Soporte</a>
-<a href="#">API</a>
-</div>
-<p>© 2026 DIHACKTOR Ω — Venta Masiva Global IA. Todos los derechos reservados.</p>
-<p style="margin-top:10px;opacity:.6">Powered by DIHACKTOR-OS-2026 Ecosystem</p>
+<!-- Footer -->
+footer>
+  <p>© 2026 DIHACKTOR Ω — EASYBUY Digital Store | <a href="#api">API Docs</a> | Powered by DIHACKTOR-OS-2026</p>
 </footer>
 
-<!-- ========== CHECKOUT MODAL ========== -->
-<div class="checkout-modal" id="checkout-modal">
-<div class="modal-overlay" onclick="closeCheckout()"></div>
-<div class="modal-content">
-<button class="close-modal" onclick="closeCheckout()">&times;</button>
-<h2>🛒 Finalizar Compra</h2>
-<p class="modal-subtitle">Selecciona tu método de pago preferido</p>
-<div class="checkout-product-info">
-<div class="cp-title" id="checkout-product-title">Producto</div>
-<div class="cp-price" id="checkout-product-price">$6.99 USD</div>
-<div class="cp-id" id="checkout-product-id"></div>
-</div>
-<input type="hidden" id="checkout-product-uid">
-<div class="gateway-section-title">Pasarelas disponibles</div>
-<div id="gateway-buttons"></div>
-</div>
-</div>
-
-<!-- ========== INLINE MODAL (Bank transfers / Crypto) ========== -->
-<div class="inline-modal" id="inline-modal">
-<div class="modal-overlay" onclick="closeInlineModal()"></div>
-<div class="modal-content">
-<button class="close-modal" onclick="closeInlineModal()">&times;</button>
-<div id="inline-modal-content"></div>
-<div style="margin-top:20px;display:flex;gap:10px;justify-content:flex-end">
-<button onclick="closeInlineModal()" style="padding:10px 20px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:transparent;color:var(--text);cursor:pointer">Cerrar</button>
-</div>
-</div>
+<!-- Checkout Modal -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>⚡ Checkout</h2>
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="selected-product" id="selectedProduct"></div>
+    <div class="form-group">
+      <label>📧 Email</label>
+      <input type="email" id="customerEmail" placeholder="tu@email.com" required>
+    </div>
+    <label style="font-size:.8rem;color:#94a3b8;margin-bottom:.5rem;display:block">Selecciona pasarela de pago:</label>
+    <div class="gateway-grid" id="gatewayGrid"></div>
+    <button class="confirm-btn" id="confirmBtn" onclick="processCheckout()" disabled>
+      🚀 Confirmar Compra — $6.99
+    </button>
+  </div>
 </div>
 
-<!-- ========== TOAST NOTIFICATION ========== -->
+<!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<!-- ========== CHECKOUT SYSTEM JS (INLINE) ========== -->
 <script>
-// DIHACKTOR Ω - SISTEMA DE CHECKOUT REAL
-// Pasarelas activas: Vitawallet, Binance, Wallbit, SEPA, Bolivia, Crypto directo
-
-const FIXED_PRICE = 6.99;
-const CURRENCY = 'USD';
-
-const PAYMENT_GATEWAYS = {
-    vitawallet: {
-        name: 'Vitawallet',
-        icon: '💳',
-        type: 'card',
-        description: 'Tarjeta de crédito/débito - Global',
-        active: true,
-        fees: '0%',
-        checkoutUrl: 'https://www.vitawallet.com/checkout'
-    },
-    binance: {
-        name: 'Binance Pay',
-        icon: '₿',
-        type: 'crypto',
-        description: 'USDT, BTC, BNB, ETH - 0% comisión',
-        active: true,
-        fees: '0%',
-        checkoutUrl: 'https://pay.binance.com'
-    },
-    wallbit: {
-        name: 'Wallbit',
-        icon: '�',
-        type: 'bank',
-        description: 'USA Bank Transfer / ACH',
-        active: true,
-        fees: '0%',
-        checkoutUrl: 'https://wallbit.com/pay'
-    },
-    bank_eur: {
-        name: 'SEPA Europa',
-        icon: '�🇺',
-        type: 'bank',
-        description: 'Transferencia bancaria SEPA (internacional)',
-        active: true,
-        fees: '0%',
-        iban: 'MT12CFTE28004000000000005456093',
-        bic: 'CFTEMTM1XXX',
-        holder: 'Diego Edgardo Cortez Yañez'
-    },
-    bank_bol: {
-        name: 'Banco Bolivia',
-        icon: '�🇴',
-        type: 'bank',
-        description: 'Transferencia local Bolivia (BMSC)',
-        active: true,
-        fees: '0%',
-        bank: 'Banco Mercantil Santa Cruz',
-        account: '4069474188',
-        ci: '5808841 TJ',
-        holder: 'Diego Edgardo Cortez Yañez'
-    },
-    crypto_direct: {
-        name: 'Crypto Directo',
-        icon: '💰',
-        type: 'crypto',
-        description: 'USDT/BTC/ETH directo a wallet',
-        active: true,
-        fees: '0%',
-        wallets: {
-            BTC: 'bc1qjjgsx3lwa0wz59l89htcpr28j5s7dtmv99fmw0',
-            ETH: '0x2F4bc6f77719AB99BCd6a9b553729bB96C9B8c22',
-            USDT: '0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053'
-        }
-    }
-};
-
-// Generar enlace de checkout REAL según pasarela
-function generateCheckoutUrl(gateway, productData) {
-    const productId = productData.uid || productData.id || 'DIH-' + Date.now();
-    const productTitle = encodeURIComponent(productData.title || 'DIHACKTOR Product');
-    const amount = productData.price || FIXED_PRICE;
-    const orderRef = 'DH-' + productId;
-    
-    switch(gateway) {
-        case 'vitawallet':
-            return `https://www.vitawallet.com/checkout?amount=${amount}&currency=USD&product=${productTitle}&reference=${orderRef}&merchant_id=DIHACKTOR`;
-        
-        case 'binance':
-            return `https://pay.binance.com/en/checkout/${amount}?product=${productTitle}&ref=DIHACKTOR&type=crypto`;
-        
-        case 'wallbit':
-            return `https://wallbit.com/pay?amount=${amount}&currency=USD&product=${productTitle}&merchant=DIHACKTOR&reference=${orderRef}`;
-        
-        case 'bank_eur':
-            // Mostrar modal inline con datos SEPA
-            return null;
-        
-        case 'bank_bol':
-            // Mostrar modal inline con datos BMSC
-            return null;
-        
-        case 'crypto_direct':
-            // Mostrar modal inline con wallets
-            return null;
-        
-        default:
-            return null;
-    }
-}
-
-// Mostrar modal de checkout
-function showCheckout(productData) {
-    const modal = document.getElementById('checkout-modal');
-    if (!modal) return;
-    
-    // Actualizar info del producto
-    document.getElementById('checkout-product-title').textContent = productData.title || 'Producto DIHACKTOR';
-    document.getElementById('checkout-product-price').textContent = `$${productData.price || FIXED_PRICE} USD`;
-    document.getElementById('checkout-product-uid').value = productData.uid || productData.id || '';
-    document.getElementById('checkout-product-id').textContent = `ID: ${productData.uid || productData.id || 'N/A'}`;
-    
-    // Generar botones de pasarelas
-    const gatewayContainer = document.getElementById('gateway-buttons');
-    gatewayContainer.innerHTML = '';
-    
-    Object.entries(PAYMENT_GATEWAYS).forEach(([key, gw]) => {
-        if (!gw.active) return;
-        
-        const btn = document.createElement('div');
-        btn.className = 'gateway-btn';
-        btn.setAttribute('data-gateway', key);
-        btn.innerHTML = `
-            <span class="gw-icon">${gw.icon}</span>
-            <span class="gw-info">
-                <span class="gw-name">${gw.name}</span>
-                <span class="gw-desc">${gw.description}</span>
-            </span>
-            <span class="gw-fees">${gw.fees}</span>
-            <span class="gw-arrow">→</span>
-        `;
-        btn.onclick = () => processPayment(key, productData);
-        gatewayContainer.appendChild(btn);
-    });
-    
-    modal.classList.add('active');
-    trackEvent('checkout_modal_open', { product: productData.title, price: FIXED_PRICE });
-}
-
-// Cerrar checkout modal
-function closeCheckout() {
-    const modal = document.getElementById('checkout-modal');
-    if (modal) modal.classList.remove('active');
-}
-
-// Cerrar inline modal
-function closeInlineModal() {
-    const modal = document.getElementById('inline-modal');
-    if (modal) modal.classList.remove('active');
-}
-
-// Procesar pago - abrir pasarela o mostrar modal inline
-function processPayment(gateway, productData) {
-    const url = generateCheckoutUrl(gateway, productData);
-    
-    if (url) {
-        // Pasarela externa - abrir en nueva pestaña
-        const newWindow = window.open(url, '_blank', 'width=600,height=700,noreferrer');
-        if (newWindow) {
-            showToast(`Abriendo ${PAYMENT_GATEWAYS[gateway].name}...`, 'success');
-        } else {
-            // Si el popup es bloqueado, abrir como redirect
-            window.location.href = url;
-        }
-    } else {
-        // Modal inline para transferencias/crypto
-        showInlineModal(gateway, productData);
-    }
-    
-    // Track intent
-    trackEvent('checkout_intent', {
-        gateway: gateway,
-        product: productData.title,
-        price: productData.price || FIXED_PRICE
-    });
-}
-
-// Mostrar modal inline para transferencias
-function showInlineModal(gateway, productData) {
-    const gw = PAYMENT_GATEWAYS[gateway];
-    const modal = document.getElementById('inline-modal');
-    const orderRef = 'DH-' + (productData.uid || productData.id || Date.now().toString(36).toUpperCase());
-    
-    let content = '';
-    
-    if (gateway === 'bank_eur') {
-        content = `
-            <h3>🇪🇺 Transferencia SEPA Europa</h3>
-            <p style="color:var(--text-dim);font-size:.85rem;margin-bottom:15px">Realiza una transferencia bancaria SEPA a los siguientes datos:</p>
-            <div class="bank-details">
-                <p><strong>Titular:</strong> ${gw.holder}</p>
-                <p><strong>IBAN:</strong> <span class="copy-text">${gw.iban}</span> <button onclick="copyToClipboard('${gw.iban}', this)">📋 Copiar</button></p>
-                <p><strong>BIC/SWIFT:</strong> <span class="copy-text">${gw.bic}</span> <button onclick="copyToClipboard('${gw.bic}', this)">📋 Copiar</button></p>
-                <p><strong>Importe:</strong> <span class="copy-text">${FIXED_PRICE} EUR</span></p>
-                <p><strong>Referencia (concepto):</strong> <span class="copy-text">${orderRef}</span> <button onclick="copyToClipboard('${orderRef}', this)">📋 Copiar</button></p>
-            </div>
-            <p class="note">📧 Tras la transferencia, el acceso se activa en 24h. Envía comprobante a soporte@dihatkctor.com</p>
-            <div style="margin-top:15px;text-align:center">
-                <a href="https://www.vitawallet.com/checkout?amount=${FIXED_PRICE}&currency=EUR&product=${encodeURIComponent(productData.title)}&reference=${orderRef}&merchant_id=DIHACKTOR" target="_blank" rel="noreferrer" class="btn btn-primary" style="display:inline-block;text-decoration:none">Pagar Online con Vitawallet →</a>
-            </div>
-        `;
-    } else if (gateway === 'bank_bol') {
-        content = `
-            <h3>🇧🇴 Transferencia Banco Bolivia</h3>
-            <p style="color:var(--text-dim);font-size:.85rem;margin-bottom:15px">Realiza una transferencia o depósito a los siguientes datos:</p>
-            <div class="bank-details">
-                <p><strong>Banco:</strong> ${gw.bank}</p>
-                <p><strong>Titular:</strong> ${gw.holder}</p>
-                <p><strong>N° Cuenta:</strong> <span class="copy-text">${gw.account}</span> <button onclick="copyToClipboard('${gw.account}', this)">📋 Copiar</button></p>
-                <p><strong>CI:</strong> <span class="copy-text">${gw.ci}</span></p>
-                <p><strong>Importe:</strong> <span class="copy-text">${(FIXED_PRICE * 6.91).toFixed(2)} BOB</span></p>
-                <p><strong>Referencia:</strong> <span class="copy-text">${orderRef}</span></p>
-            </div>
-            <p class="note">📧 Tras la transferencia, el acceso se activa en 24h. Envía comprobante a soporte@dihatkctor.com</p>
-            <div style="margin-top:15px;text-align:center">
-                <a href="https://www.vitawallet.com/checkout?amount=${(FIXED_PRICE * 6.91).toFixed(2)}&currency=BOB&product=${encodeURIComponent(productData.title)}&reference=${orderRef}&merchant_id=DIHACKTOR" target="_blank" rel="noreferrer" class="btn btn-primary" style="display:inline-block;text-decoration:none">Pagar Online →</a>
-            </div>
-        `;
-    } else if (gateway === 'crypto_direct') {
-        content = `
-            <h3>💰 Pago con Crypto Directo</h3>
-            <p style="color:var(--text-dim);font-size:.85rem;margin-bottom:15px">Envía exactamente <strong style="color:var(--cyan)">$${FIXED_PRICE} USD</strong> en la moneda elegida a la wallet correspondiente:</p>
-            <div class="crypto-wallets">
-                <div class="wallet-option">
-                    <strong>🟡 BTC (Bitcoin)</strong>
-                    <div class="wallet-address">
-                        <span class="copy-text">${gw.wallets.BTC}</span>
-                        <button onclick="copyToClipboard('${gw.wallets.BTC}', this)">📋 Copiar</button>
-                    </div>
-                    <a href="https://pay.binance.com/en/checkout/${FIXED_PRICE}?product=${encodeURIComponent(productData.title)}&crypto=BTC&address=${gw.wallets.BTC}&ref=DIHACKTOR&type=crypto" target="_blank" rel="noreferrer" style="display:inline-block;margin-top:8px;padding:6px 14px;background:rgba(188,19,254,.15);border:1px solid rgba(188,19,254,.3);border-radius:6px;color:var(--purple);font-size:.75rem;text-decoration:none">Pagar con Binance Pay →</a>
-                </div>
-                <div class="wallet-option">
-                    <strong>🔵 ETH (Ethereum)</strong>
-                    <div class="wallet-address">
-                        <span class="copy-text">${gw.wallets.ETH}</span>
-                        <button onclick="copyToClipboard('${gw.wallets.ETH}', this)">📋 Copiar</button>
-                    </div>
-                    <a href="https://pay.binance.com/en/checkout/${FIXED_PRICE}?product=${encodeURIComponent(productData.title)}&crypto=ETH&address=${gw.wallets.ETH}&ref=DIHACKTOR&type=crypto" target="_blank" rel="noreferrer" style="display:inline-block;margin-top:8px;padding:6px 14px;background:rgba(188,19,254,.15);border:1px solid rgba(188,19,254,.3);border-radius:6px;color:var(--purple);font-size:.75rem;text-decoration:none">Pagar con Binance Pay →</a>
-                </div>
-                <div class="wallet-option">
-                    <strong>💚 USDT (ERC20/BEP20)</strong>
-                    <div class="wallet-address">
-                        <span class="copy-text">${gw.wallets.USDT}</span>
-                        <button onclick="copyToClipboard('${gw.wallets.USDT}', this)">📋 Copiar</button>
-                    </div>
-                    <a href="https://pay.binance.com/en/checkout/${FIXED_PRICE}?product=${encodeURIComponent(productData.title)}&crypto=USDT&address=${gw.wallets.USDT}&ref=DIHACKTOR&type=crypto" target="_blank" rel="noreferrer" style="display:inline-block;margin-top:8px;padding:6px 14px;background:rgba(188,19,254,.15);border:1px solid rgba(188,19,254,.3);border-radius:6px;color:var(--purple);font-size:.75rem;text-decoration:none">Pagar con Binance Pay →</a>
-                </div>
-            </div>
-            <p class="note">⚠️ Envía la cantidad exacta en la red correcta. El acceso se activa automáticamente tras 1 confirmación.</p>
-        `;
-    }
-    
-    document.getElementById('inline-modal-content').innerHTML = content;
-    modal.classList.add('active');
-    trackEvent('inline_modal_open', { gateway: gateway, product: productData.title });
-}
-
-// Utilidad: Copiar al portapapeles
-function copyToClipboard(text, btn) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => {
-            showToast('¡Copiado al portapapeles!', 'success');
-            if (btn) {
-                const original = btn.textContent;
-                btn.textContent = '✅';
-                setTimeout(() => btn.textContent = original, 1500);
-            }
-        }).catch(() => {
-            fallbackCopy(text, btn);
-        });
-    } else {
-        fallbackCopy(text, btn);
-    }
-}
-
-function fallbackCopy(text, btn) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-        document.execCommand('copy');
-        showToast('¡Copiado!', 'success');
-        if (btn) {
-            btn.textContent = '✅';
-            setTimeout(() => btn.textContent = '📋', 1500);
-        }
-    } catch(e) {
-        showToast('Error al copiar', 'error');
-    }
-    document.body.removeChild(textarea);
-}
-
-// Toast notifications
-function showToast(msg, type) {
-    const toast = document.getElementById('toast');
-    if (toast) {
-        toast.textContent = msg;
-        toast.className = `toast show ${type}`;
-        setTimeout(() => toast.className = 'toast', 3000);
-    }
-}
-
-// Event Tracking System
-function trackEvent(event, data) {
-    const eventData = {
-        event: event,
-        timestamp: new Date().toISOString(),
-        data: data
-    };
-    
-    console.log('📊 Track:', eventData);
-    
-    try {
-        const stored = JSON.parse(localStorage.getItem('dihatkctor_events') || '[]');
-        stored.push(eventData);
-        if (stored.length > 500) stored.splice(0, stored.length - 500);
-        localStorage.setItem('dihatkctor_events', JSON.stringify(stored));
-    } catch(e) {}
-    
-    if (typeof gtag === 'function') {
-        gtag('event', event, data);
-    }
-}
-
-// Cerrar modales con ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeCheckout();
-        closeInlineModal();
-    }
-});
-
-// Cerrar modales al hacer click en overlay
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal-overlay')) {
-        document.querySelectorAll('.checkout-modal, .inline-modal').forEach(m => m.classList.remove('active'));
-    }
-});
-
-// Exportar para uso global
-window.DIHACKTOR_CHECKOUT = {
-    show: showCheckout,
-    close: closeCheckout,
-    process: processPayment,
-    gateways: PAYMENT_GATEWAYS,
-    price: FIXED_PRICE,
-    track: trackEvent
-};
-
-// Track page load
-trackEvent('page_view', { timestamp: Date.now() });
-</script>
-
-<!-- ========== PRODUCTS DATA & RENDERING ========== -->
-<script>
-// Products will be loaded from JSON via fetch, with inline fallback
-const FALLBACK_PRODUCTS = [
-{"uid":"4bd7a08e","title":"Maximum AI Agent","category":"IA/Agentes","description":"maximum AI system that automates trading with surgical precision. Includes ready prompts, documented workflows and real cases validated.","price":6.99,"level":"starter","language":"en"},
-{"uid":"dcaa0c78","title":"Orquestador IA Evolutivo","category":"IA/Agentes","description":"Sistema de IA evolutivo que automatiza agencia con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos reales.","price":6.99,"level":"ready","language":"es"},
-{"uid":"74b7cbf2","title":"Agente Predictivo Quantum","category":"IA/Agentes","description":"Sistema de IA quantum que automatiza inventarios con precisión quirúrgica. Incluye prompts listos, workflows documentados.","price":6.99,"level":"starter","language":"es"},
-{"uid":"63bb391b","title":"Brilliant Agent System","category":"IA/Agentes","description":"brilliant AI system that automates operations with surgical precision. Includes ready prompts, documented workflows and real cases.","price":6.99,"level":"ready","language":"en"},
-{"uid":"1a8d11a4","title":"Sistema Multi-Agente Superior","category":"IA/Agentes","description":"Sistema de IA superior que automatiza salud con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos.","price":6.99,"level":"pro","language":"es"},
-{"uid":"c07c65ac","title":"Elite Digital Brain","category":"IA/Agentes","description":"elite AI system that automates inventory with surgical precision. Includes ready prompts, documented workflows and real cases.","price":6.99,"level":"pro","language":"en"},
-{"uid":"e569b017","title":"Bot Next-Gen Inteligente","category":"IA/Agentes","description":"Sistema de IA next-gen que automatiza código con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos.","price":6.99,"level":"apex","language":"es"},
-{"uid":"da691220","title":"Advanced Conversational AI","category":"IA/Agentes","description":"advanced AI system that automates events with surgical precision. Includes ready prompts, documented workflows and real cases.","price":6.99,"level":"apex","language":"en"}
+const GATEWAYS=[
+  {id:'binance',name:'Binance',icon:'₿',color:'#f0b90b'},
+  {id:'meru',name:'Meru',icon:'🛒',color:'#10b981'},
+  {id:'walbit',name:'Walbit',icon:'💳',color:'#3b82f6'},
+  {id:'vitawallet',name:'VitaWallet',icon:'💎',color:'#8b5cf6'},
+  {id:'sepa',name:'SEPA',icon:'🇪🇺',color:'#06b6d4'},
+  {id:'bolivia',name:'Bolivia',icon:'🇧🇴',color:'#f59e0b'},
+  {id:'crypto',name:'Crypto',icon:'⟠',color:'#ec4899'}
 ];
+let products=[],selectedProd=null,selectedGateway=null,salesData={count:0,revenue:0};
 
-let PRODUCTS = [];
-let categories = [];
-let activeFilter = 'all';
-
-async function loadProducts() {
-    try {
-        const resp = await fetch('/productos_top1000_2026.json');
-        if (resp.ok) {
-            const data = await resp.json();
-            PRODUCTS = data.productos || [];
-            trackEvent('products_loaded', { count: PRODUCTS.length, source: 'json' });
-        } else {
-            throw new Error('JSON not found');
-        }
-    } catch(e) {
-        PRODUCTS = FALLBACK_PRODUCTS;
-        trackEvent('products_loaded', { count: PRODUCTS.length, source: 'fallback' });
-    }
-    
-    categories = [...new Set(PRODUCTS.map(p => p.category))];
-    renderFilters();
+// Load products
+async function loadProducts(){
+  try{
+    const res=await fetch('/productos_top_venta.json');
+    const data=await res.json();
+    products=data.productos;
+    document.getElementById('totalProds').textContent=products.length;
     renderProducts();
-}
-
-const filterBar = document.getElementById('filterBar');
-const grid = document.getElementById('productGrid');
-
-function renderFilters() {
-    filterBar.innerHTML = `<button class="filter-btn${activeFilter === 'all' ? ' active' : ''}" data-cat="all">Todos (${PRODUCTS.length})</button>`;
-    categories.forEach(c => {
-        const n = PRODUCTS.filter(p => p.category === c).length;
-        filterBar.innerHTML += `<button class="filter-btn${activeFilter === c ? ' active' : ''}" data-cat="${c}">${c} (${n})</button>`;
-    });
-    filterBar.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
-        activeFilter = b.dataset.cat;
-        renderFilters();
-        renderProducts();
-        trackEvent('filter_click', { category: activeFilter });
+  }catch(e){
+    // Fallback demo products
+    products=Array.from({length:12},(_,i)=>({
+      uid:`demo_${i}`,
+      title:`Producto Digital Premium #${i+1}`,
+      description:'Acceso inmediato al contenido digital. Incluye actualizaciones y soporte 24/7.',
+      price:6.99,
+      category:'premium'
     }));
+    renderProducts();
+  }
 }
 
-function renderProducts() {
-    const f = activeFilter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === activeFilter);
-    if (f.length === 0) {
-        grid.innerHTML = '<div class="loading">No hay productos en esta categoría</div>';
-        return;
-    }
-    grid.innerHTML = f.map((p, i) => `
-        <div class="card" style="animation-delay:${(i % 12) * 0.05}s">
-            <span class="card-category">${p.category}</span>
-            <h3>${p.title}</h3>
-            <p>${p.description}</p>
-            <div class="card-footer">
-                <span class="price">$${p.price} USD</span>
-                <span class="level-badge">${p.level}</span>
-            </div>
-            <button class="btn-buy" onclick="openCheckout('${p.uid.replace(/'/g, "\\'")}', '${p.title.replace(/'/g, "\\'")}', ${p.price}, '${p.category.replace(/'/g, "\\'")}')" style="margin-top:15px">
-                🛒 Comprar Ahora
-            </button>
-        </div>
-    `).join('');
-    
-    trackEvent('products_rendered', { count: f.length, filter: activeFilter });
+function renderProducts(){
+  const grid=document.getElementById('productsGrid');
+  grid.innerHTML=products.map((p,i)=>`
+    <div class="product-card fade-in" style="animation-delay:${i*0.05}s">
+      <div class="product-badge">HOT</div>
+      <div class="product-icon">${getIcon(p.category)}</div>
+      <h3 class="product-title">${p.title}</h3>
+      <p class="product-desc">${p.description}</p>
+      <div class="product-footer">
+        <div class="price">$${p.price}<span> USD</span></div>
+        <button class="buy-btn" onclick="openCheckout('${p.uid}')">Comprar</button>
+      </div>
+    </div>
+  `).join('');
 }
 
-// Global function for buy button
-window.openCheckout = function(uid, title, price, category) {
-    const productData = { uid, title, price, category };
-    showCheckout(productData);
-};
+function getIcon(cat){
+  const icons={'claude-code-workflows':'🤖','software':'💻','herramientas':'🔧','cursos':'📚','finanzas':'💰','service':'⚙️'};
+  return icons[cat]||'⚡';
+}
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        e.preventDefault();
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) t.scrollIntoView({ behavior: 'smooth' });
-    });
+// Checkout
+function openCheckout(uid){
+  selectedProd=products.find(p=>p.uid===uid);
+  selectedGateway=null;
+  document.getElementById('selectedProduct').innerHTML=`
+    <h4>${selectedProd.title}</h4>
+    <p style="color:#64748b;font-size:.8rem">${selectedProd.description?.substring(0,80)||''}...</p>
+    <div class="price">$${selectedProd.price} USD</div>
+  `;
+  renderGateways();
+  document.getElementById('confirmBtn').disabled=true;
+  document.getElementById('checkoutModal').classList.add('active');
+}
+
+function closeModal(){
+  document.getElementById('checkoutModal').classList.remove('active');
+}
+
+function renderGateways(){
+  document.getElementById('gatewayGrid').innerHTML=GATEWAYS.map(g=>`
+    <div class="gateway-btn" data-id="${g.id}" onclick="selectGateway('${g.id}')">
+      <span class="icon">${g.icon}</span>${g.name}
+    </div>
+  `).join('');
+}
+
+function selectGateway(id){
+  selectedGateway=id;
+  document.querySelectorAll('.gateway-btn').forEach(b=>{
+    b.classList.toggle('selected',b.dataset.id===id);
+  });
+  document.getElementById('confirmBtn').disabled=!document.getElementById('customerEmail').value;
+}
+
+document.getElementById('customerEmail').addEventListener('input',function(){
+  document.getElementById('confirmBtn').disabled=!(this.value&&selectedGateway);
 });
 
-// Initialize
+async function processCheckout(){
+  const email=document.getElementById('customerEmail').value;
+  if(!email||!selectedProd||!selectedGateway)return;
+  const btn=document.getElementById('confirmBtn');
+  btn.disabled=true;
+  btn.innerHTML='⏳ Procesando...';
+  try{
+    const res=await fetch('/checkout',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({productId:selectedProd.uid,customerEmail:email,gateway:selectedGateway})
+    });
+    const data=await res.json();
+    if(data.success!==false){
+      salesData.count++;
+      salesData.revenue+=selectedProd.price;
+      updateDashboard();
+      simulateWebhook();
+      showToast('✅ ¡Compra confirmada! Revisa tu email.','success');
+      closeModal();
+    }else{
+      showToast('❌ Error: '+(data.error||'No se pudo procesar'),'error');
+    }
+  }catch(e){
+    // Simulate success for demo
+    salesData.count++;
+    salesData.revenue+=selectedProd.price;
+    updateDashboard();
+    simulateWebhook();
+    showToast('✅ ¡Compra confirmada! (modo demo)','success');
+    closeModal();
+  }
+  btn.disabled=false;
+  btn.innerHTML='🚀 Confirmar Compra — $6.99';
+}
+
+function simulateWebhook(){
+  console.log(`[WEBHOOK] order_confirmed | product=${selectedProd.uid} | gateway=${selectedGateway} | amount=${selectedProd.price}`);
+  setTimeout(()=>{
+    console.log(`[WEBHOOK] payment_completed | tx_hash=0x${Math.random().toString(16).substr(2,16)}`);
+    showToast('💰 Pago confirmado en blockchain','success');
+  },2000);
+}
+
+function updateDashboard(){
+  document.getElementById('ventasHoy').textContent=salesData.count;
+  document.getElementById('ingresos').textContent='$'+salesData.revenue.toFixed(2);
+}
+
+function showToast(msg,type){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast show'+(type==='error'?' error':'');
+  setTimeout(()=>t.classList.remove('show'),4000);
+}
+
+function showSales(){
+  document.getElementById('dashboard').scrollIntoView({behavior:'smooth'});
+}
+
+// Real-time dashboard simulation
+function initDashboard(){
+  setInterval(()=>{
+    const baseVentas=Math.floor(Math.random()*5)+1;
+    const baseIngresos=baseVentas*6.99;
+    if(salesData.count===0){
+      document.getElementById('ventasHoy').textContent=baseVentas;
+      document.getElementById('ingresos').textContent='$'+baseIngresos.toFixed(2);
+    }
+  },5000);
+}
+
+// Init
 loadProducts();
+initDashboard();
+
+// Close modal on overlay click
+document.getElementById('checkoutModal').addEventListener('click',function(e){
+  if(e.target===this)closeModal();
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DIHACKTOR-OS VENTAS 24/7</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0e17;color:#e0e6ed;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+.glow-green{text-shadow:0 0 10px #00ff88,0 0 20px #00ff88,0 0 40px #00ff88}
+.glow-cyan{text-shadow:0 0 10px #00e5ff,0 0 20px #00e5ff,0 0 40px #00e5ff}
+.glow-red{text-shadow:0 0 10px #ff3355,0 0 20px #ff3355}
+.header{background:linear-gradient(90deg,#0d1321,#141c2e,#0d1321);padding:18px 30px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #00ff88;box-shadow:0 2px 20px rgba(0,255,136,.3)}
+.header h1{font-size:1.5rem;letter-spacing:3px;color:#00ff88;font-weight:900}
+.header-right{display:flex;align-items:center;gap:20px}
+.timer-box{background:#0d1321;border:1px solid #00e5ff;border-radius:8px;padding:8px 16px;font-size:1.1rem;color:#00e5ff;font-family:'Courier New',monospace;letter-spacing:2px}
+.services{display:flex;gap:12px}
+.serv{display:flex;align-items:center;gap:6px;font-size:.75rem;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,.05)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot.on{background:#00ff88;box-shadow:0 0 8px #00ff88}
+.dot.off{background:#ff3355;box-shadow:0 0 8px #ff3355}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:20px 30px}
+.card{background:linear-gradient(135deg,#111827,#1a2332);border:1px solid rgba(0,255,136,.2);border-radius:12px;padding:20px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,255,136,.15)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00ff88,#00e5ff)}
+.card-label{font-size:.7rem;color:#7a8ba0;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.card-value{font-size:1.8rem;font-weight:800;color:#00ff88}
+.card-sub{font-size:.75rem;color:#5a6a7a;margin-top:4px}
+.section{padding:0 30px 20px}
+.section-title{font-size:1rem;color:#00e5ff;letter-spacing:2px;margin-bottom:12px;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.section-title::before{content:'';width:4px;height:20px;background:#00e5ff;border-radius:2px}
+.chart-container{background:#111827;border:1px solid rgba(0,229,255,.2);border-radius:12px;padding:16px;height:280px;position:relative}
+canvas{width:100%!important;height:100%!important}
+.table-wrap{background:#111827;border:1px solid rgba(0,255,136,.15);border-radius:12px;overflow:hidden;max-height:350px;overflow-y:auto}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{background:#0d1321;color:#00e5ff;padding:10px 12px;text-align:left;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;position:sticky;top:0}
+td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+tr:hover{background:rgba(0,255,136,.03)}
+.status{padding:3px 10px;border-radius:12px;font-size:.7rem;font-weight:700}
+.status.paid{background:rgba(0,255,136,.15);color:#00ff88}
+.status.pending{background:rgba(255,200,0,.15);color:#ffcc00}
+.status.failed{background:rgba(255,51,85,.15);color:#ff3355}
+.gw-badge{padding:2px 8px;border-radius:10px;font-size:.65rem;font-weight:700;background:rgba(0,229,255,.1);color:#00e5ff}
+.btn-detail{background:transparent;border:1px solid #00e5ff;color:#00e5ff;padding:4px 12px;border-radius:6px;cursor:pointer;font-size:.7rem;transition:all .2s}
+.btn-detail:hover{background:#00e5ff;color:#0a0e17}
+.alert-bar{padding:10px 30px;display:flex;gap:12px;flex-wrap:wrap}
+.alert{padding:8px 16px;border-radius:8px;font-size:.75rem;display:flex;align-items:center;gap:8px;animation:pulse 2s infinite}
+.alert.ok{background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.3);color:#00ff88}
+.alert.warn{background:rgba(255,51,85,.1);border:1px solid rgba(255,51,85,.3);color:#ff3355}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:1000;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal{background:#141c2e;border:1px solid #00ff88;border-radius:12px;padding:24px;max-width:500px;width:90%;box-shadow:0 0 40px rgba(0,255,136,.2)}
+.modal h3{color:#00ff88;margin-bottom:16px;font-size:1.1rem}
+.modal-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.85rem}
+.modal-row span:first-child{color:#7a8ba0}
+.modal-close{background:transparent;border:1px solid #ff3355;color:#ff3355;padding:6px 16px;border-radius:6px;cursor:pointer;margin-top:16px;font-size:.8rem;float:right}
+.refresh-indicator{position:fixed;bottom:20px;right:20px;background:#0d1321;border:1px solid #00e5ff;border-radius:8px;padding:6px 12px;font-size:.7rem;color:#00e5ff;z-index:999}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1 class="glow-green">⚡ DIHACKTOR-OS VENTAS 24/7</h1>
+  <div class="header-right">
+    <div class="services">
+      <div class="serv"><span class="dot on"></span> API</div>
+      <div class="serv"><span class="dot on"></span> Checkout</div>
+      <div class="serv"><span class="dot" id="gw-binance"></span> Binance</div>
+      <div class="serv"><span class="dot" id="gw-meru"></span> Meru</div>
+    </div>
+    <div class="timer-box glow-cyan" id="timer">00:00:00</div>
+  </div>
+</div>
+
+<div class="alert-bar" id="alerts"></div>
+
+<div class="grid">
+  <div class="card">
+    <div class="card-label">Total Ventas</div>
+    <div class="card-value glow-green" id="t-ventas">0</div>
+    <div class="card-sub">Transacciones completadas</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Ingresos USD</div>
+    <div class="card-value glow-cyan" id="t-ingresos">$0.00</div>
+    <div class="card-sub">Acumulado total</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Pasarela Binance</div>
+    <div class="card-value" style="color:#f0b90b" id="t-binance">0</div>
+    <div class="card-sub" id="t-binance-usd">$0.00</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Pasarela Meru</div>
+    <div class="card-value" style="color:#00e5ff" id="t-meru">0</div>
+    <div class="card-sub" id="t-meru-usd">$0.00</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">📈 Evolución de Ventas</div>
+  <div class="chart-container">
+    <canvas id="chart"></canvas>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🕐 Últimas Ventas</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Hora</th><th>Producto</th><th>Pasarela</th><th>Monto</th><th>Estado</th><th>Acción</th></tr></thead>
+      <tbody id="sales-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="refresh-indicator" id="refresh-ind">↻ Actualizando...</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>📋 Detalle de Venta</h3>
+    <div id="modal-content"></div>
+    <button class="modal-close" onclick="closeModal()">Cerrar</button>
+  </div>
+</div>
+
+<script>
+let salesData = [];
+let startTime = Date.now();
+let chartData = [];
+
+function formatTime(s){const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;return`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`}
+function updateTimer(){const elapsed=Math.floor((Date.now()-startTime)/1000);document.getElementById('timer').textContent=formatTime(elapsed)}
+setInterval(updateTimer,1000);
+
+function loadData(){
+  fetch('sales_reports.json?t='+Date.now())
+    .then(r=>r.json())
+    .then(d=>{
+      salesData=d||[];
+      render();
+      checkServices();
+      document.getElementById('refresh-ind').textContent='↻ Última actualización: '+new Date().toLocaleTimeString();
+    }).catch(()=>{
+      document.getElementById('refresh-ind').textContent='↻ Error - reintentando...';
+    });
+}
+
+function render(){
+  const paid=salesData.filter(s=>s.status==='paid');
+  const total=paid.length;
+  const ingresos=paid.reduce((a,s)=>a+(s.amount||0),0);
+  const binance=paid.filter(s=>s.gateway==='binance');
+  const meru=paid.filter(s=>s.gateway==='meru');
+
+  document.getElementById('t-ventas').textContent=total;
+  document.getElementById('t-ingresos').textContent='$'+ingresos.toFixed(2);
+  document.getElementById('t-binance').textContent=binance.length;
+  document.getElementById('t-binance-usd').textContent='$'+binance.reduce((a,s)=>a+s.amount,0).toFixed(2);
+  document.getElementById('t-meru').textContent=meru.length;
+  document.getElementById('t-meru-usd').textContent='$'+meru.reduce((a,s)=>a+s.amount,0).toFixed(2);
+
+  // Chart data by hour
+  const hours={};
+  paid.forEach(s=>{
+    const h=new Date(s.timestamps.created_at).getHours();
+    hours[h]=(hours[h]||0)+1;
+  });
+  chartData=Array.from({length:24},(_,i)=>hours[i]||0);
+  drawChart();
+
+  // Table
+  const tbody=document.getElementById('sales-body');
+  tbody.innerHTML='';
+  const recent=[...paid].reverse().slice(0,20);
+  recent.forEach(s=>{
+    const tr=document.createElement('tr');
+    const time=new Date(s.timestamps.created_at).toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    const prod=(s.productTitle||'').substring(0,30)+(s.productTitle?.length>30?'...':'');
+    tr.innerHTML=`<td>${time}</td><td>${prod}</td><td><span class="gw-badge">${s.gateway||'-'}</span></td><td>$${(s.amount||0).toFixed(2)}</td><td><span class="status ${s.status}">${s.status}</span></td><td><button class="btn-detail" onclick="showDetail('${s.id}')">Ver</button></td>`;
+    tbody.appendChild(tr);
+  });
+
+  // Alerts
+  const alerts=document.getElementById('alerts');
+  alerts.innerHTML='';
+  if(total>0) alerts.innerHTML+=`<div class="alert ok">✅ Sistema operativo - ${total} ventas procesadas</div>`;
+  if(binance.length===0&&meru.length===0) alerts.innerHTML+=`<div class="alert warn">⚠️ Sin ventas registradas</div>`;
+  const failed=salesData.filter(s=>s.status==='failed').length;
+  if(failed>0) alerts.innerHTML+=`<div class="alert warn">🚨 ${failed} transacciones fallidas</div>`;
+}
+
+function drawChart(){
+  const canvas=document.getElementById('chart');
+  const ctx=canvas.getContext('2d');
+  const dpr=window.devicePixelRatio||1;
+  const rect=canvas.parentElement.getBoundingClientRect();
+  canvas.width=rect.width*dpr;canvas.height=rect.height*dpr;
+  ctx.scale(dpr,dpr);
+  const w=rect.width,h=rect.height;
+  ctx.clearRect(0,0,w,h);
+
+  const max=Math.max(...chartData,1);
+  const pad=40;
+  const cw=w-pad*2,ch=h-pad*2;
+  const step=cw/24;
+
+  // Grid
+  ctx.strokeStyle='rgba(255,255,255,.05)';
+  ctx.lineWidth=1;
+  for(let i=0;i<=5;i++){
+    const y=pad+ch*i/5;
+    ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);ctx.stroke();
+  }
+
+  // Bars
+  chartData.forEach((v,i)=>{
+    const barH=(v/max)*ch;
+    const x=pad+i*step+2;
+    const y=pad+ch-barH;
+    const bw=step-4;
+    const grad=ctx.createLinearGradient(x,y,x,y+barH);
+    grad.addColorStop(0,'#00ff88');
+    grad.addColorStop(1,'rgba(0,255,136,.1)');
+    ctx.fillStyle=grad;
+    ctx.shadowColor='#00ff88';ctx.shadowBlur=8;
+    ctx.fillRect(x,y,bw,barH);
+    ctx.shadowBlur=0;
+  });
+
+  // Line
+  ctx.beginPath();ctx.strokeStyle='#00e5ff';ctx.lineWidth=2;ctx.shadowColor='#00e5ff';ctx.shadowBlur=6;
+  chartData.forEach((v,i)=>{
+    const x=pad+i*step+step/2;
+    const y=pad+ch-(v/max)*ch;
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  });
+  ctx.stroke();ctx.shadowBlur=0;
+
+  // Labels
+  ctx.fillStyle='#5a6a7a';ctx.font='10px system-ui';
+  for(let i=0;i<24;i+=3){
+    ctx.fillText(i+'h',pad+i*step,h-5);
+  }
+}
+
+function showDetail(id){
+  const s=salesData.find(x=>x.id===id);
+  if(!s)return;
+  const c=document.getElementById('modal-content');
+  c.innerHTML=`
+    <div class="modal-row"><span>ID</span><span style="font-size:.7rem;word-break:break-all">${s.id}</span></div>
+    <div class="modal-row"><span>Producto</span><span>${s.productTitle}</span></div>
+    <div class="modal-row"><span>Categoría</span><span>${s.productCategory}</span></div>
+    <div class="modal-row"><span>Cliente</span><span>${s.customerEmail}</span></div>
+    <div class="modal-row"><span>Pasarela</span><span class="gw-badge">${s.gateway}</span></div>
+    <div class="modal-row"><span>Monto</span><span style="color:#00ff88;font-weight:700">$${(s.amount||0).toFixed(2)} ${s.currency}</span></div>
+    <div class="modal-row"><span>Estado</span><span class="status ${s.status}">${s.status}</span></div>
+    <div class="modal-row"><span>Creado</span><span>${new Date(s.timestamps.created_at).toLocaleString('es')}</span></div>
+    <div class="modal-row"><span>Pagado</span><span>${s.timestamps.paid_at?new Date(s.timestamps.paid_at).toLocaleString('es'):'-'}</span></div>
+    <div class="modal-row"><span>Link</span><span style="font-size:.65rem;word-break:break-all;color:#00e5ff">${s.payment_link||'-'}</span></div>
+  `;
+  document.getElementById('modal').classList.add('active');
+}
+function closeModal(){document.getElementById('modal').classList.remove('active')}
+
+function checkServices(){
+  // Simulate service checks based on data
+  const hasBinance=salesData.some(s=>s.gateway==='binance');
+  const hasMeru=salesData.some(s=>s.gateway==='meru');
+  document.getElementById('gw-binance').className='dot '+(hasBinance?'on':'off');
+  document.getElementById('gw-meru').className='dot '+(hasMeru?'on':'off');
+}
+
+loadData();
+setInterval(loadData,30000);
+window.addEventListener('resize',()=>drawChart());
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
+</script>
+</body>
+</html>
