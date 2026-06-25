@@ -15,6 +15,8 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 @keyframes borderGlow{0%,100%{border-color:var(--cyan)}50%{border-color:var(--purple)}}
 @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 @keyframes scan{0%{top:-100%}100%{top:100%}}
+@keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,2,5,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,242,255,.15);padding:15px 30px;display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:glow 3s ease-in-out infinite}
 nav a{color:var(--text-dim);text-decoration:none;margin-left:25px;font-size:.9rem;transition:color .3s}
@@ -32,7 +34,7 @@ nav a:hover{color:var(--cyan)}
 .btn{display:inline-block;padding:14px 35px;border-radius:50px;font-weight:700;text-decoration:none;font-size:1rem;transition:all .3s;cursor:pointer;border:none}
 .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#000;box-shadow:0 0 20px rgba(0,242,255,.3)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,242,255,.5)}
-.btn-buy{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#000;padding:10px 22px;border-radius:30px;font-size:.85rem;font-weight:700;text-decoration:none;transition:all .3s;display:inline-block}
+.btn-buy{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#000;padding:10px 22px;border-radius:30px;font-size:.85rem;font-weight:700;text-decoration:none;transition:all .3s;display:inline-block;cursor:pointer;border:none}
 .btn-buy:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(188,19,254,.5)}
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:0 20px 30px}
 .filter-btn{padding:8px 20px;border-radius:30px;border:1px solid rgba(0,242,255,.3);background:transparent;color:var(--text-dim);cursor:pointer;font-size:.85rem;transition:all .3s}
@@ -64,6 +66,53 @@ footer a{color:var(--cyan);text-decoration:none}
 .scroll-indicator span{display:block;width:20px;height:20px;border-right:2px solid var(--cyan);border-bottom:2px solid var(--cyan);transform:rotate(45deg);opacity:.5}
 @media(max-width:768px){header{padding:12px 15px}.logo{font-size:1.1rem}nav a{margin-left:15px;font-size:.8rem}.hero{padding:100px 15px 50px}.stats{gap:15px}.stat-card{padding:18px 25px;min-width:140px}.stat-number{font-size:1.6rem}.grid{grid-template-columns:1fr}.gateway-card{width:110px;padding:20px 15px}}
 .loading{text-align:center;padding:60px;color:var(--text-dim)}
+
+/* ========== CHECKOUT MODAL STYLES ========== */
+.checkout-modal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.checkout-modal.active{display:flex}
+.modal-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);backdrop-filter:blur(8px)}
+.modal-content{position:relative;background:#0d0d1a;border:1px solid rgba(0,242,255,.3);border-radius:20px;padding:35px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;animation:modalIn .3s ease-out;z-index:1}
+.modal-content h2{font-size:1.5rem;margin-bottom:5px;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.modal-content .modal-subtitle{color:var(--text-dim);margin-bottom:25px;font-size:.9rem}
+.close-modal{position:absolute;top:15px;right:20px;background:none;border:none;color:var(--text-dim);font-size:1.5rem;cursor:pointer;transition:color .3s;line-height:1}
+.close-modal:hover{color:var(--cyan)}
+.checkout-product-info{background:rgba(0,242,255,.05);border:1px solid rgba(0,242,255,.15);border-radius:12px;padding:18px;margin-bottom:25px}
+.checkout-product-info .cp-title{font-size:1.1rem;font-weight:700;margin-bottom:5px}
+.checkout-product-info .cp-price{font-size:1.6rem;font-weight:800;color:var(--cyan)}
+.checkout-product-info .cp-id{font-size:.75rem;color:var(--text-dim);margin-top:5px}
+.gateway-section-title{font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);margin-bottom:15px;margin-top:10px}
+.gateway-btn{display:flex;align-items:center;gap:12px;width:100%;padding:15px 18px;margin-bottom:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:12px;cursor:pointer;transition:all .3s;text-align:left;color:var(--text)}
+.gateway-btn:hover{border-color:var(--cyan);background:rgba(0,242,255,.05);transform:translateX(5px)}
+.gateway-btn .gw-icon{font-size:1.5rem;min-width:35px;text-align:center}
+.gateway-btn .gw-info{flex:1}
+.gateway-btn .gw-name{font-weight:700;font-size:.95rem}
+.gateway-btn .gw-desc{font-size:.75rem;color:var(--text-dim);margin-top:2px}
+.gateway-btn .gw-fees{font-size:.7rem;color:var(--cyan);font-weight:700;background:rgba(0,242,255,.1);padding:3px 8px;border-radius:8px}
+.gateway-btn .gw-arrow{color:var(--text-dim);font-size:1.2rem;transition:transform .3s}
+.gateway-btn:hover .gw-arrow{transform:translateX(3px);color:var(--cyan)}
+
+/* Inline Modals for Bank/Crypto */
+.inline-modal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1001;display:none;align-items:center;justify-content:center;padding:20px}
+.inline-modal.active{display:flex}
+.inline-modal .modal-content{max-width:500px}
+.bank-details{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;margin:15px 0}
+.bank-details p{margin-bottom:10px;font-size:.9rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bank-details p strong{color:var(--text-dim);min-width:80px;display:inline-block}
+.bank-details .copy-text{font-family:'Courier New',monospace;font-size:.8rem;background:rgba(0,242,255,.1);padding:3px 8px;border-radius:4px;word-break:break-all}
+.bank-details button{background:rgba(255,255,255,.1);border:none;border-radius:4px;padding:4px 8px;cursor:pointer;font-size:.8rem;transition:background .2s}
+.bank-details button:hover{background:rgba(0,242,255,.2)}
+.note{font-size:.8rem;color:var(--text-dim);margin-top:15px;padding:10px;background:rgba(188,19,254,.08);border-radius:8px;border-left:3px solid var(--purple)}
+.crypto-wallets{margin:15px 0}
+.wallet-option{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:15px;margin-bottom:12px}
+.wallet-option strong{display:block;margin-bottom:8px;font-size:.9rem}
+.wallet-option .copy-text{display:block;font-family:'Courier New',monospace;font-size:.75rem;background:rgba(0,242,255,.1);padding:8px;border-radius:4px;word-break:break-all;margin-bottom:8px}
+.wallet-option button{background:rgba(0,242,255,.15);border:1px solid rgba(0,242,255,.3);border-radius:6px;padding:5px 12px;cursor:pointer;font-size:.8rem;color:var(--cyan);transition:all .2s}
+.wallet-option button:hover{background:rgba(0,242,255,.25)}
+.wallet-address{display:flex;align-items:center;gap:8px}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#0d0d1a;border:1px solid var(--cyan);color:var(--cyan);padding:12px 24px;border-radius:30px;font-size:.85rem;font-weight:600;z-index:2000;opacity:0;pointer-events:none;transition:all .3s}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);animation:toastIn .3s ease-out}
+.toast.success{border-color:#00ff88;color:#00ff88}
+.toast.error{border-color:#ff4444;color:#ff4444}
 </style>
 </head>
 <body>
@@ -109,16 +158,15 @@ footer a{color:var(--cyan);text-decoration:none}
 </section>
 
 <section class="gateways" id="gateways">
-<h2 class="section-title">Pasarelas de Pago</h2>
-<p class="section-subtitle">Paga de forma segura con tu método preferido</p>
+<h2 class="section-title">Pasarelas de Pago Activas</h2>
+<p class="section-subtitle">Paga de forma segura con tu método preferido — 0% comisión</p>
 <div class="gateway-grid">
 <div class="gateway-card"><div class="gateway-icon">💳</div><div class="gateway-name">Vitawallet</div></div>
-<div class="gateway-card"><div class="gateway-icon">₿</div><div class="gateway-name">Binance</div></div>
-<div class="gateway-card"><div class="gateway-icon">🐋</div><div class="gateway-name">Wallbit</div></div>
-<div class="gateway-card"><div class="gateway-icon">🔵</div><div class="gateway-name">Coinbase</div></div>
-<div class="gateway-card"><div class="gateway-icon">🏦</div><div class="gateway-name">OpenPayd</div></div>
-<div class="gateway-card"><div class="gateway-icon">🏛️</div><div class="gateway-name">Lead Bank</div></div>
+<div class="gateway-card"><div class="gateway-icon">₿</div><div class="gateway-name">Binance Pay</div></div>
+<div class="gateway-card"><div class="gateway-icon">🏦</div><div class="gateway-name">Wallbit</div></div>
+<div class="gateway-card"><div class="gateway-icon">🇪🇺</div><div class="gateway-name">SEPA Europa</div></div>
 <div class="gateway-card"><div class="gateway-icon">🇧🇴</div><div class="gateway-name">Banco Bolivia</div></div>
+<div class="gateway-card"><div class="gateway-icon">💰</div><div class="gateway-name">Crypto Directo</div></div>
 </div>
 </section>
 
@@ -133,46 +181,498 @@ footer a{color:var(--cyan);text-decoration:none}
 <p style="margin-top:10px;opacity:.6">Powered by DIHACKTOR-OS-2026 Ecosystem</p>
 </footer>
 
+<!-- ========== CHECKOUT MODAL ========== -->
+<div class="checkout-modal" id="checkout-modal">
+<div class="modal-overlay" onclick="closeCheckout()"></div>
+<div class="modal-content">
+<button class="close-modal" onclick="closeCheckout()">&times;</button>
+<h2>🛒 Finalizar Compra</h2>
+<p class="modal-subtitle">Selecciona tu método de pago preferido</p>
+<div class="checkout-product-info">
+<div class="cp-title" id="checkout-product-title">Producto</div>
+<div class="cp-price" id="checkout-product-price">$6.99 USD</div>
+<div class="cp-id" id="checkout-product-id"></div>
+</div>
+<input type="hidden" id="checkout-product-uid">
+<div class="gateway-section-title">Pasarelas disponibles</div>
+<div id="gateway-buttons"></div>
+</div>
+</div>
+
+<!-- ========== INLINE MODAL (Bank transfers / Crypto) ========== -->
+<div class="inline-modal" id="inline-modal">
+<div class="modal-overlay" onclick="closeInlineModal()"></div>
+<div class="modal-content">
+<button class="close-modal" onclick="closeInlineModal()">&times;</button>
+<div id="inline-modal-content"></div>
+<div style="margin-top:20px;display:flex;gap:10px;justify-content:flex-end">
+<button onclick="closeInlineModal()" style="padding:10px 20px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:transparent;color:var(--text);cursor:pointer">Cerrar</button>
+</div>
+</div>
+</div>
+
+<!-- ========== TOAST NOTIFICATION ========== -->
+<div class="toast" id="toast"></div>
+
+<!-- ========== CHECKOUT SYSTEM JS (INLINE) ========== -->
 <script>
-const PRODUCTS=[{"uid":"4bd7a08e","title":"Maximum AI Agent","category":"IA/Agentes","description":"maximum AI system that automates trading with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"starter","language":"en"},{"uid":"dcaa0c78","title":"Orquestador IA Evolutivo","category":"IA/Agentes","description":"Sistema de IA evolutivo que automatiza agencia con precisión quirúrgica. Incluye prompts listos, workflows documentados ","price":6.99,"level":"ready","language":"es"},{"uid":"74b7cbf2","title":"Agente Predictivo Quantum","category":"IA/Agentes","description":"Sistema de IA quantum que automatiza inventarios con precisión quirúrgica. Incluye prompts listos, workflows documentado","price":6.99,"level":"starter","language":"es"},{"uid":"63bb391b","title":"Brilliant Agent System","category":"IA/Agentes","description":"brilliant AI system that automates operations with surgical precision. Includes ready prompts, documented workflows and ","price":6.99,"level":"ready","language":"en"},{"uid":"1a8d11a4","title":"Sistema Multi-Agente Superior","category":"IA/Agentes","description":"Sistema de IA superior que automatiza salud con precisión quirúrgica. Incluye prompts listos, workflows documentados y c","price":6.99,"level":"pro","language":"es"},{"uid":"c07c65ac","title":"Elite Digital Brain","category":"IA/Agentes","description":"elite AI system that automates inventory with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"pro","language":"en"},{"uid":"e569b017","title":"Bot Next-Gen Inteligente","category":"IA/Agentes","description":"Sistema de IA next-gen que automatiza código con precisión quirúrgica. Incluye prompts listos, workflows documentados y ","price":6.99,"level":"apex","language":"es"},{"uid":"da691220","title":"Advanced Conversational AI","category":"IA/Agentes","description":"advanced AI system that automates events with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"pro","language":"en"},{"uid":"bdec8f74","title":"Rapid Multichannel AI","category":"IA/Agentes","description":"rapid AI system that automates sales with surgical precision. Includes ready prompts, documented workflows and real case","price":6.99,"level":"pro","language":"en"},{"uid":"038a1c32","title":"Supreme Agent System","category":"IA/Agentes","description":"supreme AI system that automates content with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"ready","language":"en"},{"uid":"89130bcc","title":"IA Conversacional Pro","category":"IA/Agentes","description":"Sistema de IA pro que automatiza salud con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos ","price":6.99,"level":"starter","language":"es"},{"uid":"6f7c9b61","title":"Copiloto IA para Contenido","category":"IA/Agentes","description":"Sistema de IA smart que automatiza contenido con precisión quirúrgica. Incluye prompts listos, workflows documentados y ","price":6.99,"level":"apex","language":"es"},{"uid":"4855aa54","title":"Bot Ultra-Rápido Inteligente","category":"IA/Agentes","description":"Sistema de IA ultra-rápido que automatiza finanzas con precisión quirúrgica. Incluye prompts listos, workflows documenta","price":6.99,"level":"ready","language":"es"},{"uid":"4834cb78","title":"Next-Gen Digital Brain","category":"IA/Agentes","description":"next-gen AI system that automates finance with surgical precision. Includes ready prompts, documented workflows and real","price":6.99,"level":"ready","language":"en"},{"uid":"c7800f9e","title":"Sistema Multi-Agente Imparable","category":"IA/Agentes","description":"Sistema de IA imparable que automatiza investigación con precisión quirúrgica. Incluye prompts listos, workflows documen","price":6.99,"level":"apex","language":"es"},{"uid":"131e10d1","title":"Turbo Smart Bot","category":"IA/Agentes","description":"turbo AI system that automates analytics with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"ready","language":"en"},{"uid":"eda7d6a1","title":"Agente de Decisiones Brillante","category":"IA/Agentes","description":"Sistema de IA brillante que automatiza soporte con precisión quirúrgica. Incluye prompts listos, workflows documentados ","price":6.99,"level":"pro","language":"es"},{"uid":"c69c1220","title":"AI Email Agent","category":"IA/Agentes","description":"global AI system that automates email with surgical precision. Includes ready prompts, documented workflows and real cas","price":6.99,"level":"starter","language":"en"},{"uid":"63d8ee7a","title":"Agente Predictivo Mega","category":"IA/Agentes","description":"Sistema de IA mega que automatiza trading con precisión quirúrgica. Incluye prompts listos, workflows documentados y cas","price":6.99,"level":"pro","language":"es"},{"uid":"3c5a3873","title":"Asistente IA Dinámico","category":"IA/Agentes","description":"Sistema de IA dinámico que automatiza código con precisión quirúrgica. Incluye prompts listos, workflows documentados y ","price":6.99,"level":"ready","language":"es"},{"uid":"41a99340","title":"Ultra Smart Bot","category":"IA/Agentes","description":"ultra AI system that automates crm with surgical precision. Includes ready prompts, documented workflows and real cases ","price":6.99,"level":"starter","language":"en"},{"uid":"17f1a5a2","title":"Elite Decision Agent","category":"IA/Agentes","description":"elite AI system that automates onboarding with surgical precision. Includes ready prompts, documented workflows and real","price":6.99,"level":"starter","language":"en"},{"uid":"b755d5e0","title":"Premium Multimodal Agent","category":"IA/Agentes","description":"premium AI system that automates design with surgical precision. Includes ready prompts, documented workflows and real c","price":6.99,"level":"pro","language":"en"},{"uid":"e9b55080","title":"Orquestador IA Cyber","category":"IA/Agentes","description":"Sistema de IA cyber que automatiza erp con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos ","price":6.99,"level":"ready","language":"es"},{"uid":"3328b4b1","title":"Neo Multichannel AI","category":"IA/Agentes","description":"neo AI system that automates marketing with surgical precision. Includes ready prompts, documented workflows and real ca","price":6.99,"level":"starter","language":"en"},{"uid":"ffa70bf8","title":"Agente de Facturación Autónomo","category":"IA/Agentes","description":"Sistema de IA next-gen que automatiza facturación con precisión quirúrgica. Incluye prompts listos, workflows documentad","price":6.99,"level":"starter","language":"es"},{"uid":"b821ceec","title":"Ultimate AI Assistant","category":"IA/Agentes","description":"ultimate AI system that automates deploy with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"ready","language":"en"},{"uid":"f4f85c2d","title":"Ultimate AI Agent","category":"IA/Agentes","description":"ultimate AI system that automates events with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"pro","language":"en"},{"uid":"250724be","title":"Agente de RRHH Autónomo","category":"IA/Agentes","description":"Sistema de IA fusion que automatiza rrhh con precisión quirúrgica. Incluye prompts listos, workflows documentados y caso","price":6.99,"level":"starter","language":"es"},{"uid":"e9af1b1e","title":"Agente de Decisiones Power","category":"IA/Agentes","description":"Sistema de IA power que automatiza facturación con precisión quirúrgica. Incluye prompts listos, workflows documentados ","price":6.99,"level":"starter","language":"es"},{"uid":"280ce6b0","title":"Supreme Digital Brain","category":"IA/Agentes","description":"supreme AI system that automates research with surgical precision. Includes ready prompts, documented workflows and real","price":6.99,"level":"apex","language":"en"},{"uid":"fab1a613","title":"Autonomous Trading Agent","category":"IA/Agentes","description":"evolutionary AI system that automates trading with surgical precision. Includes ready prompts, documented workflows and ","price":6.99,"level":"ready","language":"en"},{"uid":"e8db8245","title":"Framework de Agentes Smart","category":"IA/Agentes","description":"Sistema de IA smart que automatiza legal con precisión quirúrgica. Incluye prompts listos, workflows documentados y caso","price":6.99,"level":"apex","language":"es"},{"uid":"a470665b","title":"Omega Decision Agent","category":"IA/Agentes","description":"omega AI system that automates analytics with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"ready","language":"en"},{"uid":"f9fff239","title":"Premium Multi-Agent System","category":"IA/Agentes","description":"premium AI system that automates research with surgical precision. Includes ready prompts, documented workflows and real","price":6.99,"level":"starter","language":"en"},{"uid":"856fec52","title":"IA Conversacional Fusion","category":"IA/Agentes","description":"Sistema de IA fusion que automatiza facturación con precisión quirúrgica. Incluye prompts listos, workflows documentados","price":6.99,"level":"starter","language":"es"},{"uid":"23db76fb","title":"AI Engine for Trading","category":"IA/Agentes","description":"elite AI system that automates trading with surgical precision. Includes ready prompts, documented workflows and real ca","price":6.99,"level":"ready","language":"en"},{"uid":"e5c03d92","title":"AI Consulting Agent","category":"IA/Agentes","description":"omega AI system that automates consulting with surgical precision. Includes ready prompts, documented workflows and real","price":6.99,"level":"ready","language":"en"},{"uid":"3e991bae","title":"Agente de Automatización Neo","category":"IA/Agentes","description":"Sistema de IA neo que automatiza legal con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos ","price":6.99,"level":"starter","language":"es"},{"uid":"b69dcbe1","title":"Universal Multichannel AI","category":"IA/Agentes","description":"universal AI system that automates research with surgical precision. Includes ready prompts, documented workflows and re","price":6.99,"level":"starter","language":"en"},{"uid":"eae04038","title":"IA Conversacional Premium","category":"IA/Agentes","description":"Sistema de IA premium que automatiza reportes con precisión quirúrgica. Incluye prompts listos, workflows documentados y","price":6.99,"level":"pro","language":"es"},{"uid":"cf128eec","title":"IA Brillante Multicanal","category":"IA/Agentes","description":"Sistema de IA brillante que automatiza análisis con precisión quirúrgica. Incluye prompts listos, workflows documentados","price":6.99,"level":"pro","language":"es"},{"uid":"b81ee695","title":"Cyber Predictive Agent","category":"IA/Agentes","description":"cyber AI system that automates crm with surgical precision. Includes ready prompts, documented workflows and real cases ","price":6.99,"level":"ready","language":"en"},{"uid":"667ac086","title":"Smart Agent Network","category":"IA/Agentes","description":"smart AI system that automates education with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"pro","language":"en"},{"uid":"5c02c457","title":"Agente Evolutivo de IA","category":"IA/Agentes","description":"Sistema de IA evolutivo que automatiza contenido con precisión quirúrgica. Incluye prompts listos, workflows documentado","price":6.99,"level":"pro","language":"es"},{"uid":"50f833de","title":"Cerebro Digital Fusion","category":"IA/Agentes","description":"Sistema de IA fusion que automatiza diseño con precisión quirúrgica. Incluye prompts listos, workflows documentados y ca","price":6.99,"level":"starter","language":"es"},{"uid":"d8a24c5b","title":"AI Trading Agent","category":"IA/Agentes","description":"hyper AI system that automates trading with surgical precision. Includes ready prompts, documented workflows and real ca","price":6.99,"level":"apex","language":"en"},{"uid":"64f55c0b","title":"Aggressive AI Assistant","category":"IA/Agentes","description":"aggressive AI system that automates education with surgical precision. Includes ready prompts, documented workflows and ","price":6.99,"level":"starter","language":"en"},{"uid":"2ed93f23","title":"Agente de Investigación con IA","category":"IA/Agentes","description":"Sistema de IA máximo que automatiza investigación con precisión quirúrgica. Incluye prompts listos, workflows documentad","price":6.99,"level":"apex","language":"es"},{"uid":"c5a46632","title":"Turbo Agent System","category":"IA/Agentes","description":"turbo AI system that automates data with surgical precision. Includes ready prompts, documented workflows and real cases","price":6.99,"level":"starter","language":"en"},{"uid":"817dc5ad","title":"Fusion Automation Agent","category":"IA/Agentes","description":"fusion AI system that automates inventory with surgical precision. Includes ready prompts, documented workflows and real","price":6.99,"level":"starter","language":"en"},{"uid":"b7b37b03","title":"Cyber Agent Network","category":"IA/Agentes","description":"cyber AI system that automates reporting with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"pro","language":"en"},{"uid":"dcf17aa3","title":"Sistema Multi-Agente Dinámico","category":"IA/Agentes","description":"Sistema de IA dinámico que automatiza soporte con precisión quirúrgica. Incluye prompts listos, workflows documentados y","price":6.99,"level":"pro","language":"es"},{"uid":"7499e8ad","title":"Bot Power Inteligente","category":"IA/Agentes","description":"Sistema de IA power que automatiza logística con precisión quirúrgica. Incluye prompts listos, workflows documentados y ","price":6.99,"level":"ready","language":"es"},{"uid":"c4699b84","title":"Agente Dinámico de IA","category":"IA/Agentes","description":"Sistema de IA dinámico que automatiza agencia con precisión quirúrgica. Incluye prompts listos, workflows documentados y","price":6.99,"level":"apex","language":"es"},{"uid":"d9ebe984","title":"Phoenix Advanced Chatbot","category":"IA/Agentes","description":"phoenix AI system that automates analytics with surgical precision. Includes ready prompts, documented workflows and rea","price":6.99,"level":"ready","language":"en"},{"uid":"e697848b","title":"Neo Automation Agent","category":"IA/Agentes","description":"neo AI system that automates deploy with surgical precision. Includes ready prompts, documented workflows and real cases","price":6.99,"level":"pro","language":"en"},{"uid":"84cfa27e","title":"Global Multi-Agent System","category":"IA/Agentes","description":"global AI system that automates email with surgical precision. Includes ready prompts, documented workflows and real cas","price":6.99,"level":"apex","language":"en"},{"uid":"86782085","title":"Evolutionary Agent Framework","category":"IA/Agentes","description":"evolutionary AI system that automates support with surgical precision. Includes ready prompts, documented workflows and ","price":6.99,"level":"starter","language":"en"},{"uid":"bb452535","title":"Titan Conversational AI","category":"IA/Agentes","description":"titan AI system that automates hr with surgical precision. Includes ready prompts, documented workflows and real cases v","price":6.99,"level":"apex","language":"en"},{"uid":"bd5ab0a8","title":"Asistente IA Ultra-Rápido","category":"IA/Agentes","description":"Sistema de IA ultra-rápido que automatiza coaching con precisión quirúrgica. Incluye prompts listos, workflows documenta","price":6.99,"level":"starter","language":"es"},{"uid":"65808933","title":"Premium Agent Network","category":"IA/Agentes","description":"premium AI system that automates design with surgical precision. Includes ready prompts, documented workflows and real c","price":6.99,"level":"apex","language":"en"},{"uid":"85eb80b1","title":"Infinite Digital Brain","category":"IA/Agentes","description":"infinite AI system that automates data with surgical precision. Includes ready prompts, documented workflows and real ca","price":6.99,"level":"apex","language":"en"},{"uid":"9047386c","title":"Agente de Decisiones Quantum","category":"IA/Agentes","description":"Sistema de IA quantum que automatiza eventos con precisión quirúrgica. Incluye prompts listos, workflows documentados y ","price":6.99,"level":"apex","language":"es"},{"uid":"e167ffa5","title":"Brilliant Predictive Agent","category":"IA/Agentes","description":"brilliant AI system that automates commerce with surgical precision. Includes ready prompts, documented workflows and re","price":6.99,"level":"starter","language":"en"},{"uid":"890ecc92","title":"Phoenix Conversational AI","category":"IA/Agentes","description":"phoenix AI system that automates design with surgical precision. Includes ready prompts, documented workflows and real c","price":6.99,"level":"pro","language":"en"},{"uid":"70e86c7f","title":"Asistente IA Cyber","category":"IA/Agentes","description":"Sistema de IA cyber que automatiza legal con precisión quirúrgica. Incluye prompts listos, workflows documentados y caso","price":6.99,"level":"apex","language":"es"},{"uid":"b449ea50","title":"Omega Advanced Chatbot","category":"IA/Agentes","description":"omega AI system that automates logistics with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"ready","language":"en"},{"uid":"2f35cc6c","title":"Bot Quantum Inteligente","category":"IA/Agentes","description":"Sistema de IA quantum que automatiza redes sociales con precisión quirúrgica. Incluye prompts listos, workflows document","price":6.99,"level":"ready","language":"es"},{"uid":"398b0a66","title":"Copiloto IA para Reservas","category":"IA/Agentes","description":"Sistema de IA omega que automatiza reservas con precisión quirúrgica. Incluye prompts listos, workflows documentados y c","price":6.99,"level":"ready","language":"es"},{"uid":"43ebdca5","title":"Asistente IA Cyber","category":"IA/Agentes","description":"Sistema de IA cyber que automatiza rrhh con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos","price":6.99,"level":"pro","language":"es"},{"uid":"4c3d83c5","title":"Neo Multimodal Agent","category":"IA/Agentes","description":"neo AI system that automates code with surgical precision. Includes ready prompts, documented workflows and real cases v","price":6.99,"level":"pro","language":"en"},{"uid":"c71bb464","title":"Fusion Multimodal Agent","category":"IA/Agentes","description":"fusion AI system that automates marketing with surgical precision. Includes ready prompts, documented workflows and real","price":6.99,"level":"starter","language":"en"},{"uid":"cc3bc9b0","title":"Dynamic Digital Brain","category":"IA/Agentes","description":"dynamic AI system that automates health with surgical precision. Includes ready prompts, documented workflows and real c","price":6.99,"level":"apex","language":"en"},{"uid":"8152bd23","title":"AI Copilot for Legal","category":"IA/Agentes","description":"digital AI system that automates legal with surgical precision. Includes ready prompts, documented workflows and real ca","price":6.99,"level":"ready","language":"en"},{"uid":"145b8d5d","title":"Motor de IA para Operaciones","category":"IA/Agentes","description":"Sistema de IA titan que automatiza operaciones con precisión quirúrgica. Incluye prompts listos, workflows documentados ","price":6.99,"level":"apex","language":"es"},{"uid":"799189a5","title":"Cyber Conversational AI","category":"IA/Agentes","description":"cyber AI system that automates email with surgical precision. Includes ready prompts, documented workflows and real case","price":6.99,"level":"starter","language":"en"},{"uid":"87dccfa0","title":"Supreme Predictive Agent","category":"IA/Agentes","description":"supreme AI system that automates finance with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"starter","language":"en"},{"uid":"5818d520","title":"Copiloto IA para Operaciones","category":"IA/Agentes","description":"Sistema de IA agresivo que automatiza operaciones con precisión quirúrgica. Incluye prompts listos, workflows documentad","price":6.99,"level":"apex","language":"es"},{"uid":"403812b8","title":"AI ERP Agent","category":"IA/Agentes","description":"neo AI system that automates erp with surgical precision. Includes ready prompts, documented workflows and real cases va","price":6.99,"level":"apex","language":"en"},{"uid":"4e0c5abd","title":"Agente de Automatización Cyber","category":"IA/Agentes","description":"Sistema de IA cyber que automatiza crm con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos ","price":6.99,"level":"starter","language":"es"},{"uid":"14b2eaa7","title":"Agente de Automatización Global","category":"IA/Agentes","description":"Sistema de IA global que automatiza coaching con precisión quirúrgica. Incluye prompts listos, workflows documentados y ","price":6.99,"level":"pro","language":"es"},{"uid":"93088076","title":"Motor de IA para Ventas","category":"IA/Agentes","description":"Sistema de IA turbo que automatiza ventas con precisión quirúrgica. Incluye prompts listos, workflows documentados y cas","price":6.99,"level":"pro","language":"es"},{"uid":"38d52a53","title":"Agente Multimodal Universal","category":"IA/Agentes","description":"Sistema de IA universal que automatiza erp con precisión quirúrgica. Incluye prompts listos, workflows documentados y ca","price":6.99,"level":"apex","language":"es"},{"uid":"d8d384ed","title":"Infinite Automation Agent","category":"IA/Agentes","description":"infinite AI system that automates community with surgical precision. Includes ready prompts, documented workflows and re","price":6.99,"level":"apex","language":"en"},{"uid":"c23cc7a7","title":"Ultimate Multi-Agent System","category":"IA/Agentes","description":"ultimate AI system that automates crm with surgical precision. Includes ready prompts, documented workflows and real cas","price":6.99,"level":"starter","language":"en"},{"uid":"da791d83","title":"Red de Agentes Supremo","category":"IA/Agentes","description":"Sistema de IA supremo que automatiza legal con precisión quirúrgica. Incluye prompts listos, workflows documentados y ca","price":6.99,"level":"pro","language":"es"},{"uid":"e3d7a068","title":"Turbo Decision Agent","category":"IA/Agentes","description":"turbo AI system that automates erp with surgical precision. Includes ready prompts, documented workflows and real cases ","price":6.99,"level":"apex","language":"en"},{"uid":"c4e67b07","title":"Dynamic Agent System","category":"IA/Agentes","description":"dynamic AI system that automates billing with surgical precision. Includes ready prompts, documented workflows and real ","price":6.99,"level":"ready","language":"en"},{"uid":"2e791549","title":"IA Conversacional Hyper","category":"IA/Agentes","description":"Sistema de IA hyper que automatiza deploy con precisión quirúrgica. Incluye prompts listos, workflows documentados y cas","price":6.99,"level":"apex","language":"es"},{"uid":"5ea3a08d","title":"IA Conversacional Turbo","category":"IA/Agentes","description":"Sistema de IA turbo que automatiza crm con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos ","price":6.99,"level":"pro","language":"es"},{"uid":"76e2c224","title":"Sistema Multi-Agente Avanzado","category":"IA/Agentes","description":"Sistema de IA avanzado que automatiza rrhh con precisión quirúrgica. Incluye prompts listos, workflows documentados y ca","price":6.99,"level":"starter","language":"es"},{"uid":"4025ddd7","title":"Copiloto IA para Salud","category":"IA/Agentes","description":"Sistema de IA power que automatiza salud con precisión quirúrgica. Incluye prompts listos, workflows documentados y caso","price":6.99,"level":"starter","language":"es"},{"uid":"976d622f","title":"Motor de IA para Coaching","category":"IA/Agentes","description":"Sistema de IA elite que automatiza coaching con precisión quirúrgica. Incluye prompts listos, workflows documentados y c","price":6.99,"level":"apex","language":"es"},{"uid":"69ef3aec","title":"Orquestador IA Neo","category":"IA/Agentes","description":"Sistema de IA neo que automatiza coaching con precisión quirúrgica. Incluye prompts listos, workflows documentados y cas","price":6.99,"level":"apex","language":"es"},{"uid":"b0534ef9","title":"Next-Gen Predictive Agent","category":"IA/Agentes","description":"next-gen AI system that automates community with surgical precision. Includes ready prompts, documented workflows and re","price":6.99,"level":"pro","language":"en"},{"uid":"568e2f68","title":"Agente Omega de IA","category":"IA/Agentes","description":"Sistema de IA omega que automatiza finanzas con precisión quirúrgica. Incluye prompts listos, workflows documentados y c","price":6.99,"level":"pro","language":"es"},{"uid":"8b371e77","title":"Agente de Contenido con IA","category":"IA/Agentes","description":"Sistema de IA digital que automatiza contenido con precisión quirúrgica. Incluye prompts listos, workflows documentados ","price":6.99,"level":"starter","language":"es"},{"uid":"daeb22d2","title":"Ultimate Multimodal Agent","category":"IA/Agentes","description":"ultimate AI system that automates community with surgical precision. Includes ready prompts, documented workflows and re","price":6.99,"level":"apex","language":"en"},{"uid":"8a047604","title":"Unstoppable Decision Agent","category":"IA/Agentes","description":"unstoppable AI system that automates code with surgical precision. Includes ready prompts, documented workflows and real","price":6.99,"level":"ready","language":"en"},{"uid":"21b033eb","title":"Unstoppable Sales System","category":"Marketing Digital","description":"brutal digital marketing system based on Hormozi & Brunson methodologies. Generates qualified sales, converts visitors, ","price":6.99,"level":"pro","language":"en"},{"uid":"7e86fadc","title":"Next-Gen Community Strategy","category":"Marketing Digital","description":"next-gen digital marketing system based on Hormozi & Brunson methodologies. Generates qualified community, converts visi","price":6.99,"level":"pro","language":"en"},{"uid":"72c36a7a","title":"Método de Contenido Quantum","category":"Marketing Digital","description":"Sistema quantum de marketing digital basado en Hormozi y Brunson. Genera contenido cualificado, convierte visitantes y e","price":6.99,"level":"ready","language":"es"},{"uid":"cd72e79b","title":"Unstoppable WhatsApp System","category":"Marketing Digital","description":"scalable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified whatsapp, converts visit","price":6.99,"level":"pro","language":"en"},{"uid":"a34ab58a","title":"Motor de Webinars Automatizado","category":"Marketing Digital","description":"Sistema automatizado de marketing digital basado en Hormozi y Brunson. Genera webinars cualificado, convierte visitantes","price":6.99,"level":"apex","language":"es"},{"uid":"efffd15e","title":"Método de TikTok Brutal","category":"Marketing Digital","description":"Sistema brutal de marketing digital basado en Hormozi y Brunson. Genera tiktok cualificado, convierte visitantes y escal","price":6.99,"level":"pro","language":"es"},{"uid":"6c232487","title":"Estrategia Viral de UGC","category":"Marketing Digital","description":"Sistema viral de marketing digital basado en Hormozi y Brunson. Genera ugc cualificado, convierte visitantes y escala in","price":6.99,"level":"apex","language":"es"},{"uid":"dd2287d1","title":"Sistema Generador de Marketing","category":"Marketing Digital","description":"Sistema generador de marketing digital basado en Hormozi y Brunson. Genera social media cualificado, convierte visitante","price":6.99,"level":"ready","language":"es"},{"uid":"5b6c3021","title":"Profitable Engagement Engine","category":"Marketing Digital","description":"profitable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified engagement, converts v","price":6.99,"level":"pro","language":"en"},{"uid":"43457a83","title":"Palanca de Conversión Brutal","category":"Marketing Digital","description":"Sistema brutal de marketing digital basado en Hormozi y Brunson. Genera conversión cualificado, convierte visitantes y e","price":6.99,"level":"pro","language":"es"},{"uid":"24c36026","title":"Turbo LinkedIn Funnel","category":"Marketing Digital","description":"turbo digital marketing system based on Hormozi & Brunson methodologies. Generates qualified linkedin, converts visitors","price":6.99,"level":"pro","language":"en"},{"uid":"e64b941e","title":"Motor de Facebook Ads Magnetic","category":"Marketing Digital","description":"Sistema magnetic de marketing digital basado en Hormozi y Brunson. Genera facebook ads cualificado, convierte visitantes","price":6.99,"level":"ready","language":"es"},{"uid":"6224cfe4","title":"Máquina de TikTok Ilimitado","category":"Marketing Digital","description":"Sistema ilimitado de marketing digital basado en Hormozi y Brunson. Genera tiktok cualificado, convierte visitantes y es","price":6.99,"level":"apex","language":"es"},{"uid":"49b9fc40","title":"Máquina de Comunidad Imparable","category":"Marketing Digital","description":"Sistema imán de clientes de marketing digital basado en Hormozi y Brunson. Genera comunidad cualificado, convierte visit","price":6.99,"level":"starter","language":"es"},{"uid":"1920aea7","title":"Protocolo de Upsell Rentable","category":"Marketing Digital","description":"Sistema rentable de marketing digital basado en Hormozi y Brunson. Genera upsell cualificado, convierte visitantes y esc","price":6.99,"level":"pro","language":"es"},{"uid":"e8e0fe5d","title":"Magnet Community Method","category":"Marketing Digital","description":"magnet digital marketing system based on Hormozi & Brunson methodologies. Generates qualified community, converts visito","price":6.99,"level":"pro","language":"en"},{"uid":"d1ecf319","title":"Automated Launch Code","category":"Marketing Digital","description":"automated digital marketing system based on Hormozi & Brunson methodologies. Generates qualified launch, converts visito","price":6.99,"level":"pro","language":"en"},{"uid":"abac4463","title":"Framework de Engagement Agresivo","category":"Marketing Digital","description":"Sistema agresivo de marketing digital basado en Hormozi y Brunson. Genera engagement cualificado, convierte visitantes y","price":6.99,"level":"ready","language":"es"},{"uid":"1137a276","title":"Motor de Afiliados Magnetic","category":"Marketing Digital","description":"Sistema magnetic de marketing digital basado en Hormozi y Brunson. Genera afiliados cualificado, convierte visitantes y ","price":6.99,"level":"pro","language":"es"},{"uid":"e66775d5","title":"Método de Instagram Next-Gen","category":"Marketing Digital","description":"Sistema next-gen de marketing digital basado en Hormozi y Brunson. Genera instagram cualificado, convierte visitantes y ","price":6.99,"level":"apex","language":"es"},{"uid":"4a3ed43b","title":"Magnet LinkedIn Blueprint","category":"Marketing Digital","description":"magnet digital marketing system based on Hormozi & Brunson methodologies. Generates qualified linkedin, converts visitor","price":6.99,"level":"apex","language":"en"},{"uid":"e388c283","title":"Profitable Traffic Lever","category":"Marketing Digital","description":"profitable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified traffic, converts visi","price":6.99,"level":"ready","language":"en"},{"uid":"73366bc7","title":"Method Lead-Generating for Reputation","category":"Marketing Digital","description":"lead-generating digital marketing system based on Hormozi & Brunson methodologies. Generates qualified reputation, conve","price":6.99,"level":"apex","language":"en"},{"uid":"1bb200ac","title":"Magnetic Traffic Lever","category":"Marketing Digital","description":"magnetic digital marketing system based on Hormozi & Brunson methodologies. Generates qualified traffic, converts visito","price":6.99,"level":"pro","language":"en"},{"uid":"4ecc5aaa","title":"Aggressive YouTube Funnel","category":"Marketing Digital","description":"aggressive digital marketing system based on Hormozi & Brunson methodologies. Generates qualified youtube, converts visi","price":6.99,"level":"apex","language":"en"},{"uid":"3fdc31aa","title":"Lead-Generating Retention System","category":"Marketing Digital","description":"lead-generating digital marketing system based on Hormozi & Brunson methodologies. Generates qualified retention, conver","price":6.99,"level":"starter","language":"en"},{"uid":"6bff4663","title":"Viral Community Protocol","category":"Marketing Digital","description":"viral digital marketing system based on Hormozi & Brunson methodologies. Generates qualified community, converts visitor","price":6.99,"level":"apex","language":"en"},{"uid":"0a378370","title":"Surgical Marketing System","category":"Marketing Digital","description":"surgical digital marketing system based on Hormozi & Brunson methodologies. Generates qualified sms, converts visitors, ","price":6.99,"level":"pro","language":"en"},{"uid":"718ac173","title":"Method Lead-Generating for Retention","category":"Marketing Digital","description":"lead-generating digital marketing system based on Hormozi & Brunson methodologies. Generates qualified retention, conver","price":6.99,"level":"pro","language":"en"},{"uid":"e227ae8b","title":"Motor de Podcast Brutal","category":"Marketing Digital","description":"Sistema brutal de marketing digital basado en Hormozi y Brunson. Genera podcast cualificado, convierte visitantes y esca","price":6.99,"level":"apex","language":"es"},{"uid":"b1da2c11","title":"Profitable Podcast Machine","category":"Marketing Digital","description":"profitable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified podcast, converts visi","price":6.99,"level":"ready","language":"en"},{"uid":"586a3221","title":"Framework de Webinars Generador","category":"Marketing Digital","description":"Sistema generador de marketing digital basado en Hormozi y Brunson. Genera webinars cualificado, convierte visitantes y ","price":6.99,"level":"starter","language":"es"},{"uid":"bdd9ed63","title":"Plan de Afiliados Explosivo","category":"Marketing Digital","description":"Sistema explosivo de marketing digital basado en Hormozi y Brunson. Genera afiliados cualificado, convierte visitantes y","price":6.99,"level":"ready","language":"es"},{"uid":"ec27d337","title":"Unstoppable UGC Machine","category":"Marketing Digital","description":"quantum digital marketing system based on Hormozi & Brunson methodologies. Generates qualified ugc, converts visitors, a","price":6.99,"level":"starter","language":"en"},{"uid":"619d8824","title":"Sistema Masivo de Marketing","category":"Marketing Digital","description":"Sistema masivo de marketing digital basado en Hormozi y Brunson. Genera podcast cualificado, convierte visitantes y esca","price":6.99,"level":"apex","language":"es"},{"uid":"035966a7","title":"Aggressive UGC Funnel","category":"Marketing Digital","description":"aggressive digital marketing system based on Hormozi & Brunson methodologies. Generates qualified ugc, converts visitors","price":6.99,"level":"pro","language":"en"},{"uid":"5f885cd9","title":"Automated Upsell Lever","category":"Marketing Digital","description":"automated digital marketing system based on Hormozi & Brunson methodologies. Generates qualified upsell, converts visito","price":6.99,"level":"starter","language":"en"},{"uid":"805e5336","title":"Protocolo de Storytelling Inteligente","category":"Marketing Digital","description":"Sistema inteligente de marketing digital basado en Hormozi y Brunson. Genera storytelling cualificado, convierte visitan","price":6.99,"level":"starter","language":"es"},{"uid":"cf655a54","title":"Sistema de Crecimiento Agresivo","category":"Marketing Digital","description":"Sistema agresivo de marketing digital basado en Hormozi y Brunson. Genera youtube cualificado, convierte visitantes y es","price":6.99,"level":"pro","language":"es"},{"uid":"971b1640","title":"Máquina de Storytelling Imparable","category":"Marketing Digital","description":"Sistema quirúrgico de marketing digital basado en Hormozi y Brunson. Genera storytelling cualificado, convierte visitant","price":6.99,"level":"apex","language":"es"},{"uid":"7627b3c3","title":"Máquina de Email Imparable","category":"Marketing Digital","description":"Sistema rápido de marketing digital basado en Hormozi y Brunson. Genera email cualificado, convierte visitantes y escala","price":6.99,"level":"starter","language":"es"},{"uid":"1d818ce9","title":"Unstoppable Reputation Machine","category":"Marketing Digital","description":"intelligent digital marketing system based on Hormozi & Brunson methodologies. Generates qualified reputation, converts ","price":6.99,"level":"ready","language":"en"},{"uid":"f47fe3c3","title":"Surgical Traffic Machine","category":"Marketing Digital","description":"surgical digital marketing system based on Hormozi & Brunson methodologies. Generates qualified traffic, converts visito","price":6.99,"level":"pro","language":"en"},{"uid":"256b9ede","title":"Motor de Email Masivo","category":"Marketing Digital","description":"Sistema masivo de marketing digital basado en Hormozi y Brunson. Genera email cualificado, convierte visitantes y escala","price":6.99,"level":"starter","language":"es"},{"uid":"6a4fd928","title":"Unstoppable WhatsApp Machine","category":"Marketing Digital","description":"scalable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified whatsapp, converts visit","price":6.99,"level":"ready","language":"en"},{"uid":"77aaaaee","title":"Sistema de SEO Exponencial","category":"Marketing Digital","description":"Sistema exponencial de marketing digital basado en Hormozi y Brunson. Genera seo cualificado, convierte visitantes y esc","price":6.99,"level":"apex","language":"es"},{"uid":"323af315","title":"Blueprint de SMS Ultra","category":"Marketing Digital","description":"Sistema ultra de marketing digital basado en Hormozi y Brunson. Genera sms cualificado, convierte visitantes y escala in","price":6.99,"level":"pro","language":"es"},{"uid":"569a4aee","title":"Exponential TikTok Funnel","category":"Marketing Digital","description":"exponential digital marketing system based on Hormozi & Brunson methodologies. Generates qualified tiktok, converts visi","price":6.99,"level":"pro","language":"en"},{"uid":"4bfcb92d","title":"Brutal Retention Framework","category":"Marketing Digital","description":"brutal digital marketing system based on Hormozi & Brunson methodologies. Generates qualified retention, converts visito","price":6.99,"level":"pro","language":"en"},{"uid":"c94b28a6","title":"Protocolo de SMS De Alto Impacto","category":"Marketing Digital","description":"Sistema de alto impacto de marketing digital basado en Hormozi y Brunson. Genera sms cualificado, convierte visitantes y","price":6.99,"level":"starter","language":"es"},{"uid":"bf3db43b","title":"Máquina de SMS Inteligente","category":"Marketing Digital","description":"Sistema inteligente de marketing digital basado en Hormozi y Brunson. Genera sms cualificado, convierte visitantes y esc","price":6.99,"level":"ready","language":"es"},{"uid":"d0417b3d","title":"Unstoppable Social Media Machine","category":"Marketing Digital","description":"unstoppable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified social media, convert","price":6.99,"level":"apex","language":"en"},{"uid":"b63a26eb","title":"Quantum Storytelling Strategy","category":"Marketing Digital","description":"quantum digital marketing system based on Hormozi & Brunson methodologies. Generates qualified storytelling, converts vi","price":6.99,"level":"ready","language":"en"},{"uid":"587a07ed","title":"High-Impact Google Ads Engine","category":"Marketing Digital","description":"high-impact digital marketing system based on Hormozi & Brunson methodologies. Generates qualified google ads, converts ","price":6.99,"level":"pro","language":"en"},{"uid":"62ec2378","title":"Explosive Google Ads Plan","category":"Marketing Digital","description":"explosive digital marketing system based on Hormozi & Brunson methodologies. Generates qualified google ads, converts vi","price":6.99,"level":"ready","language":"en"},{"uid":"27422037","title":"Máquina de Reputación Imparable","category":"Marketing Digital","description":"Sistema imán de clientes de marketing digital basado en Hormozi y Brunson. Genera reputación cualificado, convierte visi","price":6.99,"level":"apex","language":"es"},{"uid":"b7a38e35","title":"Aggressive Podcast Protocol","category":"Marketing Digital","description":"aggressive digital marketing system based on Hormozi & Brunson methodologies. Generates qualified podcast, converts visi","price":6.99,"level":"starter","language":"en"},{"uid":"720e81b3","title":"Plan de SEO Explosivo","category":"Marketing Digital","description":"Sistema explosivo de marketing digital basado en Hormozi y Brunson. Genera seo cualificado, convierte visitantes y escal","price":6.99,"level":"apex","language":"es"},{"uid":"e343519a","title":"Method Brutal for TikTok","category":"Marketing Digital","description":"brutal digital marketing system based on Hormozi & Brunson methodologies. Generates qualified tiktok, converts visitors,","price":6.99,"level":"starter","language":"en"},{"uid":"d21f4c90","title":"Method Profitable for Google Ads","category":"Marketing Digital","description":"profitable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified google ads, converts v","price":6.99,"level":"apex","language":"en"},{"uid":"4c5f173d","title":"Scalable YouTube Machine","category":"Marketing Digital","description":"scalable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified youtube, converts visito","price":6.99,"level":"starter","language":"en"},{"uid":"140b6179","title":"Unstoppable Webinars Protocol","category":"Marketing Digital","description":"unstoppable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified webinars, converts vi","price":6.99,"level":"pro","language":"en"},{"uid":"c67afb70","title":"Palanca de TikTok Ilimitado","category":"Marketing Digital","description":"Sistema ilimitado de marketing digital basado en Hormozi y Brunson. Genera tiktok cualificado, convierte visitantes y es","price":6.99,"level":"apex","language":"es"},{"uid":"6a2e41d6","title":"Viral Conversion Engine","category":"Marketing Digital","description":"viral digital marketing system based on Hormozi & Brunson methodologies. Generates qualified conversion, converts visito","price":6.99,"level":"pro","language":"en"},{"uid":"27468176","title":"Surgical Facebook Ads Strategy","category":"Marketing Digital","description":"surgical digital marketing system based on Hormozi & Brunson methodologies. Generates qualified facebook ads, converts v","price":6.99,"level":"starter","language":"en"},{"uid":"bae277aa","title":"Plan de YouTube Turbinado","category":"Marketing Digital","description":"Sistema turbinado de marketing digital basado en Hormozi y Brunson. Genera youtube cualificado, convierte visitantes y e","price":6.99,"level":"pro","language":"es"},{"uid":"8465b566","title":"Máquina de Upsell Imparable","category":"Marketing Digital","description":"Sistema brutal de marketing digital basado en Hormozi y Brunson. Genera upsell cualificado, convierte visitantes y escal","price":6.99,"level":"pro","language":"es"},{"uid":"ae4f4e7f","title":"Máquina de Webinars Turbinado","category":"Marketing Digital","description":"Sistema turbinado de marketing digital basado en Hormozi y Brunson. Genera webinars cualificado, convierte visitantes y ","price":6.99,"level":"ready","language":"es"},{"uid":"68e2dc8c","title":"Framework Orgánico de Branding","category":"Marketing Digital","description":"Sistema orgánico de marketing digital basado en Hormozi y Brunson. Genera branding cualificado, convierte visitantes y e","price":6.99,"level":"pro","language":"es"},{"uid":"6718fd07","title":"Plan de Ventas De Alto Impacto","category":"Marketing Digital","description":"Sistema de alto impacto de marketing digital basado en Hormozi y Brunson. Genera ventas cualificado, convierte visitante","price":6.99,"level":"pro","language":"es"},{"uid":"b764a717","title":"Surgical Instagram Blueprint","category":"Marketing Digital","description":"surgical digital marketing system based on Hormozi & Brunson methodologies. Generates qualified instagram, converts visi","price":6.99,"level":"ready","language":"en"},{"uid":"c93641f6","title":"Magnet Affiliates Blueprint","category":"Marketing Digital","description":"magnet digital marketing system based on Hormozi & Brunson methodologies. Generates qualified affiliates, converts visit","price":6.99,"level":"ready","language":"en"},{"uid":"385f526a","title":"Sistema de Crecimiento Exponencial","category":"Marketing Digital","description":"Sistema exponencial de marketing digital basado en Hormozi y Brunson. Genera google ads cualificado, convierte visitante","price":6.99,"level":"apex","language":"es"},{"uid":"03c64c00","title":"Sistema de Branding Imparable","category":"Marketing Digital","description":"Sistema efectivo de marketing digital basado en Hormozi y Brunson. Genera branding cualificado, convierte visitantes y e","price":6.99,"level":"starter","language":"es"},{"uid":"02efdaa5","title":"Sistema Viral de Marketing","category":"Marketing Digital","description":"Sistema viral de marketing digital basado en Hormozi y Brunson. Genera comunidad cualificado, convierte visitantes y esc","price":6.99,"level":"starter","language":"es"},{"uid":"c98b4388","title":"Unstoppable Influencers Machine","category":"Marketing Digital","description":"magnet digital marketing system based on Hormozi & Brunson methodologies. Generates qualified influencers, converts visi","price":6.99,"level":"apex","language":"en"},{"uid":"d1fa1db2","title":"Massive TikTok Protocol","category":"Marketing Digital","description":"massive digital marketing system based on Hormozi & Brunson methodologies. Generates qualified tiktok, converts visitors","price":6.99,"level":"ready","language":"en"},{"uid":"1864d4c5","title":"Estrategia de UGC Inteligente","category":"Marketing Digital","description":"Sistema inteligente de marketing digital basado en Hormozi y Brunson. Genera ugc cualificado, convierte visitantes y esc","price":6.99,"level":"starter","language":"es"},{"uid":"009489b9","title":"Método de Facebook Ads Turbinado","category":"Marketing Digital","description":"Sistema turbinado de marketing digital basado en Hormozi y Brunson. Genera facebook ads cualificado, convierte visitante","price":6.99,"level":"pro","language":"es"},{"uid":"0638ed41","title":"Explosive UGC Lever","category":"Marketing Digital","description":"explosive digital marketing system based on Hormozi & Brunson methodologies. Generates qualified ugc, converts visitors,","price":6.99,"level":"apex","language":"en"},{"uid":"a343b6c2","title":"Unstoppable LinkedIn Machine","category":"Marketing Digital","description":"aggressive digital marketing system based on Hormozi & Brunson methodologies. Generates qualified linkedin, converts vis","price":6.99,"level":"pro","language":"en"},{"uid":"240dd4f2","title":"Profitable SMS Engine","category":"Marketing Digital","description":"profitable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified sms, converts visitors","price":6.99,"level":"ready","language":"en"},{"uid":"b7a71384","title":"Unstoppable Branding System","category":"Marketing Digital","description":"scalable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified branding, converts visit","price":6.99,"level":"apex","language":"en"},{"uid":"fcb8355f","title":"High-Impact Content Protocol","category":"Marketing Digital","description":"high-impact digital marketing system based on Hormozi & Brunson methodologies. Generates qualified content, converts vis","price":6.99,"level":"starter","language":"en"},{"uid":"556f3c59","title":"Automated Reputation Protocol","category":"Marketing Digital","description":"automated digital marketing system based on Hormozi & Brunson methodologies. Generates qualified reputation, converts vi","price":6.99,"level":"ready","language":"en"},{"uid":"36d0086f","title":"Framework de Facebook Ads Orgánico","category":"Marketing Digital","description":"Sistema orgánico de marketing digital basado en Hormozi y Brunson. Genera facebook ads cualificado, convierte visitantes","price":6.99,"level":"apex","language":"es"},{"uid":"c20118a4","title":"Next-Gen UGC Framework","category":"Marketing Digital","description":"next-gen digital marketing system based on Hormozi & Brunson methodologies. Generates qualified ugc, converts visitors, ","price":6.99,"level":"pro","language":"en"},{"uid":"3ebff0b6","title":"Massive Storytelling Strategy","category":"Marketing Digital","description":"massive digital marketing system based on Hormozi & Brunson methodologies. Generates qualified storytelling, converts vi","price":6.99,"level":"pro","language":"en"},{"uid":"fd265ba1","title":"Unstoppable Launch Machine","category":"Marketing Digital","description":"organic digital marketing system based on Hormozi & Brunson methodologies. Generates qualified launch, converts visitors","price":6.99,"level":"pro","language":"en"},{"uid":"eb8be011","title":"Viral Google Ads Framework","category":"Marketing Digital","description":"viral digital marketing system based on Hormozi & Brunson methodologies. Generates qualified google ads, converts visito","price":6.99,"level":"ready","language":"en"},{"uid":"82cbda04","title":"Surgical Content Lever","category":"Marketing Digital","description":"surgical digital marketing system based on Hormozi & Brunson methodologies. Generates qualified content, converts visito","price":6.99,"level":"apex","language":"en"},{"uid":"7c2cbe71","title":"Método Efectivo para Podcast","category":"Marketing Digital","description":"Sistema efectivo de marketing digital basado en Hormozi y Brunson. Genera podcast cualificado, convierte visitantes y es","price":6.99,"level":"starter","language":"es"},{"uid":"eae1e7bd","title":"Brutal YouTube Machine","category":"Marketing Digital","description":"brutal digital marketing system based on Hormozi & Brunson methodologies. Generates qualified youtube, converts visitors","price":6.99,"level":"pro","language":"en"},{"uid":"ff826678","title":"Converting Webinars Protocol","category":"Marketing Digital","description":"converting digital marketing system based on Hormozi & Brunson methodologies. Generates qualified webinars, converts vis","price":6.99,"level":"apex","language":"en"},{"uid":"b976de3f","title":"Framework Imparable de Influencers","category":"Marketing Digital","description":"Sistema imparable de marketing digital basado en Hormozi y Brunson. Genera influencers cualificado, convierte visitantes","price":6.99,"level":"pro","language":"es"},{"uid":"79553105","title":"Sistema de Crecimiento Turbinado","category":"Marketing Digital","description":"Sistema turbinado de marketing digital basado en Hormozi y Brunson. Genera influencers cualificado, convierte visitantes","price":6.99,"level":"starter","language":"es"},{"uid":"fbdbde19","title":"Protocolo de Reputación Magnetic","category":"Marketing Digital","description":"Sistema magnetic de marketing digital basado en Hormozi y Brunson. Genera reputación cualificado, convierte visitantes y","price":6.99,"level":"pro","language":"es"},{"uid":"bafb89be","title":"Protocolo de Leads Escalable","category":"Marketing Digital","description":"Sistema escalable de marketing digital basado en Hormozi y Brunson. Genera leads cualificado, convierte visitantes y esc","price":6.99,"level":"pro","language":"es"},{"uid":"1bda8fd8","title":"Unlimited Upsell Plan","category":"Marketing Digital","description":"unlimited digital marketing system based on Hormozi & Brunson methodologies. Generates qualified upsell, converts visito","price":6.99,"level":"ready","language":"en"},{"uid":"bdf32b66","title":"Unstoppable Leads Strategy","category":"Marketing Digital","description":"unstoppable digital marketing system based on Hormozi & Brunson methodologies. Generates qualified leads, converts visit","price":6.99,"level":"apex","language":"en"}];
-const categories=[...new Set(PRODUCTS.map(p=>p.category))];
-let activeFilter='all';
-const filterBar=document.getElementById('filterBar');
-const grid=document.getElementById('productGrid');
-function renderFilters(){
-  filterBar.innerHTML=`<button class="filter-btn${activeFilter==='all'?' active':''}" data-cat="all">Todos (${PRODUCTS.length})</button>`;
-  categories.forEach(c=>{
-    const n=PRODUCTS.filter(p=>p.category===c).length;
-    filterBar.innerHTML+=`<button class="filter-btn${activeFilter===c?' active':''}" data-cat="${c}">${c} (${n})</button>`;
-  });
-  filterBar.querySelectorAll('.filter-btn').forEach(b=>b.addEventListener('click',()=>{
-    activeFilter=b.dataset.cat;renderFilters();renderProducts();
-  }));
+// DIHACKTOR Ω - SISTEMA DE CHECKOUT REAL
+// Pasarelas activas: Vitawallet, Binance, Wallbit, SEPA, Bolivia, Crypto directo
+
+const FIXED_PRICE = 6.99;
+const CURRENCY = 'USD';
+
+const PAYMENT_GATEWAYS = {
+    vitawallet: {
+        name: 'Vitawallet',
+        icon: '💳',
+        type: 'card',
+        description: 'Tarjeta de crédito/débito - Global',
+        active: true,
+        fees: '0%',
+        checkoutUrl: 'https://www.vitawallet.com/checkout'
+    },
+    binance: {
+        name: 'Binance Pay',
+        icon: '₿',
+        type: 'crypto',
+        description: 'USDT, BTC, BNB, ETH - 0% comisión',
+        active: true,
+        fees: '0%',
+        checkoutUrl: 'https://pay.binance.com'
+    },
+    wallbit: {
+        name: 'Wallbit',
+        icon: '�',
+        type: 'bank',
+        description: 'USA Bank Transfer / ACH',
+        active: true,
+        fees: '0%',
+        checkoutUrl: 'https://wallbit.com/pay'
+    },
+    bank_eur: {
+        name: 'SEPA Europa',
+        icon: '�🇺',
+        type: 'bank',
+        description: 'Transferencia bancaria SEPA (internacional)',
+        active: true,
+        fees: '0%',
+        iban: 'MT12CFTE28004000000000005456093',
+        bic: 'CFTEMTM1XXX',
+        holder: 'Diego Edgardo Cortez Yañez'
+    },
+    bank_bol: {
+        name: 'Banco Bolivia',
+        icon: '�🇴',
+        type: 'bank',
+        description: 'Transferencia local Bolivia (BMSC)',
+        active: true,
+        fees: '0%',
+        bank: 'Banco Mercantil Santa Cruz',
+        account: '4069474188',
+        ci: '5808841 TJ',
+        holder: 'Diego Edgardo Cortez Yañez'
+    },
+    crypto_direct: {
+        name: 'Crypto Directo',
+        icon: '💰',
+        type: 'crypto',
+        description: 'USDT/BTC/ETH directo a wallet',
+        active: true,
+        fees: '0%',
+        wallets: {
+            BTC: 'bc1qjjgsx3lwa0wz59l89htcpr28j5s7dtmv99fmw0',
+            ETH: '0x2F4bc6f77719AB99BCd6a9b553729bB96C9B8c22',
+            USDT: '0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053'
+        }
+    }
+};
+
+// Generar enlace de checkout REAL según pasarela
+function generateCheckoutUrl(gateway, productData) {
+    const productId = productData.uid || productData.id || 'DIH-' + Date.now();
+    const productTitle = encodeURIComponent(productData.title || 'DIHACKTOR Product');
+    const amount = productData.price || FIXED_PRICE;
+    const orderRef = 'DH-' + productId;
+    
+    switch(gateway) {
+        case 'vitawallet':
+            return `https://www.vitawallet.com/checkout?amount=${amount}&currency=USD&product=${productTitle}&reference=${orderRef}&merchant_id=DIHACKTOR`;
+        
+        case 'binance':
+            return `https://pay.binance.com/en/checkout/${amount}?product=${productTitle}&ref=DIHACKTOR&type=crypto`;
+        
+        case 'wallbit':
+            return `https://wallbit.com/pay?amount=${amount}&currency=USD&product=${productTitle}&merchant=DIHACKTOR&reference=${orderRef}`;
+        
+        case 'bank_eur':
+            // Mostrar modal inline con datos SEPA
+            return null;
+        
+        case 'bank_bol':
+            // Mostrar modal inline con datos BMSC
+            return null;
+        
+        case 'crypto_direct':
+            // Mostrar modal inline con wallets
+            return null;
+        
+        default:
+            return null;
+    }
 }
-function renderProducts(){
-  const f=activeFilter==='all'?PRODUCTS:PRODUCTS.filter(p=>p.category===activeFilter);
-  grid.innerHTML=f.map((p,i)=>`
-    <div class="card" style="animation-delay:${(i%12)*0.05}s">
-      <span class="card-category">${p.category}</span>
-      <h3>${p.title}</h3>
-      <p>${p.description}</p>
-      <div class="card-footer">
-        <span class="price">$${p.price} USD</span>
-        <span class="level-badge">${p.level}</span>
-      </div>
-      <a href="#gateways" class="btn-buy" style="margin-top:15px">Comprar Ahora</a>
-    </div>
-  `).join('');
+
+// Mostrar modal de checkout
+function showCheckout(productData) {
+    const modal = document.getElementById('checkout-modal');
+    if (!modal) return;
+    
+    // Actualizar info del producto
+    document.getElementById('checkout-product-title').textContent = productData.title || 'Producto DIHACKTOR';
+    document.getElementById('checkout-product-price').textContent = `$${productData.price || FIXED_PRICE} USD`;
+    document.getElementById('checkout-product-uid').value = productData.uid || productData.id || '';
+    document.getElementById('checkout-product-id').textContent = `ID: ${productData.uid || productData.id || 'N/A'}`;
+    
+    // Generar botones de pasarelas
+    const gatewayContainer = document.getElementById('gateway-buttons');
+    gatewayContainer.innerHTML = '';
+    
+    Object.entries(PAYMENT_GATEWAYS).forEach(([key, gw]) => {
+        if (!gw.active) return;
+        
+        const btn = document.createElement('div');
+        btn.className = 'gateway-btn';
+        btn.setAttribute('data-gateway', key);
+        btn.innerHTML = `
+            <span class="gw-icon">${gw.icon}</span>
+            <span class="gw-info">
+                <span class="gw-name">${gw.name}</span>
+                <span class="gw-desc">${gw.description}</span>
+            </span>
+            <span class="gw-fees">${gw.fees}</span>
+            <span class="gw-arrow">→</span>
+        `;
+        btn.onclick = () => processPayment(key, productData);
+        gatewayContainer.appendChild(btn);
+    });
+    
+    modal.classList.add('active');
+    trackEvent('checkout_modal_open', { product: productData.title, price: FIXED_PRICE });
 }
-renderFilters();
-renderProducts();
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t)t.scrollIntoView({behavior:'smooth'});
-  });
+
+// Cerrar checkout modal
+function closeCheckout() {
+    const modal = document.getElementById('checkout-modal');
+    if (modal) modal.classList.remove('active');
+}
+
+// Cerrar inline modal
+function closeInlineModal() {
+    const modal = document.getElementById('inline-modal');
+    if (modal) modal.classList.remove('active');
+}
+
+// Procesar pago - abrir pasarela o mostrar modal inline
+function processPayment(gateway, productData) {
+    const url = generateCheckoutUrl(gateway, productData);
+    
+    if (url) {
+        // Pasarela externa - abrir en nueva pestaña
+        const newWindow = window.open(url, '_blank', 'width=600,height=700,noreferrer');
+        if (newWindow) {
+            showToast(`Abriendo ${PAYMENT_GATEWAYS[gateway].name}...`, 'success');
+        } else {
+            // Si el popup es bloqueado, abrir como redirect
+            window.location.href = url;
+        }
+    } else {
+        // Modal inline para transferencias/crypto
+        showInlineModal(gateway, productData);
+    }
+    
+    // Track intent
+    trackEvent('checkout_intent', {
+        gateway: gateway,
+        product: productData.title,
+        price: productData.price || FIXED_PRICE
+    });
+}
+
+// Mostrar modal inline para transferencias
+function showInlineModal(gateway, productData) {
+    const gw = PAYMENT_GATEWAYS[gateway];
+    const modal = document.getElementById('inline-modal');
+    const orderRef = 'DH-' + (productData.uid || productData.id || Date.now().toString(36).toUpperCase());
+    
+    let content = '';
+    
+    if (gateway === 'bank_eur') {
+        content = `
+            <h3>🇪🇺 Transferencia SEPA Europa</h3>
+            <p style="color:var(--text-dim);font-size:.85rem;margin-bottom:15px">Realiza una transferencia bancaria SEPA a los siguientes datos:</p>
+            <div class="bank-details">
+                <p><strong>Titular:</strong> ${gw.holder}</p>
+                <p><strong>IBAN:</strong> <span class="copy-text">${gw.iban}</span> <button onclick="copyToClipboard('${gw.iban}', this)">📋 Copiar</button></p>
+                <p><strong>BIC/SWIFT:</strong> <span class="copy-text">${gw.bic}</span> <button onclick="copyToClipboard('${gw.bic}', this)">📋 Copiar</button></p>
+                <p><strong>Importe:</strong> <span class="copy-text">${FIXED_PRICE} EUR</span></p>
+                <p><strong>Referencia (concepto):</strong> <span class="copy-text">${orderRef}</span> <button onclick="copyToClipboard('${orderRef}', this)">📋 Copiar</button></p>
+            </div>
+            <p class="note">📧 Tras la transferencia, el acceso se activa en 24h. Envía comprobante a soporte@dihatkctor.com</p>
+            <div style="margin-top:15px;text-align:center">
+                <a href="https://www.vitawallet.com/checkout?amount=${FIXED_PRICE}&currency=EUR&product=${encodeURIComponent(productData.title)}&reference=${orderRef}&merchant_id=DIHACKTOR" target="_blank" rel="noreferrer" class="btn btn-primary" style="display:inline-block;text-decoration:none">Pagar Online con Vitawallet →</a>
+            </div>
+        `;
+    } else if (gateway === 'bank_bol') {
+        content = `
+            <h3>🇧🇴 Transferencia Banco Bolivia</h3>
+            <p style="color:var(--text-dim);font-size:.85rem;margin-bottom:15px">Realiza una transferencia o depósito a los siguientes datos:</p>
+            <div class="bank-details">
+                <p><strong>Banco:</strong> ${gw.bank}</p>
+                <p><strong>Titular:</strong> ${gw.holder}</p>
+                <p><strong>N° Cuenta:</strong> <span class="copy-text">${gw.account}</span> <button onclick="copyToClipboard('${gw.account}', this)">📋 Copiar</button></p>
+                <p><strong>CI:</strong> <span class="copy-text">${gw.ci}</span></p>
+                <p><strong>Importe:</strong> <span class="copy-text">${(FIXED_PRICE * 6.91).toFixed(2)} BOB</span></p>
+                <p><strong>Referencia:</strong> <span class="copy-text">${orderRef}</span></p>
+            </div>
+            <p class="note">📧 Tras la transferencia, el acceso se activa en 24h. Envía comprobante a soporte@dihatkctor.com</p>
+            <div style="margin-top:15px;text-align:center">
+                <a href="https://www.vitawallet.com/checkout?amount=${(FIXED_PRICE * 6.91).toFixed(2)}&currency=BOB&product=${encodeURIComponent(productData.title)}&reference=${orderRef}&merchant_id=DIHACKTOR" target="_blank" rel="noreferrer" class="btn btn-primary" style="display:inline-block;text-decoration:none">Pagar Online →</a>
+            </div>
+        `;
+    } else if (gateway === 'crypto_direct') {
+        content = `
+            <h3>💰 Pago con Crypto Directo</h3>
+            <p style="color:var(--text-dim);font-size:.85rem;margin-bottom:15px">Envía exactamente <strong style="color:var(--cyan)">$${FIXED_PRICE} USD</strong> en la moneda elegida a la wallet correspondiente:</p>
+            <div class="crypto-wallets">
+                <div class="wallet-option">
+                    <strong>🟡 BTC (Bitcoin)</strong>
+                    <div class="wallet-address">
+                        <span class="copy-text">${gw.wallets.BTC}</span>
+                        <button onclick="copyToClipboard('${gw.wallets.BTC}', this)">📋 Copiar</button>
+                    </div>
+                    <a href="https://pay.binance.com/en/checkout/${FIXED_PRICE}?product=${encodeURIComponent(productData.title)}&crypto=BTC&address=${gw.wallets.BTC}&ref=DIHACKTOR&type=crypto" target="_blank" rel="noreferrer" style="display:inline-block;margin-top:8px;padding:6px 14px;background:rgba(188,19,254,.15);border:1px solid rgba(188,19,254,.3);border-radius:6px;color:var(--purple);font-size:.75rem;text-decoration:none">Pagar con Binance Pay →</a>
+                </div>
+                <div class="wallet-option">
+                    <strong>🔵 ETH (Ethereum)</strong>
+                    <div class="wallet-address">
+                        <span class="copy-text">${gw.wallets.ETH}</span>
+                        <button onclick="copyToClipboard('${gw.wallets.ETH}', this)">📋 Copiar</button>
+                    </div>
+                    <a href="https://pay.binance.com/en/checkout/${FIXED_PRICE}?product=${encodeURIComponent(productData.title)}&crypto=ETH&address=${gw.wallets.ETH}&ref=DIHACKTOR&type=crypto" target="_blank" rel="noreferrer" style="display:inline-block;margin-top:8px;padding:6px 14px;background:rgba(188,19,254,.15);border:1px solid rgba(188,19,254,.3);border-radius:6px;color:var(--purple);font-size:.75rem;text-decoration:none">Pagar con Binance Pay →</a>
+                </div>
+                <div class="wallet-option">
+                    <strong>💚 USDT (ERC20/BEP20)</strong>
+                    <div class="wallet-address">
+                        <span class="copy-text">${gw.wallets.USDT}</span>
+                        <button onclick="copyToClipboard('${gw.wallets.USDT}', this)">📋 Copiar</button>
+                    </div>
+                    <a href="https://pay.binance.com/en/checkout/${FIXED_PRICE}?product=${encodeURIComponent(productData.title)}&crypto=USDT&address=${gw.wallets.USDT}&ref=DIHACKTOR&type=crypto" target="_blank" rel="noreferrer" style="display:inline-block;margin-top:8px;padding:6px 14px;background:rgba(188,19,254,.15);border:1px solid rgba(188,19,254,.3);border-radius:6px;color:var(--purple);font-size:.75rem;text-decoration:none">Pagar con Binance Pay →</a>
+                </div>
+            </div>
+            <p class="note">⚠️ Envía la cantidad exacta en la red correcta. El acceso se activa automáticamente tras 1 confirmación.</p>
+        `;
+    }
+    
+    document.getElementById('inline-modal-content').innerHTML = content;
+    modal.classList.add('active');
+    trackEvent('inline_modal_open', { gateway: gateway, product: productData.title });
+}
+
+// Utilidad: Copiar al portapapeles
+function copyToClipboard(text, btn) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('¡Copiado al portapapeles!', 'success');
+            if (btn) {
+                const original = btn.textContent;
+                btn.textContent = '✅';
+                setTimeout(() => btn.textContent = original, 1500);
+            }
+        }).catch(() => {
+            fallbackCopy(text, btn);
+        });
+    } else {
+        fallbackCopy(text, btn);
+    }
+}
+
+function fallbackCopy(text, btn) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+        document.execCommand('copy');
+        showToast('¡Copiado!', 'success');
+        if (btn) {
+            btn.textContent = '✅';
+            setTimeout(() => btn.textContent = '📋', 1500);
+        }
+    } catch(e) {
+        showToast('Error al copiar', 'error');
+    }
+    document.body.removeChild(textarea);
+}
+
+// Toast notifications
+function showToast(msg, type) {
+    const toast = document.getElementById('toast');
+    if (toast) {
+        toast.textContent = msg;
+        toast.className = `toast show ${type}`;
+        setTimeout(() => toast.className = 'toast', 3000);
+    }
+}
+
+// Event Tracking System
+function trackEvent(event, data) {
+    const eventData = {
+        event: event,
+        timestamp: new Date().toISOString(),
+        data: data
+    };
+    
+    console.log('📊 Track:', eventData);
+    
+    try {
+        const stored = JSON.parse(localStorage.getItem('dihatkctor_events') || '[]');
+        stored.push(eventData);
+        if (stored.length > 500) stored.splice(0, stored.length - 500);
+        localStorage.setItem('dihatkctor_events', JSON.stringify(stored));
+    } catch(e) {}
+    
+    if (typeof gtag === 'function') {
+        gtag('event', event, data);
+    }
+}
+
+// Cerrar modales con ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeCheckout();
+        closeInlineModal();
+    }
 });
+
+// Cerrar modales al hacer click en overlay
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal-overlay')) {
+        document.querySelectorAll('.checkout-modal, .inline-modal').forEach(m => m.classList.remove('active'));
+    }
+});
+
+// Exportar para uso global
+window.DIHACKTOR_CHECKOUT = {
+    show: showCheckout,
+    close: closeCheckout,
+    process: processPayment,
+    gateways: PAYMENT_GATEWAYS,
+    price: FIXED_PRICE,
+    track: trackEvent
+};
+
+// Track page load
+trackEvent('page_view', { timestamp: Date.now() });
+</script>
+
+<!-- ========== PRODUCTS DATA & RENDERING ========== -->
+<script>
+// Products will be loaded from JSON via fetch, with inline fallback
+const FALLBACK_PRODUCTS = [
+{"uid":"4bd7a08e","title":"Maximum AI Agent","category":"IA/Agentes","description":"maximum AI system that automates trading with surgical precision. Includes ready prompts, documented workflows and real cases validated.","price":6.99,"level":"starter","language":"en"},
+{"uid":"dcaa0c78","title":"Orquestador IA Evolutivo","category":"IA/Agentes","description":"Sistema de IA evolutivo que automatiza agencia con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos reales.","price":6.99,"level":"ready","language":"es"},
+{"uid":"74b7cbf2","title":"Agente Predictivo Quantum","category":"IA/Agentes","description":"Sistema de IA quantum que automatiza inventarios con precisión quirúrgica. Incluye prompts listos, workflows documentados.","price":6.99,"level":"starter","language":"es"},
+{"uid":"63bb391b","title":"Brilliant Agent System","category":"IA/Agentes","description":"brilliant AI system that automates operations with surgical precision. Includes ready prompts, documented workflows and real cases.","price":6.99,"level":"ready","language":"en"},
+{"uid":"1a8d11a4","title":"Sistema Multi-Agente Superior","category":"IA/Agentes","description":"Sistema de IA superior que automatiza salud con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos.","price":6.99,"level":"pro","language":"es"},
+{"uid":"c07c65ac","title":"Elite Digital Brain","category":"IA/Agentes","description":"elite AI system that automates inventory with surgical precision. Includes ready prompts, documented workflows and real cases.","price":6.99,"level":"pro","language":"en"},
+{"uid":"e569b017","title":"Bot Next-Gen Inteligente","category":"IA/Agentes","description":"Sistema de IA next-gen que automatiza código con precisión quirúrgica. Incluye prompts listos, workflows documentados y casos.","price":6.99,"level":"apex","language":"es"},
+{"uid":"da691220","title":"Advanced Conversational AI","category":"IA/Agentes","description":"advanced AI system that automates events with surgical precision. Includes ready prompts, documented workflows and real cases.","price":6.99,"level":"apex","language":"en"}
+];
+
+let PRODUCTS = [];
+let categories = [];
+let activeFilter = 'all';
+
+async function loadProducts() {
+    try {
+        const resp = await fetch('/productos_top1000_2026.json');
+        if (resp.ok) {
+            const data = await resp.json();
+            PRODUCTS = data.productos || [];
+            trackEvent('products_loaded', { count: PRODUCTS.length, source: 'json' });
+        } else {
+            throw new Error('JSON not found');
+        }
+    } catch(e) {
+        PRODUCTS = FALLBACK_PRODUCTS;
+        trackEvent('products_loaded', { count: PRODUCTS.length, source: 'fallback' });
+    }
+    
+    categories = [...new Set(PRODUCTS.map(p => p.category))];
+    renderFilters();
+    renderProducts();
+}
+
+const filterBar = document.getElementById('filterBar');
+const grid = document.getElementById('productGrid');
+
+function renderFilters() {
+    filterBar.innerHTML = `<button class="filter-btn${activeFilter === 'all' ? ' active' : ''}" data-cat="all">Todos (${PRODUCTS.length})</button>`;
+    categories.forEach(c => {
+        const n = PRODUCTS.filter(p => p.category === c).length;
+        filterBar.innerHTML += `<button class="filter-btn${activeFilter === c ? ' active' : ''}" data-cat="${c}">${c} (${n})</button>`;
+    });
+    filterBar.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
+        activeFilter = b.dataset.cat;
+        renderFilters();
+        renderProducts();
+        trackEvent('filter_click', { category: activeFilter });
+    }));
+}
+
+function renderProducts() {
+    const f = activeFilter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === activeFilter);
+    if (f.length === 0) {
+        grid.innerHTML = '<div class="loading">No hay productos en esta categoría</div>';
+        return;
+    }
+    grid.innerHTML = f.map((p, i) => `
+        <div class="card" style="animation-delay:${(i % 12) * 0.05}s">
+            <span class="card-category">${p.category}</span>
+            <h3>${p.title}</h3>
+            <p>${p.description}</p>
+            <div class="card-footer">
+                <span class="price">$${p.price} USD</span>
+                <span class="level-badge">${p.level}</span>
+            </div>
+            <button class="btn-buy" onclick="openCheckout('${p.uid.replace(/'/g, "\\'")}', '${p.title.replace(/'/g, "\\'")}', ${p.price}, '${p.category.replace(/'/g, "\\'")}')" style="margin-top:15px">
+                🛒 Comprar Ahora
+            </button>
+        </div>
+    `).join('');
+    
+    trackEvent('products_rendered', { count: f.length, filter: activeFilter });
+}
+
+// Global function for buy button
+window.openCheckout = function(uid, title, price, category) {
+    const productData = { uid, title, price, category };
+    showCheckout(productData);
+};
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Initialize
+loadProducts();
 </script>
 </body>
 </html>
