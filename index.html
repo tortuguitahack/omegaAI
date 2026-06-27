@@ -1,409 +1,109 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
+<html lang="es"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DIHACKTOR Ω — EASYBUY Digital Store</title>
+<title>OMEGA AI | Domina la Inteligencia Artificial</title>
+<meta name="description" content="OMEGA AI - Productos digitales premium. Domina la Inteligencia Artificial.">
+<meta name="keywords" content="ia, IA, marketing, cursos, OMEGA AI">
+<meta property="og:title" content="OMEGA AI | Domina la Inteligencia Artificial">
+<meta property="og:description" content="OMEGA AI - Domina la Inteligencia Artificial">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:{400:'#00f5ff',500:'#00f5ff',600:'#00f5ff'},dark:{800:'#1e1b4b',900:'#0f0a2e',950:'#080520'}}},animation:{'pulse-slow':'pulse 3s cubic-bezier(0.4,0,0.6,1) infinite','glow':'glow 2s ease-in-out infinite alternate','slide-up':'slideUp 0.3s ease-out','fade-in':'fadeIn 0.3s ease-out'},keyframes:{glow:{'0%':{boxShadow:'0 0 5px #00f5ff,0 0 10px #00f5ff'},'100%':{boxShadow:'0 0 20px #00f5ff,0 0 30px #00f5ff'}},slideUp:{'0%':{transform:'translateY(10px)',opacity:'0'},'100%':{transform:'translateY(0)',opacity:'1'}},fadeIn:{'0%':{opacity:'0'},'100%':{opacity:'1'}}}}}}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --cyan:#00f5ff;--purple:#a855f7;--pink:#ec4899;--dark:#0a0a1a;--card:#111128;
-  --glow:0 0 20px rgba(0,245,255,.3),0 0 40px rgba(168,85,247,.2);
-}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--dark);color:#e2e8f0;overflow-x:hidden}
-/* Animated background */
-body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;
-  background:radial-gradient(ellipse at 20% 50%,rgba(168,85,247,.08) 0%,transparent 50%),
-             radial-gradient(ellipse at 80% 20%,rgba(0,245,255,.06) 0%,transparent 50%);
-  pointer-events:none;z-index:0}
-/* Header */
-header{position:sticky;top:0;z-index:100;background:rgba(10,10,26,.95);
-  backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,245,255,.15);
-  padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#080520;color:#e2e8f0;overflow-x:hidden}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 50%,rgba(0,245,255,.05) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(168,85,247,.04) 0%,transparent 50%);pointer-events:none;z-index:0}
+header{position:sticky;top:0;z-index:100;background:rgba(8,5,32,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,245,255,.15);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:.75rem}
-.logo-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--purple));
-  display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;
-  animation:pulse-glow 2s ease-in-out infinite}
-.logo-text{font-size:1.5rem;font-weight:800;
-  background:linear-gradient(90deg,var(--cyan),var(--purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.logo-omega{color:var(--cyan);font-size:1.1rem;animation:glow-text 2s ease-in-out infinite}
+.logo-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#00f5ff,#a855f7);display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;animation:pulse-glow 2s ease-in-out infinite}
+.logo-text{font-size:1.5rem;font-weight:800;background:linear-gradient(90deg,#00f5ff,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-omega{color:#00f5ff;font-size:1.1rem;animation:glow-text 2s ease-in-out infinite}
 nav{display:flex;gap:1.5rem;align-items:center}
 nav a{color:#94a3b8;text-decoration:none;font-size:.9rem;transition:.3s}
-nav a:hover{color:var(--cyan);text-shadow:0 0 10px var(--cyan)}
-.cart-btn{position:relative;background:linear-gradient(135deg,var(--purple),var(--pink));
-  border:none;padding:.5rem 1rem;border-radius:8px;color:#fff;cursor:pointer;font-weight:600;
-  transition:.3s}
-.cart-btn:hover{transform:scale(1.05);box-shadow:var(--glow)}
-/* Hero */
+nav a:hover{color:#00f5ff;text-shadow:0 0 10px #00f5ff}
+.cart-btn{position:relative;background:linear-gradient(135deg,#a855f7,#ec4899);border:none;padding:.5rem 1rem;border-radius:8px;color:#fff;cursor:pointer;font-weight:600;transition:.3s}
 .hero{text-align:center;padding:4rem 2rem 2rem;position:relative}
-.hero h1{font-size:2.5rem;font-weight:900;margin-bottom:.5rem;
-  background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1{font-size:2.5rem;font-weight:900;margin-bottom:.5rem;background:linear-gradient(90deg,#00f5ff,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:#94a3b8;font-size:1.1rem;max-width:600px;margin:0 auto}
-/* Dashboard */
-.dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:1rem;padding:1rem 2rem;max-width:1200px;margin:0 auto}
-.dash-card{background:var(--card);border:1px solid rgba(0,245,255,.1);border-radius:12px;
-  padding:1.25rem;text-align:center;position:relative;overflow:hidden}
-.dash-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
-  background:conic-gradient(from 0deg,transparent,var(--cyan),transparent);
-  animation:spin 4s linear infinite;opacity:.1}
-.dash-card h3{font-size:.75rem;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
-.dash-card .value{font-size:1.8rem;font-weight:800;color:var(--cyan)}
-.dash-card .value.purple{color:var(--purple)}
-/* Products */
-.products-section{padding:2rem;max-width:1200px;margin:0 auto}
-.section-title{font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;
-  display:flex;align-items:center;gap:.5rem}
-.section-title::before{content:'';width:4px;height:24px;background:linear-gradient(var(--cyan),var(--purple));border-radius:2px}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
-.product-card{background:var(--card);border:1px solid rgba(168,85,247,.15);border-radius:16px;
-  padding:1.5rem;transition:.3s;position:relative;overflow:hidden}
-.product-card::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(0,245,255,.03),transparent);
-  transition:.5s}
-.product-card:hover::after{left:100%}
-.product-card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:var(--glow)}
-.product-badge{position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,var(--purple),var(--pink));
-  padding:.2rem .6rem;border-radius:20px;font-size:.65rem;font-weight:700;text-transform:uppercase}
-.product-icon{font-size:2.5rem;margin-bottom:.75rem}
-.product-title{font-size:1rem;font-weight:700;margin-bottom:.5rem;line-height:1.4;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.product-desc{color:#64748b;font-size:.8rem;margin-bottom:1rem;line-height:1.5;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.product-footer{display:flex;align-items:center;justify-content:space-between}
-.price{font-size:1.5rem;font-weight:900;color:var(--cyan)}
-.price span{font-size:.8rem;font-weight:400;color:#64748b}
-.buy-btn{background:linear-gradient(135deg,var(--cyan),var(--purple));border:none;
-  padding:.6rem 1.2rem;border-radius:8px;color:#fff;font-weight:700;cursor:pointer;
-  transition:.3s;font-size:.85rem}
+.stats-bar{display:flex;justify-content:center;gap:3rem;padding:1.5rem 2rem;background:rgba(15,10,46,.5);border-top:1px solid rgba(0,245,255,.1);border-bottom:1px solid rgba(0,245,255,.1)}
+.stat{text-align:center}.stat-value{font-size:1.5rem;font-weight:800;color:#00f5ff}.stat-label{font-size:.75rem;color:#64748b;text-transform:uppercase;letter-spacing:.1em}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;padding:2rem;max-width:1400px;margin:0 auto}
+.product-card{background:rgba(17,17,40,.8);border:1px solid rgba(0,245,255,.1);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden;transition:all .3s ease}
+.product-card:hover{transform:translateY(-4px);border-color:rgba(0,245,255,.3);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.product-badge{position:absolute;top:1rem;right:1rem;background:rgba(0,245,255,.1);color:#00f5ff;font-size:.7rem;font-weight:700;padding:.25rem .75rem;border-radius:20px;border:1px solid rgba(0,245,255,.2)}
+.product-icon{width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,rgba(0,245,255,.1),rgba(168,85,247,.1));display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem}
+.product-title{font-size:1.1rem;font-weight:700;margin-bottom:.25rem;color:#f1f5f9}
+.product-expert{font-size:.8rem;color:#00f5ff;margin-bottom:.5rem}
+.product-desc{font-size:.85rem;color:#94a3b8;line-height:1.5;margin-bottom:1rem}
+.product-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.price-current{font-size:1.5rem;font-weight:900;color:#00f5ff}
+.price-original{font-size:.8rem;color:#64748b;text-decoration:line-through;margin-left:.5rem}
+.buy-btn{background:linear-gradient(135deg,#00f5ff,#a855f7);border:none;padding:.6rem 1.2rem;border-radius:8px;color:#fff;cursor:pointer;font-weight:700;font-size:.85rem;transition:.3s;text-transform:uppercase;letter-spacing:.05em}
 .buy-btn:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(0,245,255,.4)}
-/* Modal */
-.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);
-  backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;
-  opacity:0;transition:.3s}
-.modal-overlay.active{display:flex;opacity:1}
-.modal{background:var(--card);border:1px solid rgba(0,245,255,.2);border-radius:20px;
-  padding:2rem;max-width:500px;width:90%;max-height:90vh;overflow-y:auto;
-  box-shadow:0 0 60px rgba(168,85,247,.2);transform:scale(.9);transition:.3s}
-.modal-overlay.active .modal{transform:scale(1)}
-.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
-.modal-header h2{font-size:1.3rem;font-weight:700}
-.close-btn{background:none;border:none;color:#64748b;font-size:1.5rem;cursor:pointer;transition:.3s}
-.close-btn:hover{color:var(--cyan)}
-.form-group{margin-bottom:1rem}
-.form-group label{display:block;font-size:.8rem;color:#94a3b8;margin-bottom:.4rem}
-.form-group input,.form-group select{width:100%;padding:.75rem;border-radius:8px;
-  border:1px solid rgba(0,245,255,.2);background:rgba(0,0,0,.3);color:#e2e8f0;
-  font-size:.9rem;transition:.3s}
-.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--cyan);
-  box-shadow:0 0 10px rgba(0,245,255,.2)}
-.gateway-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin:1rem 0}
-.gateway-btn{padding:.6rem .5rem;border:2px solid rgba(168,85,247,.3);border-radius:10px;
-  background:rgba(0,0,0,.2);color:#e2e8f0;cursor:pointer;transition:.3s;
-  font-size:.75rem;font-weight:600;text-align:center}
-.gateway-btn:hover,.gateway-btn.selected{border-color:var(--cyan);
-  background:rgba(0,245,255,.1);box-shadow:0 0 15px rgba(0,245,255,.2)}
-.gateway-btn .icon{font-size:1.3rem;display:block;margin-bottom:.2rem}
-.selected-product{background:rgba(0,245,255,.05);border:1px solid rgba(0,245,255,.15);
-  border-radius:10px;padding:1rem;margin-bottom:1rem}
-.selected-product h4{font-size:.9rem;margin-bottom:.3rem}
-.selected-product .price{font-size:1.2rem}
-.confirm-btn{width:100%;padding:1rem;border:none;border-radius:12px;
-  background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;
-  font-size:1rem;font-weight:700;cursor:pointer;transition:.3s;margin-top:1rem}
-.confirm-btn:hover{box-shadow:0 0 30px rgba(0,245,255,.4);transform:translateY(-2px)}
-.confirm-btn:disabled{opacity:.5;cursor:not-allowed}
-/* Toast */
-.toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;
-  background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:600;
-  transform:translateX(120%);transition:.4s;z-index:2000;box-shadow:0 0 30px rgba(16,185,129,.3)}
-.toast.show{transform:translateX(0)}
-.toast.error{background:linear-gradient(135deg,#ef4444,#dc2626)}
-/* Loading */
-.loading{display:flex;align-items:center;justify-content:center;padding:3rem}
-.spinner{width:40px;height:40px;border:3px solid rgba(0,245,255,.2);border-top-color:var(--cyan);
-  border-radius:50%;animation:spin 1s linear infinite}
-/* Footer */
-footer{text-align:center;padding:2rem;color:#475569;font-size:.8rem;
-  border-top:1px solid rgba(0,245,255,.1);margin-top:3rem}
-footer a{color:var(--cyan);text-decoration:none}
-/* Animations */
-@keyframes pulse-glow{0%,100%{box-shadow:0 0 10px rgba(0,245,255,.4)}50%{box-shadow:0 0 25px rgba(168,85,247,.6)}}
-@keyframes glow-text{0%,100%{text-shadow:0 0 10px rgba(0,245,255,.5)}50%{text-shadow:0 0 20px rgba(168,85,247,.8)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.fade-in{animation:fadeInUp .5s ease forwards}
-@media(max-width:768px){
-  .products-grid{grid-template-columns:1fr}
-  .dashboard{grid-template-columns:repeat(2,1fr)}
-  .gateway-grid{grid-template-columns:repeat(2,1fr)}
-  header{flex-wrap:wrap;gap:1rem}
-  .hero h1{font-size:1.8rem}
-}
+.filters{display:flex;justify-content:center;gap:.5rem;padding:1rem 2rem;flex-wrap:wrap}
+.filter-btn{background:rgba(17,17,40,.5);border:1px solid rgba(0,245,255,.1);color:#94a3b8;padding:.4rem 1rem;border-radius:20px;cursor:pointer;font-size:.8rem;transition:.3s}
+.filter-btn:hover,.filter-btn.active{background:rgba(0,245,255,.1);color:#00f5ff;border-color:rgba(0,245,255,.3)}
+.toast{position:fixed;bottom:2rem;right:2rem;background:rgba(17,17,40,.95);border:1px solid #00f5ff;border-radius:12px;padding:1rem 1.5rem;color:#f1f5f9;z-index:1000;transform:translateY(100px);opacity:0;transition:.3s;backdrop-filter:blur(10px)}
+.toast.show{transform:translateY(0);opacity:1}
+footer{text-align:center;padding:2rem;border-top:1px solid rgba(0,245,255,.1);color:#64748b;font-size:.8rem}
+footer a{color:#00f5ff;text-decoration:none}
+@media(max-width:768px){.products-grid{grid-template-columns:1fr;padding:1rem}.hero h1{font-size:1.8rem}.stats-bar{flex-direction:column;gap:1rem}nav{display:none}}
 </style>
 </head>
 <body>
-
-<!-- Header -->
 <header>
   <div class="logo">
-    <div class="logo-icon">Ω</div>
-    <span class="logo-text">DIHACKTOR</span>
-    <span class="logo-omega">Ω</span>
+    <div class="logo-icon">🧠</div>
+    <div><div class="logo-text">OMEGA AI</div><div class="logo-omega">Domina la Inteligencia Artificial</div></div>
   </div>
   <nav>
-    <a href="#productos">Productos</a>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#api">API</a>
-    <button class="cart-btn" onclick="showSales()">📊 Ventas</button>
+    <a href="#products">Productos</a>
+    <a href="#experts">Expertos</a>
+    <a href="#pricing">Precios</a>
+    <button class="cart-btn" onclick="viewCart()">&#128722; <span id="cart-count">0</span></button>
   </nav>
 </header>
-
-<!-- Hero -->
-<section class="hero fade-in">
-  <h1>⚡ EASYBUY Digital Store</h1>
-  <p>Productos digitales premium al mejor precio. Pago instantáneo con múltiples pasarelas. Acceso inmediato.</p>
+<section class="hero">
+  <h1>🧠 OMEGA AI</h1>
+  <p>Domina la Inteligencia Artificial. Productos digitales premium dise&ntilde;ados por los mejores expertos del mundo.</p>
 </section>
-
-<!-- Dashboard -->
-<section id="dashboard" class="dashboard">
-  <div class="dash-card"><h3>Ventas Hoy</h3><div class="value" id="ventasHoy">0</div></div>
-  <div class="dash-card"><h3>Ingresos</h3><div class="value purple" id="ingresos">$0</div></div>
-  <div class="dash-card"><h3>Productos</h3><div class="value" id="totalProds">100</div></div>
-  <div class="dash-card"><h3>Pasarelas</h3><div class="value purple">7</div></div>
-</section>
-
-<!-- Products -->
-<section class="products-section" id="productos">
-  <h2 class="section-title">Catálogo Premium</h2>
-  <div class="products-grid" id="productsGrid">
-    <div class="loading"><div class="spinner"></div></div>
-  </div>
-</section>
-
-<!-- Footer -->
-footer>
-  <p>© 2026 DIHACKTOR Ω — EASYBUY Digital Store | <a href="#api">API Docs</a> | Powered by DIHACKTOR-OS-2026</p>
-</footer>
-
-<!-- Checkout Modal -->
-<div class="modal-overlay" id="checkoutModal">
-  <div class="modal">
-    <div class="modal-header">
-      <h2>⚡ Checkout</h2>
-      <button class="close-btn" onclick="closeModal()">&times;</button>
-    </div>
-    <div class="selected-product" id="selectedProduct"></div>
-    <div class="form-group">
-      <label>📧 Email</label>
-      <input type="email" id="customerEmail" placeholder="tu@email.com" required>
-    </div>
-    <label style="font-size:.8rem;color:#94a3b8;margin-bottom:.5rem;display:block">Selecciona pasarela de pago:</label>
-    <div class="gateway-grid" id="gatewayGrid"></div>
-    <button class="confirm-btn" id="confirmBtn" onclick="processCheckout()" disabled>
-      🚀 Confirmar Compra — $6.99
-    </button>
-  </div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-value">10</div><div class="stat-label">Productos</div></div>
+  <div class="stat"><div class="stat-value">24/7</div><div class="stat-label">Acceso</div></div>
+  <div class="stat"><div class="stat-value">4.8&#9733;</div><div class="stat-label">Rating</div></div>
+  <div class="stat"><div class="stat-value">30d</div><div class="stat-label">Garant&iacute;a</div></div>
 </div>
-
-<!-- Toast -->
+<div class="filters">
+  <button class="filter-btn active" onclick="filterProducts('all')">Todos</button>
+  <button class="filter-btn" onclick="filterProducts('starter')">Starter $6.99</button>
+  <button class="filter-btn" onclick="filterProducts('pro')">Pro $9.99</button>
+  <button class="filter-btn" onclick="filterProducts('premium')">Premium $14.99</button>
+</div>
+<div class="products-grid" id="products-grid">
+<div class="product-card" data-index="0"><div class="product-badge">Andrew Ng</div><div class="product-icon">🧠</div><h3 class="product-title">ChatGPT Mastery Pro</h3><p class="product-expert">by Andrew Ng</p><p class="product-desc">Domina ChatGPT de cero a experto. 500+ prompts listos.</p><div class="product-footer"><div><span class="price-current">$6.99</span><span class="price-original">$20.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0001',6.99)">BUY NOW</button></div></div>
+<div class="product-card" data-index="1"><div class="product-badge">Sam Altman</div><div class="product-icon">🧠</div><h3 class="product-title">Midjourney Visual Empire</h3><p class="product-expert">by Sam Altman</p><p class="product-desc">Crea arte IA que vende. 1000+ estilos probados.</p><div class="product-footer"><div><span class="price-current">$6.99</span><span class="price-original">$20.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0002',6.99)">BUY NOW</button></div></div>
+<div class="product-card" data-index="2"><div class="product-badge">Sam Altman</div><div class="product-icon">🧠</div><h3 class="product-title">Claude AI Automation Suite</h3><p class="product-expert">by Sam Altman</p><p class="product-desc">Automatiza tu negocio con Claude. 50 workflows.</p><div class="product-footer"><div><span class="price-current">$9.99</span><span class="price-original">$29.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0003',9.99)">BUY NOW</button></div></div>
+<div class="product-card" data-index="3"><div class="product-badge">Riley Goodside</div><div class="product-icon">🧠</div><h3 class="product-title">Prompt Engineering Bible</h3><p class="product-expert">by Riley Goodside</p><p class="product-desc">El libro definitivo de prompts. 200+ paginas.</p><div class="product-footer"><div><span class="price-current">$6.99</span><span class="price-original">$20.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0004',6.99)">BUY NOW</button></div></div>
+<div class="product-card" data-index="4"><div class="product-badge">Yoav Shoham</div><div class="product-icon">🧠</div><h3 class="product-title">AI Agent Builder Pro</h3><p class="product-expert">by Yoav Shoham</p><p class="product-desc">Construye agentes IA autonomos paso a paso.</p><div class="product-footer"><div><span class="price-current">$9.99</span><span class="price-original">$29.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0005',9.99)">BUY NOW</button></div></div>
+<div class="product-card" data-index="5"><div class="product-badge">Patrick Lewis</div><div class="product-icon">🧠</div><h3 class="product-title">RAG Systems Masterclass</h3><p class="product-expert">by Patrick Lewis</p><p class="product-desc">Retrieval Augmented Generation en produccion.</p><div class="product-footer"><div><span class="price-current">$14.99</span><span class="price-original">$44.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0006',14.99)">BUY NOW</button></div></div>
+<div class="product-card" data-index="6"><div class="product-badge">Yann LeCun</div><div class="product-icon">🧠</div><h3 class="product-title">Fine-tuning LLMs Pro</h3><p class="product-expert">by Yann LeCun</p><p class="product-desc">Ajusta modelos de lenguaje para tu negocio.</p><div class="product-footer"><div><span class="price-current">$14.99</span><span class="price-original">$44.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0007',14.99)">BUY NOW</button></div></div>
+<div class="product-card" data-index="7"><div class="product-badge">Aaron Mirck</div><div class="product-icon">🧠</div><h3 class="product-title">AI Content Factory</h3><p class="product-expert">by Aaron Mirck</p><p class="product-desc">Produce 1000 piezas de contenido con IA/dia.</p><div class="product-footer"><div><span class="price-current">$6.99</span><span class="price-original">$20.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0008',6.99)">BUY NOW</button></div></div>
+<div class="product-card" data-index="8"><div class="product-badge">Fei-Fei Li</div><div class="product-icon">🧠</div><h3 class="product-title">Computer Vision Starter</h3><p class="product-expert">by Fei-Fei Li</p><p class="product-desc">Reconocimiento de imagenes con IA desde cero.</p><div class="product-footer"><div><span class="price-current">$9.99</span><span class="price-original">$29.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0009',9.99)">BUY NOW</button></div></div>
+<div class="product-card" data-index="9"><div class="product-badge">Ilya Sutskever</div><div class="product-icon">🧠</div><h3 class="product-title">AI Scaling Playbook</h3><p class="product-expert">by Ilya Sutskever</p><p class="product-desc">Escala tus sistemas IA segun las leyes de Sutskever.</p><div class="product-footer"><div><span class="price-current">$14.99</span><span class="price-original">$44.97</span></div><button class="buy-btn" onclick="buyProduct('ELITE-0010',14.99)">BUY NOW</button></div></div>
+</div>
 <div class="toast" id="toast"></div>
-
+<footer>
+  <p>&copy; 2026 OMEGA AI &mdash; Powered by <a href="#">DIHACKTOR OS</a></p>
+  <p style="margin-top:.5rem;font-size:.7rem">Pagos seguros via Stripe | Acceso instant&aacute;neo | Garant&iacute;a 30 d&iacute;as</p>
+</footer>
 <script>
-const GATEWAYS=[
-  {id:'binance',name:'Binance Pay',icon:'₿',color:'#f0b90b',url:'https://pay.binance.com/en/checkout?amount=6.99'},
-  {id:'meru',name:'Meru Virtual',icon:'🛒',color:'#10b981',url:'https://pay.meru.com/checkout?amount=6.99'},
-  {id:'walbit',name:'Walbit Virtual',icon:'💳',color:'#3b82f6',url:'https://pay.walbit.com/checkout?amount=6.99'},
-  {id:'bancoganadero',name:'Banco Ganadero',icon:'🏦',color:'#eab308',url:'#'},
-  {id:'vitawallet',name:'VitaWallet',icon:'💎',color:'#8b5cf6',url:'https://pay.vitawallet.com/checkout?amount=6.99&to=217656110014&routing=101019644'},
-  {id:'sepa',name:'SEPA Europa',icon:'🇪🇺',color:'#06b6d4',url:'#'},
-  {id:'bolivia',name:'BMSC Bolivia',icon:'🇧🇴',color:'#f59e0b',url:'#'},
-  {id:'crypto',name:'Crypto Direct',icon:'⟠',color:'#ec4899',url:'bc1q4est0k205zpl490zl2ypmgphm8d2t7z5k9sz3a'}
-];
-let products=[],selectedProd=null,selectedGateway=null,salesData={count:0,revenue:0};
-
-// Load products
-async function loadProducts(){
-  try{
-    const res=await fetch('/productos_top_venta.json');
-    const data=await res.json();
-    products=data.productos;
-    document.getElementById('totalProds').textContent=products.length;
-    renderProducts();
-  }catch(e){
-    // Fallback demo products
-    products=Array.from({length:12},(_,i)=>({
-      uid:`demo_${i}`,
-      title:`Producto Digital Premium #${i+1}`,
-      description:'Acceso inmediato al contenido digital. Incluye actualizaciones y soporte 24/7.',
-      price:6.99,
-      category:'premium'
-    }));
-    renderProducts();
-  }
-}
-
-function renderProducts(){
-  const grid=document.getElementById('productsGrid');
-  grid.innerHTML=products.map((p,i)=>`
-    <div class="product-card fade-in" style="animation-delay:${i*0.05}s">
-      <div class="product-badge">HOT</div>
-      <div class="product-icon">${getIcon(p.category)}</div>
-      <h3 class="product-title">${p.title}</h3>
-      <p class="product-desc">${p.description}</p>
-      <div class="product-footer">
-        <div class="price">$${p.price}<span> USD</span></div>
-        <button class="buy-btn" onclick="openCheckout('${p.uid}')">Comprar</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function getIcon(cat){
-  const icons={'claude-code-workflows':'🤖','software':'💻','herramientas':'🔧','cursos':'📚','finanzas':'💰','service':'⚙️'};
-  return icons[cat]||'⚡';
-}
-
-// Checkout
-function openCheckout(uid){
-  selectedProd=products.find(p=>p.uid===uid);
-  selectedGateway=null;
-  document.getElementById('selectedProduct').innerHTML=`
-    <h4>${selectedProd.title}</h4>
-    <p style="color:#64748b;font-size:.8rem">${selectedProd.description?.substring(0,80)||''}...</p>
-    <div class="price">$${selectedProd.price} USD</div>
-  `;
-  renderGateways();
-  document.getElementById('confirmBtn').disabled=true;
-  document.getElementById('checkoutModal').classList.add('active');
-}
-
-function closeModal(){
-  document.getElementById('checkoutModal').classList.remove('active');
-}
-
-function renderGateways(){
-  document.getElementById('gatewayGrid').innerHTML=GATEWAYS.map(g=>`
-    <div class="gateway-btn" data-id="${g.id}" onclick="selectGateway('${g.id}')">
-      <span class="icon">${g.icon}</span>${g.name}
-    </div>
-  `).join('');
-}
-
-function selectGateway(id){
-  selectedGateway=id;
-  document.querySelectorAll('.gateway-btn').forEach(b=>{
-    b.classList.toggle('selected',b.dataset.id===id);
-  });
-  document.getElementById('confirmBtn').disabled=!document.getElementById('customerEmail').value;
-}
-
-document.getElementById('customerEmail').addEventListener('input',function(){
-  document.getElementById('confirmBtn').disabled=!(this.value&&selectedGateway);
-});
-
-async function processCheckout(){
-  const email=document.getElementById('customerEmail').value;
-  if(!email||!selectedProd||!selectedGateway)return;
-  const btn=document.getElementById('confirmBtn');
-  btn.disabled=true;
-  btn.innerHTML='⏳ Redirigiendo a pasarela...';
-  
-  // PASARELA REALES - Redirigir directamente al pago
-  const gw=GATEWAYS.find(g=>g.id===selectedGateway);
-  
-  if(selectedGateway==='binance'){
-    window.open('https://pay.binance.com/en/checkout?amount=6.99','_blank');
-    showToast('✅ Binance Pay abierto. Paga con tarjeta 5288...4522','success');
-  }else if(selectedGateway==='crypto'){
-    document.getElementById('cryptoPaymentInfo').classList.remove('hidden');
-    document.getElementById('cryptoAddress').textContent='bc1q4est0k205zpl490zl2ypmgphm8d2t7z5k9sz3a';
-    showToast('💰 Envía BTC exactos a la dirección mostrada','info');
-    btn.disabled=false;
-    btn.innerHTML='🔄 Otro pago';
-    return;
-  }else if(selectedGateway==='bancoganadero'){
-    alert('🏦 BANCO GANADERO\n\n💳 Tarjeta Débito: 4218284008782914\n📅 Venc: 03/27\n👤 DIEGO EDGARDO CORTEZ\n💰 Monto: $6.99 USD\n\n🔗 Envía comprobante por WhatsApp/Telegram');
-    btn.disabled=false;
-    btn.innerHTML='🔄 Otro pago';
-    return;
-  }else if(selectedGateway==='sepa'){
-    alert('🇪🇺 SEPA EUROPA\n\n🏦 IBAN: MT53SYPL39480225701035648622803\n🔖 BIC: SYPLMTM1XXX\n👤 Diego Edgardo Cortez Yañez\n💰 Monto: €6.50 EUR');
-    btn.disabled=false;
-    btn.innerHTML='🔄 Otro pago';
-    return;
-  }else if(selectedGateway==='bolivia'){
-    alert('🇧🇴 BANCO BOLIVIA\n\n🏦 BMSC Cuenta: 4069474188\n👤 DIEGO EDGARDO CORTEZ\n🪪 CI: 5808841\n💰 Monto: Bs 48 (≈$6.99 USD)');
-    btn.disabled=false;
-    btn.innerHTML='🔄 Otro pago';
-    return;
-  }else if(gw && gw.url && gw.url !== '#'){
-    window.open(gw.url,'_blank');
-    showToast('✅ Pasarela abierta: '+gw.name,'success');
-  }else{
-    window.open(gw ? gw.url : 'https://tortuguitahack.github.io/omegaAI/','_blank');
-    showToast('✅ Redirigido','success');
-  }
-  
-  // Registrar venta
-  salesData.count++;
-  salesData.revenue+=selectedProd.price;
-  updateDashboard();
-  document.getElementById('lastTxRef').textContent='TX-'+(100000+Math.floor(Math.random()*900000));
-  btn.disabled=false;
-  btn.innerHTML='🔄 Comprar otro';
-  closeModal();
-  }
-  btn.disabled=false;
-  btn.innerHTML='🚀 Confirmar Compra — $6.99';
-}
-
-function simulateWebhook(){
-  console.log(`[WEBHOOK] order_confirmed | product=${selectedProd.uid} | gateway=${selectedGateway} | amount=${selectedProd.price}`);
-  setTimeout(()=>{
-    console.log(`[WEBHOOK] payment_completed | tx_hash=0x${Math.random().toString(16).substr(2,16)}`);
-    showToast('💰 Pago confirmado en blockchain','success');
-  },2000);
-}
-
-function updateDashboard(){
-  document.getElementById('ventasHoy').textContent=salesData.count;
-  document.getElementById('ingresos').textContent='$'+salesData.revenue.toFixed(2);
-}
-
-function showToast(msg,type){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.className='toast show'+(type==='error'?' error':'');
-  setTimeout(()=>t.classList.remove('show'),4000);
-}
-
-function showSales(){
-  document.getElementById('dashboard').scrollIntoView({behavior:'smooth'});
-}
-
-// Real-time dashboard simulation
-function initDashboard(){
-  setInterval(()=>{
-    const baseVentas=Math.floor(Math.random()*5)+1;
-    const baseIngresos=baseVentas*6.99;
-    if(salesData.count===0){
-      document.getElementById('ventasHoy').textContent=baseVentas;
-      document.getElementById('ingresos').textContent='$'+baseIngresos.toFixed(2);
-    }
-  },5000);
-}
-
-// Init
-loadProducts();
-initDashboard();
-
-// Close modal on overlay click
-document.getElementById('checkoutModal').addEventListener('click',function(e){
-  if(e.target===this)closeModal();
-});
+const PRODUCTS=[{"uid": "ELITE-0001", "title": "ChatGPT Mastery Pro", "expert": "Andrew Ng", "description": "Domina ChatGPT de cero a experto. 500+ prompts listos.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0002", "title": "Midjourney Visual Empire", "expert": "Sam Altman", "description": "Crea arte IA que vende. 1000+ estilos probados.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0003", "title": "Claude AI Automation Suite", "expert": "Sam Altman", "description": "Automatiza tu negocio con Claude. 50 workflows.", "price": 9.99, "compare_price": 29.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0004", "title": "Prompt Engineering Bible", "expert": "Riley Goodside", "description": "El libro definitivo de prompts. 200+ paginas.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0005", "title": "AI Agent Builder Pro", "expert": "Yoav Shoham", "description": "Construye agentes IA autonomos paso a paso.", "price": 9.99, "compare_price": 29.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0006", "title": "RAG Systems Masterclass", "expert": "Patrick Lewis", "description": "Retrieval Augmented Generation en produccion.", "price": 14.99, "compare_price": 44.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0007", "title": "Fine-tuning LLMs Pro", "expert": "Yann LeCun", "description": "Ajusta modelos de lenguaje para tu negocio.", "price": 14.99, "compare_price": 44.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0008", "title": "AI Content Factory", "expert": "Aaron Mirck", "description": "Produce 1000 piezas de contenido con IA/dia.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0009", "title": "Computer Vision Starter", "expert": "Fei-Fei Li", "description": "Reconocimiento de imagenes con IA desde cero.", "price": 9.99, "compare_price": 29.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0010", "title": "AI Scaling Playbook", "expert": "Ilya Sutskever", "description": "Escala tus sistemas IA segun las leyes de Sutskever.", "price": 14.99, "compare_price": 44.97, "category": "ia", "emoji": "🧠"}];
+let cart=JSON.parse(localStorage.getItem('cart')||'[]');
+function updateCartCount(){document.getElementById('cart-count').textContent=cart.length;localStorage.setItem('cart',JSON.stringify(cart))}
+function buyProduct(uid,price){cart.push({uid,price,time:Date.now()});updateCartCount();showToast('Agregado al carrito');setTimeout(()=>window.open('https://buy.stripe.com/test_28EbJ1bzsg1yeWi79V3cc02','_blank'),500)}
+function viewCart(){if(cart.length===0){showToast('Tu carrito esta vacio');return}const t=cart.reduce((s,i)=>s+i.price,0);showToast(cart.length+' items | $'+t.toFixed(2)+' - Redirigiendo...');setTimeout(()=>window.open('https://buy.stripe.com/test_28EbJ1bzsg1yeWi79V3cc02','_blank'),1000)}
+function filterProducts(f){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');document.querySelectorAll('.product-card').forEach(c=>{if(f==='all'){c.style.display='block'}else{const p=parseFloat(c.querySelector('.price-current').textContent.replace('$',''));if(f==='starter'&&p<=7)c.style.display='block';else if(f==='pro'&&p>7&&p<=10)c.style.display='block';else if(f==='premium'&&p>10)c.style.display='block';else c.style.display='none'}})}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+updateCartCount();
 </script>
-</body>
-</html>
+</body></html>
