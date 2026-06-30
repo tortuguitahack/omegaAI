@@ -1,241 +1,395 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DIHACKTOR Ω — Tienda Digital Premium | $6.99 USD</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#d4af37;--gold-light:#f4d03f;--dark:#0a0a0f;--card:#111118;--border:#1a1a2e;--text:#fafafa;--muted:#666}
-body{font-family:system-ui,-apple-system,sans-serif;background:var(--dark);color:var(--text);min-height:100vh}
-body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;
-  background:radial-gradient(ellipse at 20% 50%,rgba(212,175,55,.04) 0%,transparent 50%),
-             radial-gradient(ellipse at 80% 20%,rgba(212,175,55,.03) 0%,transparent 50%);
-  pointer-events:none;z-index:0}
-.header{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.95);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;
-  display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:1.4rem;font-weight:900;color:var(--gold);letter-spacing:3px}
-.nav{display:flex;gap:1.5rem}
-.nav a{color:#888;font-size:.875rem;text-decoration:none;transition:color .2s}
-.nav a:hover{color:var(--gold)}
-.hero{text-align:center;padding:4rem 2rem 2rem;position:relative;z-index:1}
-.hero h1{font-size:3rem;font-weight:900;
-  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
-.hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 1rem}
-.price-tag{display:inline-block;padding:.75rem 2rem;background:linear-gradient(135deg,var(--gold) 0%,#b8941f 100%);
-  color:var(--dark);font-size:1.8rem;font-weight:800;border-radius:8px;margin:1rem 0}
-.btn{display:inline-block;padding:1rem 2.5rem;background:linear-gradient(135deg,var(--gold) 0%,#b8941f 100%);
-  color:var(--dark);font-weight:700;border-radius:8px;border:none;cursor:pointer;
-  font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,175,55,.3)}
-.btn-outline{background:transparent;border:2px solid var(--gold);color:var(--gold);margin-left:1rem}
-.btn-outline:hover{background:var(--gold);color:var(--dark)}
-.container{max-width:1200px;margin:0 auto;padding:2rem;position:relative;z-index:1}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:2rem 0}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center}
-.stat-card .value{font-size:1.8rem;font-weight:800;color:var(--gold)}
-.stat-card .label{color:var(--muted);font-size:.8rem;margin-top:.5rem}
-.section-title{font-size:1.5rem;font-weight:700;color:var(--gold);margin:2rem 0 1rem;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;
-  transition:border-color .2s,transform .2s;position:relative;z-index:1}
-.card:hover{border-color:var(--gold);transform:translateY(-4px)}
-.card .category{color:var(--gold);font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
-.card h3{color:var(--text);font-size:.9rem;margin-bottom:.5rem;line-height:1.4;min-height:2.8em}
-.card .expert{color:var(--muted);font-size:.8rem;margin-bottom:1rem}
-.card .price{font-size:1.4rem;font-weight:800;color:var(--gold)}
-.buy-btn{display:block;width:100%;padding:.75rem;background:linear-gradient(135deg,var(--gold) 0%,#b8941f 100%);
-  color:var(--dark);font-weight:700;border:none;border-radius:8px;cursor:pointer;
-  font-size:.875rem;text-align:center;margin-top:1rem;text-decoration:none;transition:transform .2s}
-.buy-btn:hover{transform:scale(1.02)}
-.qr-section{text-align:center;padding:3rem 2rem;background:var(--card);border:1px solid var(--border);
-  border-radius:16px;margin:2rem auto;max-width:520px;position:relative;z-index:1}
-.qr-section h3{color:var(--gold);font-size:1.3rem;margin-bottom:.5rem}
-.qr-section p{color:var(--muted);font-size:.875rem;margin-bottom:1.5rem}
-.qr-code-box{width:220px;height:220px;border:3px solid var(--gold);border-radius:16px;
-  background:#fff;padding:10px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center}
-.qr-code-box img{width:100%;height:100%;object-fit:contain;border-radius:8px}
-.qr-wallets{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1rem}
-.wallet-tag{padding:.3rem .8rem;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);
-  border-radius:6px;font-size:.7rem;color:var(--gold);font-family:monospace}
-.payments{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:2rem 0}
-.payment-card{background:var(--card);border:1px solid var(--border);border-radius:12px;
-  padding:1rem 1.5rem;text-align:center;min-width:130px;cursor:pointer;
-  transition:border-color .2s,transform .2s;text-decoration:none;color:var(--text)}
-.payment-card:hover{border-color:var(--gold);transform:translateY(-2px)}
-.payment-card .icon{font-size:1.5rem;margin-bottom:.5rem}
-.payment-card .name{font-size:.8rem;font-weight:600}
-.payment-card .sub{font-size:.65rem;color:var(--muted)}
-.search-box{width:100%;max-width:500px;margin:2rem auto;padding:1rem 1.5rem;
-  background:var(--card);border:1px solid var(--border);border-radius:12px;
-  color:var(--text);font-size:1rem;outline:none;display:block}
-.search-box:focus{border-color:var(--gold)}
-.search-box::placeholder{color:#555}
-.footer{text-align:center;padding:2rem;color:#444;font-size:.75rem;border-top:1px solid var(--border);margin-top:4rem;position:relative;z-index:1}
-.footer a{color:var(--gold);text-decoration:none}
-.badge{display:inline-block;padding:.25rem .5rem;background:rgba(212,175,55,.15);border-radius:4px;font-size:.65rem;color:var(--gold);margin-left:.5rem}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APOLLO Ω | La IA no es una herramienta, es una habilidad</title>
+    <meta name="description" content="Tutoriales de IA desde $6.99. 138,000+ productos. Video, PDF, Audio y Workflows.">
+    <meta property="og:title" content="APOLLO Ω — 138,000+ Tutoriales IA | $6.99">
+    <meta property="og:description" content="La IA no es una herramienta, es una habilidad. Aprende con expertos mundiales.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root{--cyan:#00f2ff;--purple:#bc13fe;--dark:#050508;--glass:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.07)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:var(--dark);color:#fff;font-family:'Outfit',sans-serif;overflow-x:hidden;min-height:100vh}
+        .glass{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:20px}
+        .neon{text-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan)}
+        .card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:16px;transition:all 0.4s;overflow:hidden}
+        .card:hover{transform:translateY(-8px);border-color:var(--cyan);box-shadow:0 0 30px rgba(0,242,255,0.15)}
+        .card img{width:100%;height:180px;object-fit:cover;transition:transform 0.4s}
+        .card:hover img{transform:scale(1.05)}
+        .btn{padding:0.75rem 1.5rem;border-radius:12px;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.2s;border:none;display:inline-flex;align-items:center;gap:0.5rem}
+        .btn-primary{background:linear-gradient(135deg,#00f2ff,#bc13fe);color:#000}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,242,255,0.3)}
+        .fixed-price{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,#00f2ff,#bc13fe);color:#000;padding:0.4rem 1rem;border-radius:10px;font-weight:900;font-size:0.9rem;box-shadow:0 4px 15px rgba(0,242,255,0.3);z-index:10}
+        .modal{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center;padding:2rem}
+        .modal.active{display:flex}
+        .toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;font-weight:700;font-size:0.85rem;transform:translateX(150%);transition:transform 0.3s;z-index:99999}
+        .toast.show{transform:translateX(0)}.toast.success{background:#10b981;color:#fff}
+        .copy-btn{background:rgba(0,242,255,0.1);border:1px solid rgba(0,242,255,0.3);color:var(--cyan);padding:0.5rem 1rem;border-radius:8px;cursor:pointer;font-size:0.75rem;font-weight:700}
+        .copy-btn:hover{background:rgba(0,242,255,0.2)}
+        .tab-btn{padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;background:transparent;color:#94a3b8;border:none}
+        .tab-btn.active{background:var(--cyan);color:#000}
+        select{background:rgba(0,0,0,0.5);border:1px solid var(--border);color:#fff;padding:0.5rem 1rem;border-radius:8px;font-size:0.85rem;outline:none}
+        select:focus{border-color:var(--cyan)}
+        ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--cyan);border-radius:10px}
+        .update-badge{position:fixed;bottom:1rem;left:1rem;background:linear-gradient(135deg,#00f2ff,#bc13fe);color:#000;padding:0.5rem 1rem;border-radius:20px;font-size:0.7rem;font-weight:700;z-index:100}
+    </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="logo">DIHACKTOR Ω</div>
-  <nav class="nav">
-    <a href="#productos">Productos</a>
-    <a href="#pagar">QR Pago</a>
-    <a href="#metodos">Métodos</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>DIHACKTOR Ω</h1>
-  <p>Productos digitales premium de Inteligencia Artificial. Miles de expertos, un solo precio.</p>
-  <div class="price-tag">$6.99 USD</div>
-  <p style="color:var(--muted);font-size:.9rem;margin-top:.5rem">Precio fijo global · Sin excepciones · 24/7</p>
-  <br/>
-  <a href="#pagar" class="btn">⚡ Pagar con QR</a>
-  <a href="#productos" class="btn btn-outline">Ver Productos</a>
-</section>
-
-<div class="container">
-
-  <div class="stats">
-    <div class="stat-card"><div class="value">21,000+</div><div class="label">Productos</div></div>
-    <div class="stat-card"><div class="value">560</div><div class="label">Expertos</div></div>
-    <div class="stat-card"><div class="value">120+</div><div class="label">Países</div></div>
-    <div class="stat-card"><div class="value">21,000+</div><div class="label">Ventas</div></div>
-  </div>
-
-  <!-- QR MULTIPAGO -->
-  <div id="pagar" class="qr-section">
-    <h3>⚡ PAGO RÁPIDO QR MULTIPAGO</h3>
-    <p>Escanea y paga en segundos · $6.99 USD</p>
-    <div class="qr-code-box">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ethereum:0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053?value=6.99e18&color=d4af37&bgcolor=ffffff" alt="QR USDT BEP20">
+<!-- ALERTA -->
+<div class="sticky top-0 z-[60] bg-gradient-to-r from-red-900/90 to-black/90 p-2 flex justify-between items-center border-b border-red-500/30">
+    <div class="flex items-center gap-3 px-4">
+        <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+        <span class="font-black tracking-widest text-[10px] md:text-xs text-red-100 uppercase">APOLLO Ω — 138,000+ Tutoriales IA | $6.99 USD</span>
     </div>
-    <div class="qr-wallets">
-      <span class="wallet-tag">USDT BEP20</span>
-      <span class="wallet-tag">BTC</span>
-      <span class="wallet-tag">ETH</span>
-      <span class="wallet-tag">BNB</span>
-    </div>
-    <p style="margin-top:1rem;font-size:.75rem;color:var(--muted)">💳 También: Stripe · Meru · Takenos · Binance Pay · Wallbit</p>
-  </div>
-
-  <!-- MÉTODOS DE PAGO -->
-  <div id="metodos" class="section-title">Métodos de Pago Aceptados</div>
-  <div class="payments">
-    <a href="https://buy.stripe.com" class="payment-card">
-      <div class="icon">💳</div><div class="name">Stripe</div><div class="sub">Tarjeta</div>
-    </a>
-    <a href="#" class="payment-card" onclick="document.getElementById('pagar').scrollIntoView({behavior:'smooth'});return false">
-      <div class="icon">₿</div><div class="name">Crypto QR</div><div class="sub">8 Redes</div>
-    </a>
-    <a href="#" class="payment-card">
-      <div class="icon">🏦</div><div class="name">Binance Pay</div><div class="sub">Crypto Directo</div>
-    </a>
-    <a href="#" class="payment-card">
-      <div class="icon">💎</div><div class="name">Wallbit</div><div class="sub">Transferencia</div>
-    </a>
-  </div>
-
-  <!-- PRODUCTOS -->
-  <div id="productos" class="section-title">Productos Destacados <span class="badge">$6.99 USD</span></div>
-  <div class="grid">
-    <div class="card">
-      <div class="category">IA</div>
-      <h3>Apollo IA Workflow Premium — Automatización Inteligente</h3>
-      <div class="expert">por YinAITechYang</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">AI/ML</div>
-      <h3>NeuroForge AI — Deep Learning Masterclass</h3>
-      <div class="expert">por Dr. Andrew Ng</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">FinTech</div>
-      <h3>CapitalPulse — FinTech Trading con IA</h3>
-      <div class="expert">por Michael Saylor</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">EdTech</div>
-      <h3>MindLadder — EdTech Adaptativo con IA</h3>
-      <div class="expert">por Sal Khan</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">HealthTech</div>
-      <h3>VitalSphere — HealthTech IA Diagnóstico</h3>
-      <div class="expert">por Dr. Eric Topol</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">SaaS</div>
-      <h3>AuroraML — SaaS Vertical IA</h3>
-      <div class="expert">por Drew Houston</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">Creator</div>
-      <h3>CreatorHub Pro — Economy de Creadores</h3>
-      <div class="expert">por Gary Vaynerchuk</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">MarTech</div>
-      <h3>BrandPilot — MarTech Automatizado</h3>
-      <div class="expert">por Seth Godin</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">Cyber</div>
-      <h3>SentinAI — Cybersecurity IA Avanzada</h3>
-      <div class="expert">por Bruce Schneier</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">Climate</div>
-      <h3>ClimateIQ — ClimateTech Predictivo</h3>
-      <div class="expert">por Al Gore</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">Legal</div>
-      <h3>LexForge — LegalTech IA Autónomo</h3>
-      <div class="expert">por Richard Susskind</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-    <div class="card">
-      <div class="category">DevOps</div>
-      <h3>DevPilot — DevOps IA Autónomo 24/7</h3>
-      <div class="expert">por Gene Kim</div>
-      <div class="price">$6.99</div>
-      <a href="https://buy.stripe.com" class="buy-btn">Comprar · $6.99</a>
-    </div>
-  </div>
+    <div class="text-[10px] neon px-4 hidden md:block font-mono" id="liveTime">00:00:00</div>
 </div>
 
-<footer class="footer">
-  <p>© 2026 DIHACKTOR Ω — YinAITechYang Ecosystem</p>
-  <p style="margin-top:.5rem">Precio fijo: <a href="#pagar">$6.99 USD</a> · <a href="#metodos">QR · Stripe · Crypto · Meru</a></p>
-  <p style="margin-top:.5rem">Powered by Next.js 16 + SQLite + IA + GitHub Pages</p>
-</footer>
+<!-- HEADER -->
+<header class="sticky top-8 z-50 glass mx-4 mt-2 p-4 flex flex-wrap justify-between items-center gap-4">
+    <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,242,255,0.3)]">
+            <span class="text-xl font-black italic text-white">Ω</span>
+        </div>
+        <div>
+            <h1 class="text-xl font-black tracking-tight neon">APOLLO Ω</h1>
+            <p class="text-[10px] text-cyan-400 uppercase tracking-[0.2em] font-bold">"La IA no es una herramienta, es una habilidad"</p>
+        </div>
+    </div>
+    <div class="flex items-center gap-4">
+        <div class="relative hidden md:block">
+            <input type="text" id="searchInput" placeholder="Buscar tutoriales de IA..." oninput="filterProducts()" class="w-72 bg-black/50 border border-white/10 rounded-full py-2 px-10 focus:outline-none focus:border-cyan-400 text-sm">
+            <i class="fas fa-search absolute left-4 top-3 text-gray-500 text-sm"></i>
+        </div>
+        <select id="categoryFilter" onchange="filterProducts()" class="text-sm">
+            <option value="all">Todas las categorías</option>
+        </select>
+    </div>
+</header>
 
+<!-- STATS -->
+<div class="grid grid-cols-3 gap-3 mx-4 mt-4">
+    <div class="glass p-4 text-center">
+        <div class="text-2xl font-black neon" id="statProducts">0</div>
+        <div class="text-[10px] text-gray-500 uppercase font-bold">Tutoriales</div>
+    </div>
+    <div class="glass p-4 text-center">
+        <div class="text-2xl font-black text-green-400">$6.99</div>
+        <div class="text-[10px] text-gray-500 uppercase font-bold">Precio Fijo</div>
+    </div>
+    <div class="glass p-4 text-center">
+        <div class="text-2xl font-black text-purple-400" id="statCategories">20</div>
+        <div class="text-[10px] text-gray-500 uppercase font-bold">Categorías</div>
+    </div>
+</div>
+
+<!-- PRODUCTS -->
+<main class="container mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-black">Tutoriales de <span class="neon">IA</span></h2>
+        <span class="text-xs text-gray-500" id="showingCount">Cargando...</span>
+    </div>
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="col-span-full flex flex-col items-center justify-center py-20">
+            <div class="w-10 h-10 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p class="text-gray-500 text-sm">Cargando tutoriales...</p>
+        </div>
+    </div>
+    <div id="loadMoreContainer" class="flex justify-center mt-8 hidden">
+        <button onclick="loadMore()" class="px-8 py-3 bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 rounded-full hover:bg-cyan-500/40 transition-all uppercase text-xs font-black tracking-widest">
+            <i class="fas fa-chevron-down mr-2"></i>Cargar Más Tutoriales
+        </button>
+    </div>
+</main>
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="modal">
+    <div class="glass max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 relative">
+        <button onclick="closeModal('productModal')" class="absolute top-4 right-4 text-2xl text-gray-500 hover:text-red-500">&times;</button>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="modal">
+    <div class="glass max-w-2xl w-full p-8 relative">
+        <button onclick="closeModal('checkoutModal')" class="absolute top-4 right-4 text-2xl text-gray-500 hover:text-red-500">&times;</button>
+        <h2 class="text-2xl font-black mb-2 neon uppercase">Terminal de Pago</h2>
+        <p class="text-xs text-gray-400 mb-2" id="checkoutProductName">Producto</p>
+        <p class="text-4xl font-black text-cyan-400 mb-6">$6.99 USD</p>
+        <div class="flex border-b border-white/10 mb-6">
+            <button class="tab-btn active" onclick="switchPayTab('stripe')"><i class="fab fa-stripe mr-2"></i>Tarjeta</button>
+            <button class="tab-btn" onclick="switchPayTab('crypto')"><i class="fab fa-bitcoin mr-2"></i>Crypto</button>
+            <button class="tab-btn" onclick="switchPayTab('bank')"><i class="fas fa-university mr-2"></i>Banco</button>
+        </div>
+        <div id="payContent" class="min-h-[200px] mb-6"></div>
+        <div class="pt-4 border-t border-white/10">
+            <input type="email" id="buyerEmail" placeholder="Email para entrega del tutorial..." class="w-full bg-black border border-white/10 rounded px-4 py-3 text-sm mb-4 focus:border-cyan-500 outline-none">
+            <button onclick="processOrder()" class="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-black py-4 rounded-xl uppercase tracking-widest text-lg hover:opacity-90">
+                <i class="fas fa-lock mr-2"></i>Pagar $6.99
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<!-- UPDATE BADGE -->
+<div class="update-badge">
+    <i class="fas fa-sync-alt mr-1"></i>Actualización semanal automática
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+// APOLLO Ω — Dashboard Definitivo v2.0
+// Imágenes reales | Sin ingresos | Actualización semanal
+// ═══════════════════════════════════════════════════
+
+const FIXED_PRICE = 6.99;
+const LEMA = "La IA no es una herramienta, es una habilidad";
+const PAYMENT_LINK = "https://app.takenos.com/pay/ecf19afd-b6c0-4ada-82d3-c7fc87272e54";
+
+// Imágenes de Unsplash por categoría de IA
+const CATEGORY_IMAGES = {
+    "IA Marketing": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    "Copywriting IA": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
+    "Automatización n8n": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=600&q=80",
+    "SEO con IA": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80",
+    "Email Marketing IA": "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=600&q=80",
+    "Imágenes IA": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80",
+    "Video IA": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+    "Chatbots IA": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=600&q=80",
+    "E-commerce IA": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80",
+    "Micro-SaaS IA": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
+    "Affiliate IA": "https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&w=600&q=80",
+    "Podcast IA": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80",
+    "Presentaciones IA": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+    "Plan de Negocio IA": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80",
+    "Trading IA": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80",
+    "Freelancing IA": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+    "Productividad IA": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=600&q=80",
+    "Análisis Datos IA": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+    "Voice AI": "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=600&q=80",
+    "IA Generativa": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80"
+};
+
+const PAYMENTS = {
+    crypto: {
+        USDT: { address: "0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053", net: "BEP20" },
+        BTC: { address: "bc1qjjgsx3lwa0wz59l89htcpr28j5s7dtmv99fmw0", net: "Bitcoin" },
+        ETH: { address: "0x2F4bc6f77719AB99BCd6a9b553729bB96C9B8c22", net: "Ethereum" }
+    },
+    banks: {
+        USA: { bank: "Lead Bank", holder: "Diego Edgardo Cortez Yanez", acc: "211534854868", route: "101019644" },
+        Europa: { bank: "OPENPAYD MALTA", holder: "Diego Edgardo Cortez Yáñez", iban: "MT12CFTE28004000000000005456093", bic: "CFTEMTM1XXX" },
+        Bolivia: { bank: "Banco Mercantil Santa Cruz", holder: "DIEGO EDGARDO CORTEZ YAÑEZ", acc: "4069474188", ci: "5808841TJ" },
+        Mexico: { bank: "CLABE", holder: "Diego Edgardo Cortez Yañez", clabe: "646180546701268303" }
+    },
+};
+
+let products = [];
+let displayed = 0;
+const PER_PAGE = 24;
+let currentProduct = null;
+
+// ═══════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════
+
+async function init() {
+    try {
+        const res = await fetch('products.json');
+        const data = await res.json();
+        products = data.products;
+        products.forEach(p => {
+            p.price = FIXED_PRICE;
+            // Asignar imagen por categoría
+            p.image = CATEGORY_IMAGES[p.category] || CATEGORY_IMAGES["IA Generativa"];
+        });
+    } catch(e) {
+        console.error('Error cargando productos:', e);
+        generateLocalProducts();
+    }
+    
+    renderProducts();
+    populateCategories();
+    updateStats();
+    startClock();
+}
+
+function generateLocalProducts() {
+    const nichos = Object.keys(CATEGORY_IMAGES);
+    const experts = ["Alex Hormozi", "Jeff Bezos", "Frank Kern", "Naval Ravikant", "Steve Jobs", "Andrew Ng", "Gary Vaynerchuk", "Neil Patel", "Tim Ferriss", "Russell Brunson", "Pat Flynn", "MrBeast", "Warren Buffett", "Robert Kiyosaki", "Seth Godin", "Grant Cardone", "Ben Settle", "Jordan Belfort", "Sabri Suby", "Dan Kennedy"];
+    
+    products = [];
+    for (let i = 0; i < 500; i++) {
+        const nicho = nichos[i % nichos.length];
+        const expert = experts[i % experts.length];
+        products.push({
+            id: 'local_' + i,
+            title: `🔥 Tutorial ${nicho} 2026 — Método ${expert}`,
+            description: `Aprende ${nicho} desde cero con el método de ${expert}. Video HD, guía PDF, prompts, workflows n8n y audio. "${LEMA}"`,
+            price: FIXED_PRICE,
+            category: nicho,
+            expert: expert,
+            image: CATEGORY_IMAGES[nicho],
+            level: 'starter',
+            formats: ['video', 'pdf', 'audio', 'workflow'],
+            language: 'es'
+        });
+    }
+}
+
+// ═══════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════
+
+function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    const toShow = products.slice(0, displayed + PER_PAGE);
+    displayed = toShow.length;
+    
+    grid.innerHTML = toShow.map(p => `
+        <div class="card cursor-pointer group" onclick="openProduct('${p.id}')">
+            <div class="relative h-44 overflow-hidden">
+                <img src="${p.image}" alt="${p.category}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80'">
+                <div class="fixed-price">$${FIXED_PRICE}</div>
+                <div class="absolute bottom-2 left-2 flex gap-1">
+                    <span class="bg-black/70 text-[8px] px-2 py-0.5 rounded text-cyan-400 font-bold">VIDEO</span>
+                    <span class="bg-black/70 text-[8px] px-2 py-0.5 rounded text-purple-400 font-bold">PDF</span>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="font-bold text-sm text-white group-hover:text-cyan-400 transition-colors line-clamp-2 mb-2">${p.title}</h3>
+                <p class="text-[11px] text-gray-500 line-clamp-2 mb-3">${p.description}</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[10px] text-cyan-400 font-bold">${p.category}</span>
+                    <button class="btn btn-primary text-xs py-2 px-4" onclick="event.stopPropagation(); openCheckout('${p.id}')">Comprar</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    document.getElementById('loadMoreContainer').classList.toggle('hidden', displayed >= products.length);
+    document.getElementById('statProducts').textContent = products.length.toLocaleString();
+    document.getElementById('showingCount').textContent = `Mostrando ${displayed.toLocaleString()} de ${products.length.toLocaleString()}`;
+}
+
+function loadMore() { renderProducts(); }
+
+function populateCategories() {
+    const cats = [...new Set(products.map(p => p.category))];
+    document.getElementById('statCategories').textContent = cats.length;
+    document.getElementById('categoryFilter').innerHTML = '<option value="all">Todas las categorías</option>' + cats.map(c => `<option value="${c}">${c}</option>`).join('');
+}
+
+function filterProducts() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const cat = document.getElementById('categoryFilter').value;
+    const filtered = products.filter(p => {
+        const matchQ = p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q);
+        const matchCat = cat === 'all' || p.category === cat;
+        return matchQ && matchCat;
+    });
+    displayed = Math.min(PER_PAGE, filtered.length);
+    document.getElementById('productsGrid').innerHTML = filtered.slice(0, displayed).map(p => `
+        <div class="card cursor-pointer group" onclick="openProduct('${p.id}')">
+            <div class="relative h-44 overflow-hidden">
+                <img src="${p.image}" alt="${p.category}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80'">
+                <div class="fixed-price">$${FIXED_PRICE}</div>
+            </div>
+            <div class="p-4">
+                <h3 class="font-bold text-sm line-clamp-2 mb-2">${p.title}</h3>
+                <p class="text-[11px] text-gray-500 line-clamp-2 mb-3">${p.description}</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[10px] text-cyan-400 font-bold">${p.category}</span>
+                    <button class="btn btn-primary text-xs py-2 px-4" onclick="event.stopPropagation(); openCheckout('${p.id}')">Comprar</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    document.getElementById('showingCount').textContent = `Mostrando ${displayed.toLocaleString()} de ${filtered.length.toLocaleString()}`;
+}
+
+// ═══════════════════════════════════════════════════
+// PRODUCT DETAIL
+// ═══════════════════════════════════════════════════
+
+function openProduct(id) {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    currentProduct = p;
+    document.getElementById('modalContent').innerHTML = `
+        <div class="h-64 rounded-xl overflow-hidden mb-6"><img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80'"></div>
+        <h2 class="text-2xl font-black mb-2">${p.title}</h2>
+        <p class="text-gray-400 mb-4">${p.description}</p>
+        <div class="flex gap-2 mb-4 flex-wrap">
+            <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-xs font-bold">📹 Video HD</span>
+            <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-xs font-bold">📄 PDF 30+ págs</span>
+            <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs font-bold">🎧 Audio</span>
+            <span class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-xs font-bold">⚙️ Workflow</span>
+        </div>
+        <p class="text-sm text-gray-500 mb-6 italic">"${LEMA}"</p>
+        <div class="flex items-center gap-4">
+            <span class="text-4xl font-black text-cyan-400">$${FIXED_PRICE}</span>
+            <button class="btn btn-primary text-lg px-8 py-3" onclick="openCheckout('${p.id}')"><i class="fas fa-shopping-cart mr-2"></i>Comprar Ahora</button>
+        </div>
+    `;
+    document.getElementById('productModal').classList.add('active');
+}
+
+// ═══════════════════════════════════════════════════
+// CHECKOUT
+// ═══════════════════════════════════════════════════
+
+function openCheckout(id) {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    currentProduct = p;
+    document.getElementById('checkoutProductName').textContent = p.title;
+    document.getElementById('checkoutModal').classList.add('active');
+    switchPayTab('stripe');
+}
+
+function switchPayTab(tab) {
+    const content = document.getElementById('payContent');
+    document.querySelectorAll('#checkoutModal .tab-btn').forEach(b => b.classList.remove('active'));
+    if(event) event.target.classList.add('active');
+    
+    
+    else if(tab==='crypto') content.innerHTML=`<div class="space-y-3"><div class="p-3 bg-white/5 rounded-xl flex justify-between items-center"><div><p class="text-[8px] font-bold text-cyan-400 uppercase">USDT/USDC (BEP20)</p><code class="text-[10px] break-all">${PAYMENTS.crypto.USDT.address}</code></div><button class="copy-btn" onclick="copyText('${PAYMENTS.crypto.USDT.address}')"><i class="fas fa-copy"></i></button></div><div class="p-3 bg-white/5 rounded-xl flex justify-between items-center"><div><p class="text-[8px] font-bold text-yellow-400 uppercase">Bitcoin</p><code class="text-[10px] break-all">${PAYMENTS.crypto.BTC.address}</code></div><button class="copy-btn" onclick="copyText('${PAYMENTS.crypto.BTC.address}')"><i class="fas fa-copy"></i></button></div><div class="p-3 bg-white/5 rounded-xl flex justify-between items-center"><div><p class="text-[8px] font-bold text-blue-400 uppercase">Ethereum</p><code class="text-[10px] break-all">${PAYMENTS.crypto.ETH.address}</code></div><button class="copy-btn" onclick="copyText('${PAYMENTS.crypto.ETH.address}')"><i class="fas fa-copy"></i></button></div><p class="text-[9px] text-center text-amber-500 font-bold">Reportar a @d3h1ckt4rglobal_bot</p></div>`;
+    if(tab==='qr') content.innerHTML=`<div class="text-center py-4"><p class="text-sm font-bold text-amber-400 mb-3">PAGO RAPIDO QR MULTIPAGO</p><div class="bg-white p-3 rounded-xl inline-block mb-3"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data=ethereum:0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053?value=6.99e18&amp;color=d4af37" width="180" height="180" class="mx-auto"/></div><p class="text-[10px] text-gray-400 mb-2">USDT BEP20 - BTC - ETH - BNB</p><p class="text-[9px] text-amber-500 font-bold">$6.99 USD</p></div>`;
+    else else content.innerHTML=`<div class="space-y-3"><div class="p-3 bg-white/5 rounded-xl"><p class="text-[8px] font-bold text-cyan-400 uppercase">🇺🇸 USA — Lead Bank</p><p class="text-[10px]">Routing: ${PAYMENTS.banks.USA.route}<br>Cta: ${PAYMENTS.banks.USA.acc}<br>${PAYMENTS.banks.USA.holder}</p></div><div class="p-3 bg-white/5 rounded-xl"><p class="text-[8px] font-bold text-purple-400 uppercase">🇪🇺 Europa — Openpayd</p><p class="text-[10px]">IBAN: ${PAYMENTS.banks.Europa.iban}<br>BIC: ${PAYMENTS.banks.Europa.bic}</p></div><div class="p-3 bg-white/5 rounded-xl"><p class="text-[8px] font-bold text-green-400 uppercase">🇧🇴 Bolivia — BMSC</p><p class="text-[10px]">Cta: ${PAYMENTS.banks.Bolivia.acc}<br>CI: ${PAYMENTS.banks.Bolivia.ci}</p></div></div>`;
+}
+
+function copyText(t){navigator.clipboard.writeText(t);showToast('✅ Copiado','success')}
+
+function processOrder(){
+    const e=document.getElementById('buyerEmail').value;if(!e)return showToast('❌ Email requerido','error');
+    const o={id:'ORD-'+Math.random().toString(36).substr(2,8).toUpperCase(),product:currentProduct.title,email:e,amount:FIXED_PRICE,status:'pending',date:new Date().toISOString()};
+    let sales=JSON.parse(localStorage.getItem('apollo_sales')||'[]');sales.unshift(o);localStorage.setItem('apollo_sales',JSON.stringify(sales));
+    closeModal('checkoutModal');showToast('✅ Orden: '+o.id,'success');
+}
+
+function updateStats(){
+    const sales=JSON.parse(localStorage.getItem('apollo_sales')||'[]');
+    document.getElementById('statSales')&&statSales&&(statSales.textContent=sales.length);
+}
+
+function showToast(m,t){const x=document.getElementById('toast');x.textContent=m;x.className='toast '+t+' show';setTimeout(()=>x.classList.remove('show'),3000)}
+function closeModal(id){document.getElementById(id).classList.remove('active')}
+function startClock(){setInterval(()=>{document.getElementById('liveTime').textContent=new Date().toLocaleTimeString('es-ES')},1000)}
+function setView(v,e){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));e.classList.add('active')}
+
+document.addEventListener('DOMContentLoaded',init);
+</script>
 </body>
 </html>
