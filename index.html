@@ -3,138 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OMEGA AI | Domina la Inteligencia Artificial</title>
-<meta name="description" content="OMEGA AI - Productos digitales premium. Domina la Inteligencia Artificial.">
-<meta name="theme-color" content="#0a0a0f">
+<title>DIHACKTOR Ω — Tienda Digital Premium</title>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0a0a0f;--bg2:#111118;--bg3:#1a1a24;--card:#14141f;
-  --border:#222233;--text:#e4e4ed;--text2:#888899;--text3:#555566;
-  --primary:#06b6d4;--accent:#8b5cf6;--success:#22c55e;--radius:12px;
+  --gold:#d4af37;--gold-light:#f4d03f;--dark:#0a0a0f;--card:#111118;
+  --card-border:#1a1a2e;--text:#fafafa;--text-muted:#666;
 }
-html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-::selection{background:var(--primary);color:#000}
-a{color:var(--primary);text-decoration:none;transition:.2s}
-a:hover{color:#fff}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-
-/* HEADER */
-header{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 0}
-header .container{display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.25rem;color:#fff}
-.logo span{color:var(--primary)}
-nav{display:flex;gap:32px;align-items:center}
-nav a{color:var(--text2);font-size:.875rem;font-weight:500}
-nav a:hover{color:#fff}
-.cart-btn{background:var(--primary);color:#000;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-weight:700;font-size:.875rem;transition:.2s}
-.cart-btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
-
-/* HERO */
-.hero{padding:80px 0 60px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,var(--primary) 0%,transparent 70%);opacity:.06;pointer-events:none}
-.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;margin-bottom:16px;letter-spacing:-.02em;line-height:1.1}
-.hero h1 span{color:var(--primary)}
-.hero p{color:var(--text2);font-size:1.1rem;max-width:540px;margin:0 auto 32px}
-.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:48px}
-.stat{text-align:center}
-.stat-value{font-size:1.5rem;font-weight:800;color:#fff}
-.stat-label{font-size:.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
-
-/* PRODUCTS */
-.products{padding:40px 0 80px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;position:relative;transition:.25s;display:flex;flex-direction:column}
-.card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
-.card-badge{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.06);color:var(--text2);font-size:.65rem;font-weight:600;padding:4px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:.05em}
-.card-icon{width:48px;height:48px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px;border:1px solid var(--border)}
-.card h3{font-size:1rem;font-weight:700;margin-bottom:4px;color:#fff}
-.card .expert{font-size:.75rem;color:var(--primary);margin-bottom:12px;font-weight:500}
-.card .desc{font-size:.85rem;color:var(--text2);line-height:1.5;flex:1;margin-bottom:20px}
-.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px;border-top:1px solid var(--border)}
-.price{font-size:1.5rem;font-weight:900;color:#fff}
-.price small{font-size:.75rem;color:var(--text3);text-decoration:line-through;margin-left:8px;font-weight:400}
-.buy{background:var(--primary);color:#000;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-weight:700;font-size:.875rem;transition:.2s;white-space:nowrap}
-.buy:hover{filter:brightness(1.15);transform:scale(1.02)}
-
-/* FOOTER */
-footer{text-align:center;padding:40px 0;border-top:1px solid var(--border);color:var(--text3);font-size:.75rem}
-footer a{color:var(--text2)}
-
-/* TOAST */
-.toast{position:fixed;bottom:24px;right:24px;background:var(--bg3);border:1px solid var(--primary);border-radius:var(--radius);padding:16px 24px;color:#fff;z-index:1000;transform:translateY(100px);opacity:0;transition:.3s;font-size:.875rem}
-.toast.show{transform:translateY(0);opacity:1}
-
-@media(max-width:768px){
-  nav{display:none}
-  .hero{padding:60px 0 40px}
-  .hero-stats{flex-direction:column;gap:24px}
-  .grid{grid-template-columns:1fr}
-}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--dark);color:var(--text);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(212,175,55,.04) 0%,transparent 50%),
+             radial-gradient(ellipse at 80% 20%,rgba(212,175,55,.03) 0%,transparent 50%);
+  pointer-events:none;z-index:0}
+.header{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.95);
+  backdrop-filter:blur(12px);border-bottom:1px solid #1a1a2e;padding:1rem 2rem;
+  display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.4rem;font-weight:900;color:var(--gold);letter-spacing:3px}
+.nav{display:flex;gap:1.5rem}
+.nav a{color:#888;font-size:.875rem;text-decoration:none;transition:color .2s}
+.nav a:hover{color:var(--gold)}
+.hero{text-align:center;padding:4rem 2rem 2rem;position:relative;z-index:1}
+.hero h1{font-size:3rem;font-weight:900;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+.hero p{color:var(--text-muted);font-size:1.1rem;max-width:600px;margin:0 auto 2rem}
+.price-tag{display:inline-block;padding:.5rem 1.5rem;background:linear-gradient(135deg,var(--gold) 0%,#b8941f 100%);
+  color:var(--dark);font-size:1.5rem;font-weight:800;border-radius:8px;margin:1rem 0}
+.btn{display:inline-block;padding:1rem 2.5rem;background:linear-gradient(135deg,var(--gold) 0%,#b8941f 100%);
+  color:var(--dark);font-weight:700;border-radius:8px;border:none;cursor:pointer;
+  font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,175,55,.3)}
+.btn-outline{background:transparent;border:2px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:var(--gold);color:var(--dark)}
+.container{max-width:1200px;margin:0 auto;padding:2rem;position:relative;z-index:1}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:2rem 0}
+.stat-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;
+  padding:1.5rem;text-align:center}
+.stat-card .value{font-size:1.8rem;font-weight:800;color:var(--gold)}
+.stat-card .label{color:var(--text-muted);font-size:.8rem;margin-top:.5rem}
+.section-title{font-size:1.5rem;font-weight:700;color:var(--gold);margin:2rem 0 1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;
+  padding:1.5rem;transition:border-color .2s,transform .2s;position:relative;z-index:1}
+.card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.card .category{color:var(--gold);font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
+.card h3{color:var(--text);font-size:.95rem;margin-bottom:.5rem;line-height:1.4;min-height:2.8em}
+.card .expert{color:var(--text-muted);font-size:.8rem;margin-bottom:1rem}
+.card .price{font-size:1.4rem;font-weight:800;color:var(--gold)}
+.buy-btn{display:block;width:100%;padding:.75rem;background:linear-gradient(135deg,var(--gold) 0%,#b8941f 100%);
+  color:var(--dark);font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  font-size:.875rem;text-align:center;margin-top:1rem;text-decoration:none;transition:transform .2s}
+.buy-btn:hover{transform:scale(1.02)}
+/* QR Section */
+.qr-section{text-align:center;padding:3rem 2rem;background:var(--card);border:1px solid var(--card-border);
+  border-radius:16px;margin:2rem auto;max-width:500px;position:relative;z-index:1}
+.qr-section h3{color:var(--gold);font-size:1.2rem;margin-bottom:1rem}
+.qr-section p{color:var(--text-muted);font-size:.875rem;margin-bottom:1.5rem}
+.qr-img{width:200px;height:200px;border:3px solid var(--gold);border-radius:12px;
+  background:#fff;padding:8px;margin:0 auto 1rem}
+.qr-wallets{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1rem}
+.wallet-tag{padding:.25rem .75rem;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);
+  border-radius:6px;font-size:.7rem;color:var(--gold);font-family:monospace}
+/* Payment Methods */
+.payments{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:2rem 0}
+.payment-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;
+  padding:1rem 1.5rem;text-align:center;min-width:140px;cursor:pointer;
+  transition:border-color .2s,transform .2s;text-decoration:none;color:var(--text)}
+.payment-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.payment-card .icon{font-size:1.5rem;margin-bottom:.5rem}
+.payment-card .name{font-size:.8rem;font-weight:600}
+.payment-card .sub{font-size:.65rem;color:var(--text-muted)}
+/* Search */
+.search-box{width:100%;max-width:500px;margin:2rem auto;padding:1rem 1.5rem;
+  background:var(--card);border:1px solid var(--card-border);border-radius:12px;
+  color:var(--text);font-size:1rem;outline:none;display:block}
+.search-box:focus{border-color:var(--gold)}
+.search-box::placeholder{color:#555}
+.footer{text-align:center;padding:2rem;color:#444;font-size:.75rem;
+  border-top:1px solid #1a1a2e;margin-top:4rem;position:relative;z-index:1}
+.footer a{color:var(--gold);text-decoration:none}
+.badge{display:inline-block;padding:.25rem .5rem;background:rgba(212,175,55,.15);
+  border-radius:4px;font-size:.65rem;color:var(--gold);margin-left:.5rem}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <div class="logo">🧠 <span>OMEGA AI</span></div>
-    <nav>
-      <a href="#productos">Productos</a>
-      <a href="#expertos">Expertos</a>
-      <button class="cart-btn" onclick="viewCart()">&#128722; <span id="cart-count">0</span></button>
-    </nav>
-  </div>
+<header class="header">
+  <div class="logo">DIHACKTOR Ω</div>
+  <nav class="nav">
+    <a href="#productos">Productos</a>
+    <a href="#pagar">Pagar con QR</a>
+    <a href="#metodos">Métodos de Pago</a>
+  </nav>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <h1>🧠 <span>OMEGA AI</span></h1>
-    <p>Domina la Inteligencia Artificial. Productos digitales premium disenados por los mejores expertos del mundo.</p>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-value">10</div><div class="stat-label">Productos</div></div>
-      <div class="stat"><div class="stat-value">24/7</div><div class="stat-label">Acceso</div></div>
-      <div class="stat"><div class="stat-value">4.8&#9733;</div><div class="stat-label">Rating</div></div>
-      <div class="stat"><div class="stat-value">30d</div><div class="stat-label">Garant&iacute;a</div></div>
-    </div>
-  </div>
+  <h1>DIHACKTOR Ω</h1>
+  <p>Productos digitales premium de Inteligencia Artificial. Miles de expertos, un solo precio.</p>
+  <div class="price-tag">$6.99 USD</div>
+  <p style="margin-top:1rem;color:var(--text-muted);font-size:.9rem">Precio fijo global · Sin excepciones</p>
+  <br/>
+  <a href="#pagar" class="btn">Pagar con QR</a>
+  <a href="#productos" class="btn btn-outline" style="margin-left:1rem">Ver Productos</a>
 </section>
 
-<section class="products" id="productos">
-  <div class="container">
-    <div class="grid">
-<div class="card"><div class="card-badge">Andrew Ng</div><div class="card-icon">🧠</div><h3>ChatGPT Mastery Pro</h3><div class="expert">by Andrew Ng</div><div class="desc">Domina ChatGPT de cero a experto. 500+ prompts listos para usar.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0001','ChatGPT Mastery Pro',6.99)">COMPRAR</button></div></div>
-<div class="card"><div class="card-badge">Sam Altman</div><div class="card-icon">🧠</div><h3>Midjourney Visual Empire</h3><div class="expert">by Sam Altman</div><div class="desc">Crea arte IA que vende. 1000+ estilos probados.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0002','Midjourney Visual Empire',6.99)">COMPRAR</button></div></div>
-<div class="card"><div class="card-badge">Sam Altman</div><div class="card-icon">🧠</div><h3>Claude AI Automation</h3><div class="expert">by Sam Altman</div><div class="desc">Automatiza tu negocio con Claude. 50 workflows listos.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0003','Claude AI Automation',6.99)">COMPRAR</button></div></div>
-<div class="card"><div class="card-badge">Riley Goodside</div><div class="card-icon">🧠</div><h3>Prompt Engineering Bible</h3><div class="expert">by Riley Goodside</div><div class="desc">El libro definitivo de prompts. 200+ paginas.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0004','Prompt Engineering Bible',6.99)">COMPRAR</button></div></div>
-<div class="card"><div class="card-badge">Yoav Shoham</div><div class="card-icon">🧠</div><h3>AI Agent Builder Pro</h3><div class="expert">by Yoav Shoham</div><div class="desc">Construye agentes IA autonomos paso a paso.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0005','AI Agent Builder Pro',6.99)">COMPRAR</button></div></div>
-<div class="card"><div class="card-badge">Patrick Lewis</div><div class="card-icon">🧠</div><h3>RAG Systems Masterclass</h3><div class="expert">by Patrick Lewis</div><div class="desc">Retrieval Augmented Generation en produccion.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0006','RAG Systems Masterclass',6.99)">COMPRAR</button></div></div>
-<div class="card"><div class="card-badge">Yann LeCun</div><div class="card-icon">🧠</div><h3>Fine-tuning LLMs Pro</h3><div class="expert">by Yann LeCun</div><div class="desc">Ajusta modelos de lenguaje para tu negocio.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0007','Fine-tuning LLMs Pro',6.99)">COMPRAR</button></div></div>
-<div class="card"><div class="card-badge">Aaron Mirck</div><div class="card-icon">🧠</div><h3>AI Content Factory</h3><div class="expert">by Aaron Mirck</div><div class="desc">Produce 1000 piezas de contenido con IA por dia.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0008','AI Content Factory',6.99)">COMPRAR</button></div></div>
-<div class="card"><div class="card-badge">Fei-Fei Li</div><div class="card-icon">🧠</div><h3>Computer Vision Starter</h3><div class="expert">by Fei-Fei Li</div><div class="desc">Reconocimiento de imagenes con IA desde cero.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0009','Computer Vision Starter',6.99)">COMPRAR</button></div></div>
-<div class="card"><div class="card-badge">Ilya Sutskever</div><div class="card-icon">🧠</div><h3>AI Scaling Playbook</h3><div class="expert">by Ilya Sutskever</div><div class="desc">Escala tus sistemas IA con las leyes de Sutskever.</div><div class="card-footer"><div class="price">$6.99 <small>$20.97</small></div><button class="buy" onclick="buyProduct('ELITE-0010','AI Scaling Playbook',6.99)">COMPRAR</button></div></div>
+<div class="container">
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="value">10,991</div>
+      <div class="label">Productos Activos</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">560</div>
+      <div class="label">Expertos</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">120+</div>
+      <div class="label">Países</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">24/7</div>
+      <div class="label">Disponible</div>
     </div>
   </div>
-</section>
 
-<footer>
-  <div class="container">
-    <p>&copy; 2026 OMEGA AI &mdash; Powered by <a href="#">DIHACKTOR OS</a></p>
-    <p style="margin-top:8px">Pagos seguros via Stripe / Crypto | Acceso instant&aacute;neo | Garant&iacute;a 30 d&iacute;as</p>
+  <!-- QR MULTIPAGO -->
+  <div id="pagar" class="qr-section">
+    <h3>⚡ PAGO RÁPIDO QR MULTIPAGO</h3>
+    <p>Escanea y paga en segundos · $6.99 USD</p>
+    <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ethereum:0xeBe965EFe1ab53d2da915134d72e5BdBd5E3C053?value=6.99e18&color=d4af37" alt="QR USDT Payment">
+    <div class="qr-wallets">
+      <span class="wallet-tag">USDT BEP20</span>
+      <span class="wallet-tag">BTC</span>
+      <span class="wallet-tag">ETH</span>
+      <span class="wallet-tag">BNB</span>
+    </div>
+    <p style="margin-top:1rem;font-size:.75rem;color:var(--text-muted)">
+      💳 También: Meru · Stripe · Takenos · Crypto (8 redes)
+    </p>
   </div>
+
+  <!-- MÉTODOS DE PAGO -->
+  <div id="metodos" class="section-title" style="text-align:center">Métodos de Pago</div>
+  <div class="payments">
+    <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="payment-card">
+      <div class="icon">💳</div>
+      <div class="name">Meru</div>
+      <div class="sub">USD Directo</div>
+    </a>
+    <a href="https://app.takenos.com/pay/6eaca743-3599-41c3-a62b-ee6b748b202d" class="payment-card">
+      <div class="icon">🏦</div>
+      <div class="name">Takenos</div>
+      <div class="sub">Transferencia</div>
+    </a>
+    <a href="#" class="payment-card" onclick="document.getElementById('crypto-qr').scrollIntoView({behavior:'smooth'});return false">
+      <div class="icon">₿</div>
+      <div class="name">Crypto QR</div>
+      <div class="sub">8 Redes</div>
+    </a>
+    <a href="#" class="payment-card" onclick="alert('Stripe $6.99 USD');return false">
+      <div class="icon">💎</div>
+      <div class="name">Stripe</div>
+      <div class="sub">Tarjeta</div>
+    </a>
+  </div>
+
+  <!-- PRODUCTOS -->
+  <div id="productos" class="section-title">Productos Destacados <span class="badge">$6.99 USD</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="category">IA</div>
+      <h3>Apollo IA Workflow Premium — Automatización Inteligente</h3>
+      <div class="expert">por YinAITechYang</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">AI/ML</div>
+      <h3>NeuroForge AI — Deep Learning Masterclass</h3>
+      <div class="expert">por Dr. Andrew Ng</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">FinTech</div>
+      <h3>CapitalPulse — FinTech Trading con IA</h3>
+      <div class="expert">por Michael Saylor</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">EdTech</div>
+      <h3>MindLadder — EdTech Adaptativo</h3>
+      <div class="expert">por Sal Khan</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">HealthTech</div>
+      <h3>VitalSphere — HealthTech IA Diagnóstico</h3>
+      <div class="expert">por Dr. Topol</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">SaaS</div>
+      <h3>AuroraML — SaaS Vertical IA</h3>
+      <div class="expert">por Drew Houston</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">Creator</div>
+      <h3>CreatorHub Pro — Economy de Creadores</h3>
+      <div class="expert">por Gary Vaynerchuk</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">MarTech</div>
+      <h3>BrandPilot — MarTech Automatizado</h3>
+      <div class="expert">por Seth Godin</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">Cyber</div>
+      <h3>SentinAI — Cybersecurity IA</h3>
+      <div class="expert">por Bruce Schneier</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">Climate</div>
+      <h3>ClimateIQ — ClimateTech Predictivo</h3>
+      <div class="expert">por Al Gore</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">Legal</div>
+      <h3>LexForge — LegalTech IA</h3>
+      <div class="expert">por Richard Susskind</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+    <div class="card">
+      <div class="category">DevOps</div>
+      <h3>DevPilot — DevOps IA Autónomo</h3>
+      <div class="expert">por Gene Kim</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+        <div class="price">$6.99</div>
+      </div>
+      <a href="https://pay.meru.app/compra-6eaca743-3599-41c3-a62b-ee6b748b202d" class="buy-btn">Comprar · $6.99</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2026 DIHACKTOR Ω — YinAITechYang Ecosystem</p>
+  <p style="margin-top:.5rem">Precio fijo: <a href="#pagar">$6.99 USD</a> · Pagos: <a href="#metodos">QR · Meru · Stripe · Crypto</a></p>
+  <p style="margin-top:.5rem">Powered by Next.js 16 + SQLite + IA + GitHub Pages</p>
 </footer>
 
-<div class="toast" id="toast"></div>
-
-<script>
-const PRODUCTS=[{"uid": "ELITE-0001", "title": "ChatGPT Mastery Pro", "expert": "Andrew Ng", "description": "Domina ChatGPT de cero a experto. 500+ prompts listos para usar.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0002", "title": "Midjourney Visual Empire", "expert": "Sam Altman", "description": "Crea arte IA que vende. 1000+ estilos probados.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0003", "title": "Claude AI Automation", "expert": "Sam Altman", "description": "Automatiza tu negocio con Claude. 50 workflows listos.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0004", "title": "Prompt Engineering Bible", "expert": "Riley Goodside", "description": "El libro definitivo de prompts. 200+ paginas.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0005", "title": "AI Agent Builder Pro", "expert": "Yoav Shoham", "description": "Construye agentes IA autonomos paso a paso.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0006", "title": "RAG Systems Masterclass", "expert": "Patrick Lewis", "description": "Retrieval Augmented Generation en produccion.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0007", "title": "Fine-tuning LLMs Pro", "expert": "Yann LeCun", "description": "Ajusta modelos de lenguaje para tu negocio.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0008", "title": "AI Content Factory", "expert": "Aaron Mirck", "description": "Produce 1000 piezas de contenido con IA por dia.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0009", "title": "Computer Vision Starter", "expert": "Fei-Fei Li", "description": "Reconocimiento de imagenes con IA desde cero.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}, {"uid": "ELITE-0010", "title": "AI Scaling Playbook", "expert": "Ilya Sutskever", "description": "Escala tus sistemas IA con las leyes de Sutskever.", "price": 6.99, "compare_price": 20.97, "category": "ia", "emoji": "🧠"}];
-const PAY_LINK="https://app.takenos.com/pay/6eaca743-3599-41c3-a62b-ee6b748b202d";
-let cart=JSON.parse(localStorage.getItem('cart')||'[]');
-function updateCart(){document.getElementById('cart-count').textContent=cart.length;localStorage.setItem('cart',JSON.stringify(cart))}
-function buyProduct(uid,title,price){cart.push({uid,title,price,time:Date.now()});updateCart();showToast('✓ Agregado: '+title);setTimeout(()=>window.open(PAY_LINK,'_blank'),800)}
-function viewCart(){if(!cart.length){showToast('Tu carrito esta vacio');return}const t=cart.reduce((s,i)=>s+i.price,0);showToast(cart.length+' items | $'+t.toFixed(2)+' USD — Redirigiendo a pago...');setTimeout(()=>window.open(PAY_LINK,'_blank'),1200)}
-function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
-updateCart();
-</script>
 </body>
 </html>
